@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qi.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qi.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qi.png">
+  <link rel="mask-icon" href="/images/qi.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wuliuqi.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="urlliburllib库是Python中一个最基本的网络请求库。可以模拟浏览器的行为，向指定的服务器发送一个请求，并可以保存服务器返回的数据。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="爬虫笔记03 - 网络请求">
+<meta property="og:url" content="http://wuliuqi.xyz/2019/02/19/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B003/index.html">
+<meta property="og:site_name" content="July&#39;s Blog">
+<meta property="og:description" content="urlliburllib库是Python中一个最基本的网络请求库。可以模拟浏览器的行为，向指定的服务器发送一个请求，并可以保存服务器返回的数据。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-02-19T08:45:28.000Z">
+<meta property="article:modified_time" content="2019-02-22T04:44:02.000Z">
+<meta property="article:author" content="July">
+<meta property="article:tag" content="urllib">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wuliuqi.xyz/2019/02/19/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B003/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>爬虫笔记03 - 网络请求 | July's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">July's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">花有重开日，人无再少年</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wuliuqi.xyz/2019/02/19/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B003/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/memory.jpg">
+      <meta itemprop="name" content="July">
+      <meta itemprop="description" content="落花似人有情这个季节">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="July's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          爬虫笔记03 - 网络请求
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-02-19 16:45:28" itemprop="dateCreated datePublished" datetime="2019-02-19T16:45:28+08:00">2019-02-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-02-22 12:44:02" itemprop="dateModified" datetime="2019-02-22T12:44:02+08:00">2019-02-22</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">爬虫</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h1><p><code>urllib</code>库是<code>Python</code>中一个最基本的网络请求库。可以模拟浏览器的行为，向指定的服务器发送一个请求，并可以保存服务器返回的数据。</p>
+<span id="more"></span>
+
+<h2 id="urlopen函数"><a href="#urlopen函数" class="headerlink" title="urlopen函数"></a>urlopen函数</h2><p>在<code>Python3</code>的<code>urllib</code>库中，所有和网络请求相关的方法，都被集到<code>urllib.request</code>模块下面了，以先来看下<code>urlopen</code>函数基本的使用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line">resp = request.urlopen(<span class="string">&#x27;http://www.baidu.com&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp.read())</span><br></pre></td></tr></table></figure>
+
+<p><code>urlopen</code>函数参数为：</p>
+<ul>
+<li><code>url</code>：请求的url。</li>
+<li><code>data</code>：请求的data，如果设置了这个值，那么将变成post请求。</li>
+</ul>
+<p><code>urlopen</code>的返回值是一个<code>http.client.HTTPResponse</code>对象，这个对象是一个类文件句柄对象。有<code>read(size)</code>、<code>readline</code>、<code>readlines</code>以及<code>getcode</code>等方法。</p>
+<h2 id="urlretrieve函数"><a href="#urlretrieve函数" class="headerlink" title="urlretrieve函数"></a>urlretrieve函数</h2><p>这个函数可以方便的将网页上的一个文件保存到本地。以下代码可以非常方便的将百度的首页下载到本地：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line">request.urlretrieve(<span class="string">&#x27;http://www.baidu.com/&#x27;</span>,<span class="string">&#x27;baidu.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="urlencode函数"><a href="#urlencode函数" class="headerlink" title="urlencode函数"></a>urlencode函数</h2><p>用浏览器发送请求的时候，如果<code>url</code>中包含了中文或者其他特殊字符，那么浏览器会自动的给我们进行编码。而如果使用代码发送请求，那么就必须手动的进行编码，这时候就应该使用<code>urlencode</code>函数来实现。<code>urlencode</code>可以把字典数据转换为<code>URL</code>编码的数据。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;爬虫基础&#x27;</span>,<span class="string">&#x27;greet&#x27;</span>:<span class="string">&#x27;hello world&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="number">100</span>&#125;</span><br><span class="line">qs = parse.urlencode(data)</span><br><span class="line"><span class="built_in">print</span>(qs)</span><br></pre></td></tr></table></figure>
+
+<h2 id="parse-qs函数"><a href="#parse-qs函数" class="headerlink" title="parse_qs函数"></a>parse_qs函数</h2><p>可以将经过编码后的url参数进行解码。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line">qs = <span class="string">&quot;name=%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80&amp;greet=hello+world&amp;age=100&quot;</span></span><br><span class="line"><span class="built_in">print</span>(parse.parse_qs(qs))</span><br></pre></td></tr></table></figure>
+
+<h2 id="urlparse和urlsplit"><a href="#urlparse和urlsplit" class="headerlink" title="urlparse和urlsplit"></a><code>urlparse</code>和<code>urlsplit</code></h2><p>有时候拿到一个url，想要对这个url中的各个组成部分进行分割，那么这时候就可以使用<code>urlparse</code>或者是<code>urlsplit</code>来进行分割。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://www.baidu.com/s?username=zhiliao&#x27;</span></span><br><span class="line"></span><br><span class="line">result = parse.urlsplit(url)</span><br><span class="line"><span class="comment"># result = parse.urlparse(url)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;scheme:&#x27;</span>,result.scheme)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;netloc:&#x27;</span>,result.netloc)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;path:&#x27;</span>,result.path)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;query:&#x27;</span>,result.query)</span><br></pre></td></tr></table></figure>
+
+<p><code>urlparse</code>和<code>urlsplit</code>基本上是一模一样的。唯一不一样的地方是，<code>urlparse</code>里面多了一个<code>params</code>属性，而<code>urlsplit</code>没有这个<code>params</code>属性。比如有一个url为：<code>url = &#39;http://www.baidu.com/s;hello?wd=python&amp;username=abc#1&#39;</code>，那么<code>urlparse</code>可以获取到<code>hello</code>，而<code>urlsplit</code>不可以获取到。<code>url</code>中的<code>params</code>也用得比较少。</p>
+<h2 id="request-Request类"><a href="#request-Request类" class="headerlink" title="request.Request类"></a>request.Request类</h2><p>如果想要在请求的时候增加一些请求头，那么就必须使用<code>request.Request</code>类来实现。比如要增加一个<code>User-Agent</code>，示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">req = request.Request(<span class="string">&quot;http://www.baidu.com/&quot;</span>,headers=headers)</span><br><span class="line">resp = request.urlopen(req)</span><br><span class="line"><span class="built_in">print</span>(resp.read())</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>请作者喝冰阔落</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="July 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>July
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wuliuqi.xyz/2019/02/19/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B003/" title="爬虫笔记03 - 网络请求">http://wuliuqi.xyz/2019/02/19/爬虫笔记03/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/urllib/" rel="tag"><i class="fa fa-tag"></i> urllib</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/02/18/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B002/" rel="prev" title="爬虫笔记02 - 数据存储">
+      <i class="fa fa-chevron-left"></i> 爬虫笔记02 - 数据存储
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/02/21/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B004/" rel="next" title="爬虫笔记04 - 进阶">
+      爬虫笔记04 - 进阶 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#urllib"><span class="nav-number">1.</span> <span class="nav-text">urllib</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#urlopen%E5%87%BD%E6%95%B0"><span class="nav-number">1.1.</span> <span class="nav-text">urlopen函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urlretrieve%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.</span> <span class="nav-text">urlretrieve函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urlencode%E5%87%BD%E6%95%B0"><span class="nav-number">1.3.</span> <span class="nav-text">urlencode函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#parse-qs%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">parse_qs函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#urlparse%E5%92%8Curlsplit"><span class="nav-number">1.5.</span> <span class="nav-text">urlparse和urlsplit</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#request-Request%E7%B1%BB"><span class="nav-number">1.6.</span> <span class="nav-text">request.Request类</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="July"
+      src="/images/memory.jpg">
+  <p class="site-author-name" itemprop="name">July</p>
+  <div class="site-description" itemprop="description">落花似人有情这个季节</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">July</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.6k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

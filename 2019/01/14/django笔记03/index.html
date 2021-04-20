@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qi.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qi.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qi.png">
+  <link rel="mask-icon" href="/images/qi.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wuliuqi.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="模板模板放在根目录的templates文件夹下，如果找不到可能要修改settings.py文件，具体的之后再说 渲染模板 render_to_string  将模板编译后，渲染成python的字符串格式，最后通过HttpResponse类包装成一个HttpResponse对象返回 123456from django.template.loader import render_to_stringfr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="django笔记03 - 模板">
+<meta property="og:url" content="http://wuliuqi.xyz/2019/01/14/django%E7%AC%94%E8%AE%B003/index.html">
+<meta property="og:site_name" content="July&#39;s Blog">
+<meta property="og:description" content="模板模板放在根目录的templates文件夹下，如果找不到可能要修改settings.py文件，具体的之后再说 渲染模板 render_to_string  将模板编译后，渲染成python的字符串格式，最后通过HttpResponse类包装成一个HttpResponse对象返回 123456from django.template.loader import render_to_stringfr">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-14T11:30:07.000Z">
+<meta property="article:modified_time" content="2019-01-26T05:50:05.000Z">
+<meta property="article:author" content="July">
+<meta property="article:tag" content="django">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wuliuqi.xyz/2019/01/14/django%E7%AC%94%E8%AE%B003/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>django笔记03 - 模板 | July's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">July's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">花有重开日，人无再少年</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wuliuqi.xyz/2019/01/14/django%E7%AC%94%E8%AE%B003/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/memory.jpg">
+      <meta itemprop="name" content="July">
+      <meta itemprop="description" content="落花似人有情这个季节">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="July's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          django笔记03 - 模板
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-01-14 19:30:07" itemprop="dateCreated datePublished" datetime="2019-01-14T19:30:07+08:00">2019-01-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-01-26 13:50:05" itemprop="dateModified" datetime="2019-01-26T13:50:05+08:00">2019-01-26</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/django/" itemprop="url" rel="index"><span itemprop="name">django</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h1><p>模板放在根目录的<code>templates</code>文件夹下，如果找不到可能要修改<code>settings.py</code>文件，具体的之后再说</p>
+<h2 id="渲染模板"><a href="#渲染模板" class="headerlink" title="渲染模板"></a>渲染模板</h2><ol>
+<li><code>render_to_string</code></li>
+</ol>
+<p>将模板编译后，渲染成python的字符串格式，最后通过<code>HttpResponse</code>类包装成一个<code>HttpResponse</code>对象返回</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.template.loader <span class="keyword">import</span> render_to_string</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    html = render_to_string(<span class="string">&#x27;index.html&#x27;</span>)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(html)</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><code>render</code>更简单</li>
+</ol>
+<p>将模板渲染成字符串和包装成HttpResponse对象一部到位完成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span>(<span class="params">request</span>):</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h2 id="模板查找路径"><a href="#模板查找路径" class="headerlink" title="模板查找路径"></a>模板查找路径</h2><p><code>settings.py</code>文件的<code>templates</code>部分进行配置</p>
+<ol>
+<li><p><code>DIRS</code>列表：，在这个列表中可以存放所有的模板路径，以后在视图中使用render或者render_to_string渲染模板的时候，会在这个列表的路径中查找模板</p>
+</li>
+<li><p><code>APP_DIRS</code>：默认为<code>True</code>，这个设置为<code>True</code>后，会在<code>INSTALLED_APPS</code>（已安装的APP）下的<code>templates</code>文件夹中查找模板，文件夹名必须为<code>templates</code></p>
+</li>
+<li><p>查找顺序：优先级为，<code>DIRS</code>-&gt; 当前APP的<code>templates</code>文件夹-&gt; 其它<code>INSTALLED_APPS</code>的<code>templates</code>文件夹。比如代码render(‘list.html’)。先会在DIRS这个列表中依次查找路径下有没有这个模板，如果有，就返回。如果DIRS列表中所有的路径都没有找到，那么会先检查当前这个视图所处的app是否已经安装，如果已经安装了，那么就先在当前这个app下的templates文件夹中查找模板，如果没有找到，那么会在其他已经安装了的app中查找。如果所有路径下都没有找到，那么会抛出一个TemplateDoesNotExist的异常。</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATES = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">&#x27;BACKEND&#x27;</span>: <span class="string">&#x27;django.template.backends.django.DjangoTemplates&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;DIRS&#x27;</span>: [os.path.join(BASE_DIR, <span class="string">&quot;templates&quot;</span>)],</span><br><span class="line">        <span class="string">&#x27;APP_DIRS&#x27;</span>: <span class="literal">True</span>,</span><br><span class="line">        <span class="string">&#x27;OPTIONS&#x27;</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;context_processors&#x27;</span>: [</span><br><span class="line">                <span class="string">&#x27;django.template.context_processors.debug&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.template.context_processors.request&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.contrib.auth.context_processors.auth&#x27;</span>,</span><br><span class="line">                <span class="string">&#x27;django.contrib.messages.context_processors.messages&#x27;</span>,</span><br><span class="line">            ],</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<h2 id="模板变量"><a href="#模板变量" class="headerlink" title="模板变量"></a>模板变量</h2><ol>
+<li>视图中，以字典的形式传入模板</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> render(request, <span class="string">&#x27;index.html&#x27;</span>, context=context) <span class="comment">#context是字典</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>在模板中使用变量，以<code>{{ 变量 }}</code>的形式</li>
+<li>访问对象的属性，通过<code>对象.属性名</code>来访问，如访问<code>person</code>对象的<code>username</code>属性，通过<code>person.username</code></li>
+<li>访问字典的<code>key</code>对应的<code>value</code>，通过<code>字典.key</code>的方式访问，不能通过中括号<code>[]</code>的形式访问，不能使用字典本身的属性名作为<code>key</code>，防止自身属性被忽略，无法访问</li>
+<li>列表和元组，同样使用点<code>.</code>的方式访问，不能通过中括号<code>[]</code>，<code>{{ person.0 }}</code></li>
+</ol>
+<h2 id="模板标签"><a href="#模板标签" class="headerlink" title="模板标签"></a>模板标签</h2><h3 id="if标签"><a href="#if标签" class="headerlink" title="if标签"></a><code>if</code>标签</h3><ol>
+<li>所有的标签都是在<code>{% %}</code>之间</li>
+<li><code>if</code>标签有闭合标签，<code>{% endif %}</code></li>
+<li><code>if</code>标签的判断运算符，与<code>python</code>相同，<code>==、!=、&lt;、&lt;=、&gt;、&gt;=、in、not in、is、is not</code>等</li>
+<li>还可以使用<code>elif</code>,<code>else</code>等标签</li>
+</ol>
+<h3 id="for-in-标签"><a href="#for-in-标签" class="headerlink" title="for...in...标签"></a><code>for...in...</code>标签</h3><p>类似于<code>Python</code>中的<code>for...in...</code>。可以遍历列表、元组、字符串、字典等一切可以遍历的对象。<br>没有<code>continue</code>和<code>break</code>语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> person <span class="keyword">in</span> persons %&#125;</span><br><span class="line">    &lt;p&gt;&#123;&#123; person.name &#125;&#125;&lt;/p&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要反向遍历，那么在遍历的时候就加上一个<code>reversed</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> person <span class="keyword">in</span> persons <span class="built_in">reversed</span> %&#125;</span><br><span class="line">    &lt;p&gt;&#123;&#123; person.name &#125;&#125;&lt;/p&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>遍历字典的时候，需要使用<code>items</code>、<code>keys</code>和<code>values</code>等方法。在DTL中，执行一个方法不能使用圆括号的形式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> key,value <span class="keyword">in</span> person.items %&#125;</span><br><span class="line">    &lt;p&gt;key：&#123;&#123; key &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;value：&#123;&#123; value &#125;&#125;&lt;/p&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在<code>for</code>循环中，DTL提供了一些变量可供使用。这些变量如下：</p>
+<ul>
+<li><code>forloop.counter</code>：当前循环的下标。以1作为起始值。</li>
+<li><code>forloop.counter0</code>：当前循环的下标。以0作为起始值。</li>
+<li><code>forloop.revcounter</code>：当前循环的反向下标值。比如列表有5个元素，那么第一次遍历这个属性是等于5，第二次是4，以此类推。并且是以1作为最后一个元素的下标。</li>
+<li><code>forloop.revcounter0</code>：类似于<code>forloop.revcounter</code>。不同的是最后一个元素的下标是从0开始。</li>
+<li><code>forloop.first</code>：是否是第一次遍历。</li>
+<li><code>forloop.last</code>：是否是最后一次遍历。</li>
+<li><code>forloop.parentloop</code>：如果有多个循环嵌套，那么这个属性代表的是上一级的for循环。</li>
+</ul>
+<h4 id="for…in…empty标签"><a href="#for…in…empty标签" class="headerlink" title="for…in…empty标签"></a>for…in…empty标签</h4><p>这个标签使用跟<code>for...in...</code>是一样的，只不过是在遍历的对象如果没有元素的情况下，会执行empty中的内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> person <span class="keyword">in</span> persons %&#125;</span><br><span class="line">    &lt;li&gt;&#123;&#123; person &#125;&#125;&lt;/li&gt;</span><br><span class="line">&#123;% empty %&#125;</span><br><span class="line">    暂时还没有任何人</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="with标签"><a href="#with标签" class="headerlink" title="with标签"></a>with标签</h3><ol>
+<li>在模板中，通过<code>with</code>语句来定义变量</li>
+<li><code>with</code>语句有两种使用方式，一种是<code>with xx=xxx</code>的形式（<code>=</code>左右没有空格），第二种是<code>with xxx as xx</code>的形式</li>
+<li>定义的变量只能在with语句块中使用，在<code>with</code>语句块外面取不到这个变量</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">with</span> person<span class="number">.0</span>  <span class="keyword">as</span> zs %&#125;</span><br><span class="line">    &lt;p&gt;&#123;&#123; zs &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; zs &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &lt;p&gt;&#123;&#123; zs &#125;&#125;&lt;/p&gt;</span><br><span class="line">&#123;% endwith %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="url标签"><a href="#url标签" class="headerlink" title="url标签"></a>url标签</h3><p>在模版中，我们经常要写一些url，比如某个a标签中需要定义href属性。通过硬编码的方式直接将这个url写死的话，对于以后项目维护不方便。因此建议使用这种反转的方式来实现，类似于django中的reverse一样</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&#123;% url &#x27;book:list&#x27; %&#125;&quot;&gt;图书列表页面&lt;/a&gt;  #book可能是app名，或命名空间的名，有待验证。一般直接写name就好</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>url</code>反转的时候需要传递参数，那么可以在后面传递。但是参数分位置参数和关键字参数。位置参数和关键字参数不能同时使用</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># path部分</span></span><br><span class="line">path(<span class="string">&#x27;detail/&lt;book_id&gt;/&#x27;</span>,views.book_detail,name=<span class="string">&#x27;detail&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># url反转，使用位置参数</span></span><br><span class="line">&lt;a href=&quot;&#123;% url &#x27;book:detail&#x27; 1 %&#125;&quot;&gt;图书详情页面&lt;/a&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># url反转，使用关键字参数</span></span><br><span class="line">&lt;a href=&quot;&#123;% url &#x27;book:detail&#x27; book_id=1 %&#125;&quot;&gt;图书详情页面&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果想要在使用<code>url</code>标签反转的时候要传递查询字符串的参数，那么必须要手动在在后面添加</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&#123;% url &#x27;book:detail&#x27; book_id=1 %&#125;?page=1&quot;&gt;图书详情页面&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果需要传递多个参数，那么通过空格的方式进行分隔</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;&#123;% url &#x27;book:detail&#x27; book_id=1 page=2 %&#125;&quot;&gt;图书详情页面&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="autosecape标签"><a href="#autosecape标签" class="headerlink" title="autosecape标签"></a>autosecape标签</h3><ol>
+<li>模板中默认开启自动转义。自动转义是可以将一些特殊的字符,转义成html语法能识别的字符，比如<code>&lt;</code>会被转义成<code>&amp;lt</code>，而<code>&gt;</code>会被自动转义成<code>&amp;gt</code>。</li>
+<li>如果变量确实是可信任的，可以使用<code>autoescape</code>标签来关掉自动转义</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% autoescape off %&#125;</span><br><span class="line">    &#123;% info %&#125;</span><br><span class="line">&#123;%  endautoescape %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="verbatim标签："><a href="#verbatim标签：" class="headerlink" title="verbatim标签："></a>verbatim标签：</h3><p>默认在DTL模板中是会去解析那些特殊字符的。比如<code>{%</code>和<code>%}</code>以及`{{`等。如果你在某个代码片段中不想使用DTL的解析引擎。那么你可以把这个代码片段放在`verbatim`标签中
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% verbatim %&#125;</span><br><span class="line">    &#123;&#123;<span class="keyword">if</span> dying&#125;&#125;Still alive.&#123;&#123;/<span class="keyword">if</span>&#125;&#125;</span><br><span class="line">&#123;% endverbatim %&#125;</span><br></pre></td></tr></table></figure>
+
+## 模板过滤器
+
+在模版中，有时候需要对一些数据进行处理以后才能使用。一般在Python中我们是通过函数的形式来完成的。DTL中，不支持函数的调用形式'()'，需要通过过滤器来实现的，而过滤器其实就是一个函数，可以对需要的参数进行处理，并且还可以额外接受一个参数（即最多有两个参数）。过滤器使用的是`|`来使用。
+
+### add过滤器
+
+将传进来的参数添加到原来的值上面。这个过滤器会尝试将值和参数转换成整形然后进行相加。如果转换成整形过程中失败了，那么会将值和参数进行拼接。如果是字符串，那么会拼接成字符串，如果是列表，那么会拼接成一个列表。
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|add:<span class="string">&quot;2&quot;</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+如果`value`是等于4，那么结果将是6。如果`value`是等于一个普通的字符串，比如`abc`，那么结果将是`abc2`。`add`过滤器的源代码如下：
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span>(<span class="params">value, arg</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Add the arg to the value.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">int</span>(value) + <span class="built_in">int</span>(arg)</span><br><span class="line">    <span class="keyword">except</span> (ValueError, TypeError):</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            <span class="keyword">return</span> value + arg</span><br><span class="line">        <span class="keyword">except</span> Exception:</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+### cut过滤器
+
+移除值中所有指定的字符串。类似于`python`中的`replace(args,"")`
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|cut:<span class="string">&quot; &quot;</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+以上示例将会移除value中所有的空格字符。cut过滤器的源代码如下：
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">cut</span>(<span class="params">value, arg</span>):</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Remove all values of arg from the given string.&quot;&quot;&quot;</span></span><br><span class="line">    safe = <span class="built_in">isinstance</span>(value, SafeData)</span><br><span class="line">    value = value.replace(arg, <span class="string">&#x27;&#x27;</span>)</span><br><span class="line">    <span class="keyword">if</span> safe <span class="keyword">and</span> arg != <span class="string">&#x27;;&#x27;</span>:</span><br><span class="line">        <span class="keyword">return</span> mark_safe(value)</span><br><span class="line">    <span class="keyword">return</span> value</span><br></pre></td></tr></table></figure>
+
+### date过滤器
+
+将一个日期按照指定的格式，格式化成字符串
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据</span></span><br><span class="line">context = &#123;</span><br><span class="line">    <span class="string">&quot;birthday&quot;</span>: datetime.now()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 模版</span></span><br><span class="line">&#123;&#123; birthday|date:<span class="string">&quot;Y/m/d&quot;</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+那么将会输出2018/02/01。其中`Y`代表的是四位数字的年份，`m`代表的是两位数字的月份，`d`代表的是两位数字的日
+
+| 格式字符 | 描述 | 示例 |
+| :------: | :------: | :------: |
+| Y | 四位数字的年份 | 2018 |
+| m | 两位数字的月份 | 01-12 |
+| n | 月份，1-9前面没有0前缀 | 1-12 |
+| d | 两位数字的天 | 01-31 |
+| j | 天，但是1-9前面没有0前缀 | 1-31 |
+| g | 小时，12小时格式的，1-9前面没有0前缀 | 1-12 |
+| h | 小时，12小时格式的，1-9前面有0前缀 | 01-12 |
+| G | 小时，24小时格式的，1-9前面没有0前缀 | 1-23 |
+| H | 小时，24小时格式的，1-9前面有0前缀 | 01-23 |
+| i | 分钟，1-9前面有0前缀 | 00-59 |
+| s | 秒，1-9前面有0前缀 | 00-59 |
+
+### default过滤器
+
+如果值被评估为False。比如`[]`，`""`，`None`，`{}`等这些在`if`判断中为`False`的值，都会使用`default`过滤器提供的默认值。示例代码如下：
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|default:<span class="string">&quot;nothing&quot;</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+如果`value`是等于一个空的字符串。比如`""`，那么以上代码将会输出`nothing`
+
+### default_if_none
+
+如果值是`None`，那么将会使用`default_if_none`提供的默认值。这个和`default`有区别，`default`是所有被评估为`False`的都会使用默认值。而`default_if_none`则只有这个值是等于`None`的时候才会使用默认值。示例代码如下：
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|default_if_none:<span class="string">&quot;nothing&quot;</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+如果`value`是等于`""`即空字符串，那么以上会输出空字符串。如果`value`是一个`None`值，以上代码才会输出`nothing`
+
+### first
+
+返回列表/元组/字符串中的第一个元素
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|first &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+如果`value`是等于`['a','b','c']`，那么输出将会是`a`
+
+### last
+
+返回列表/元组/字符串中的最后一个元素
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|last &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+如果`value`是等于`['a','b','c']`，那么输出将会是`c`
+
+### floatformat
+
+使用四舍五入的方式格式化一个浮点类型。如果这个过滤器没有传递任何参数。那么只会在小数点后保留一个小数，如果小数后面全是0，那么只会保留整数。当然也可以传递一个参数，标识具体要保留几个小数。
+
+1. 没有传递参数
+
+| value | 模版代码 | 输出 |
+| --- | --- | --- |
+| 34.23234 | {{ value\|floatformat }} | 34.2 |<br>| 34.000 | {{ value\|floatformat }} | 34 |<br>| 34.260 | {{ value\|floatformat }} | 34.3 |</p>
+<ol start="2">
+<li>传递参数</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>value</th>
+<th>模版代码</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>34.23234</td>
+<td>{{value\|floatformat:3}}</td>
+<td>34.232</td>
+</tr>
+<tr>
+<td>34.0000</td>
+<td>{{value\|floatformat:3}}</td>
+<td>34.000</td>
+</tr>
+<tr>
+<td>34.26000</td>
+<td>{{value\|floatformat:3}}</td>
+<td>34.260</td>
+</tr>
+</tbody></table>
+<h3 id="join"><a href="#join" class="headerlink" title="join"></a>join</h3><p>类似与<code>Python</code>中的<code>join</code>，将列表/元组/字符串用指定的字符进行拼接。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|join:<span class="string">&quot;/&quot;</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>value</code>是等于<code>[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]</code>，那么以上代码将输出<code>a/b/c</code>。</p>
+<h3 id="length"><a href="#length" class="headerlink" title="length"></a>length</h3><p>获取一个列表/元组/字符串/字典的长度。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|length &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>value</code>是等于<code>[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]</code>，那么以上代码将输出<code>3</code>。如果<code>value</code>为<code>None</code>，那么以上将返回<code>0</code>。</p>
+<h3 id="lower"><a href="#lower" class="headerlink" title="lower"></a>lower</h3><p>将值中所有的字符全部转换成小写。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|lower &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果value是等于Hello World。那么以上代码将输出hello world。</p>
+<h3 id="upper"><a href="#upper" class="headerlink" title="upper"></a>upper</h3><p>类似于<code>lower</code>，只不过是将指定的字符串全部转换成大写。</p>
+<h3 id="random"><a href="#random" class="headerlink" title="random"></a>random</h3><p>在被给的列表/字符串/元组中随机的选择一个值。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|random &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>value</code>是等于<code>[&#39;a&#39;,&#39;b&#39;,&#39;c&#39;]</code>，那么以上代码会在列表中随机选择一个。</p>
+<h3 id="safe"><a href="#safe" class="headerlink" title="safe"></a>safe</h3><p>标记一个字符串是安全的。也即会关掉这个字符串的自动转义。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;value|safe&#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果value是一个不包含任何特殊字符的字符串，比如<code>&lt;a&gt;</code>这种，那么以上代码就会把字符串正常的输入。如果<code>value</code>是一串html代码，那么以上代码将会把这个html代码渲染到浏览器中。</p>
+<h3 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h3><p>类似于Python中的切片操作。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; some_list|<span class="built_in">slice</span>:<span class="string">&quot;2:&quot;</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上代码将会给<code>some_list</code>从<code>2</code>开始做切片操作。</p>
+<h3 id="stringtags"><a href="#stringtags" class="headerlink" title="stringtags"></a>stringtags</h3><p>删除字符串中所有的<code>html</code>标签。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|striptags &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>value</code>是<code>&lt;strong&gt;hello world&lt;/strong&gt;</code>，那么以上代码将会输出<code>hello world</code>。</p>
+<h3 id="truncatechars"><a href="#truncatechars" class="headerlink" title="truncatechars"></a>truncatechars</h3><p>如果给定的字符串长度超过了过滤器指定的长度。那么就会进行切割，并且会拼接三个点来作为省略号。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|truncatechars:<span class="number">5</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>value</code>是等于<code>北京欢迎您~</code>，那么输出的结果是<code>北京...</code>。可能你会想，为什么不会<code>北京欢迎您...</code>呢。因为三个点也占了三个字符，所以<code>北京</code>+三个点的字符长度就是5。</p>
+<h3 id="truncatechars-html"><a href="#truncatechars-html" class="headerlink" title="truncatechars_html"></a>truncatechars_html</h3><p>类似于<code>truncatechars</code>，只不过是不会切割<code>html</code>标签。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; value|truncatechars_html:<span class="number">5</span> &#125;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果<code>value</code>是等于<code>&lt;p&gt;北京欢迎您~&lt;/p&gt;</code>，那么输出将是<code>&lt;p&gt;北京...&lt;/p&gt;</code></p>
+<h2 id="自定义过滤器"><a href="#自定义过滤器" class="headerlink" title="自定义过滤器"></a>自定义过滤器</h2><ol>
+<li>首先在某个app中，创建一个python包，名为<code>templatetags</code>，必须是这个名，不然找不到。</li>
+<li>在<code>templatetags</code>包下面，创建一个python文件来存储过滤器</li>
+<li>自定义的过滤器（也就是函数），这个函数的第一个参数永远是被过滤的那个值，还可以再定义另一个参数，过滤器最多只有2个参数</li>
+<li>写完过滤器（函数）后，要使用<code>django.template.Library.filter</code>进行注册</li>
+<li>将过滤器所在的app添加到<code>settings.py</code>的<code>INSTALLED_APPS</code>列表中，不然Django也找不到这个过滤器</li>
+<li>在模板中使用<code>load</code>标签加载过滤器所在的python文件，就可以用了</li>
+<li><code>django.template.Library.filter</code>还可以当做装饰器来使用，如果<code>filter</code>函数没有传递参数，默认使用函数名字作为过滤器名字，也可以传递<code>name</code>参数作为过滤器名字</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 某app的templatetags文件夹下的my_fliter.py文件</span></span><br><span class="line"><span class="keyword">from</span> django <span class="keyword">import</span> template</span><br><span class="line"></span><br><span class="line">register = template.Library()</span><br><span class="line"></span><br><span class="line"><span class="meta">@register.filter(<span class="params"><span class="string">&#x27;my_greet&#x27;</span></span>)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">greet</span>(<span class="params">value, word</span>):</span></span><br><span class="line">    <span class="keyword">return</span> value + word</span><br><span class="line"></span><br><span class="line"><span class="comment">#register.filter(&#x27;greet&#x27;, greet)</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 模板文件 --&gt;</span></span><br><span class="line">&#123;% load my_fliter %&#125;</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    &#123;&#123; value|greet:&#x27; 你好&#x27; &#125;&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="模板结构优化"><a href="#模板结构优化" class="headerlink" title="模板结构优化"></a>模板结构优化</h2><h3 id="include标签"><a href="#include标签" class="headerlink" title="include标签"></a>include标签</h3><ol>
+<li>重复使用的模板代码，可以单独抽取出来，用到的地方使用<code>include</code>调用</li>
+<li><code>include</code>的模板，可以直接使用当前模板传递进来的变量。也可以使用<code>with xx=xxx</code>传递参数</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% include <span class="string">&#x27;header.html&#x27;</span> <span class="keyword">with</span> username=<span class="string">&#x27;John&#x27;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模板继承"><a href="#模板继承" class="headerlink" title="模板继承"></a>模板继承</h3><p>在前端页面开发中。有些代码是需要重复使用的。这种情况可以使用include标签来实现。也可以使用另外一个比较强大的方式来实现，那就是模版继承。模版继承类似于Python中的类，在父类中可以先定义好一些变量和方法，然后在子类中实现。模版继承也可以在父模版中先定义好一些子模版需要用到的代码，然后子模版直接继承就可以了。并且因为子模版肯定有自己的不同代码，因此可以在父模版中定义一个block接口，然后子模版再去实现。以下是父模版的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load static %&#125;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% static &#x27;style.css&#x27; %&#125;&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>&#123;% block title %&#125;我的站点&#123;% endblock %&#125;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;sidebar&quot;</span>&gt;</span></span><br><span class="line">        &#123;% block sidebar %&#125;</span><br><span class="line">        <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/blog/&quot;</span>&gt;</span>博客<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">        &#123;% endblock %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;content&quot;</span>&gt;</span></span><br><span class="line">        &#123;% block content %&#125;&#123;% endblock %&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个模版，我们取名叫做base.html，定义好一个简单的html骨架，然后定义好两个block接口，让子模版来根据具体需求来实现。子模板然后通过extends标签来实现，示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends <span class="string">&quot;base.html&quot;</span> %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block title %&#125;博客列表&#123;% endblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">    &#123;% <span class="keyword">for</span> entry <span class="keyword">in</span> blog_entries %&#125;</span><br><span class="line">        &lt;h2&gt;&#123;&#123; entry.title &#125;&#125;&lt;/h2&gt;</span><br><span class="line">        &lt;p&gt;&#123;&#123; entry.body &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>：</p>
+<ul>
+<li><code>extends</code>标签必须放在模版的第一行。</li>
+<li>子模板中的代码必须放在<code>block</code>中，否则将不会被渲染。</li>
+</ul>
+<p><code>block</code>默认会覆盖父模板的内容，如果在某个<code>block</code>中需要使用父模版的内容，那么可以使用<code>{{block.super}}</code>来继承。比如上例，<code>{%block title%}</code>，如果想要使用父模版的title，那么可以在子模版的<code>title block</code>中使用<code>{{ block.super }}</code>来实现。</p>
+<p>在定义<code>block</code>的时候，除了在<code>block</code>开始的地方定义这个<code>block</code>的名字，还可以在<code>block</code>结束的时候定义名字。比如<code>{% block title %}{% endblock title %}</code>。这在大型模版中显得尤其有用，能让你快速的看到<code>block</code>包含在哪里。</p>
+<h2 id="加载静态文件"><a href="#加载静态文件" class="headerlink" title="加载静态文件"></a>加载静态文件</h2><p>在一个网页中，不仅仅只有一个<code>html</code>骨架，还需要<code>css</code>样式文件，<code>js</code>执行文件以及一些图片等。因此在<code>DTL</code>中加载静态文件是一个必须要解决的问题。在DTL中，使用<code>static</code>标签来加载静态文件。要使用<code>static</code>标签，首先需要<code>{% load static %}</code>。加载静态文件的步骤如下：</p>
+<ol>
+<li>首先确保<code>django.contrib.staticfiles</code>已经添加到<code>settings.INSTALLED_APPS</code>中。（默认有）</li>
+<li>确保在<code>settings.py</code>中设置了<code>STATIC_URL</code>。（默认有）</li>
+<li>在已经安装了的<code>app</code>下创建一个文件夹叫做<code>static</code>，然后再在这个<code>static</code>文件夹下创建一个当前<code>app</code>的名字的文件夹，再把静态文件放到这个文件夹下。例如你的<code>app</code>叫做<code>book</code>，有一个静态文件叫做<code>zhiliao.jpg</code>，那么路径为<code>book/static/book/zhiliao.jpg</code>。创建<code>app</code>同名文件夹的目的是，避免多个<code>app</code>的静态文件名相同，调用时发生混淆。</li>
+<li>如果有一些静态文件是不和任何<code>app</code>挂钩的。那么可以在<code>settings.py</code>中添加<code>STATICFILES_DIRS</code>，以后DTL就会在这个列表的路径中查找静态文件。比如可以设置为</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#根目录下，与templates同级</span></span><br><span class="line">STATICFILES_DIRS = [</span><br><span class="line">    os.path.join(BASE_DIR,<span class="string">&quot;static&quot;</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>在模版中使用<code>load</code>标签加载<code>static</code>标签。比如要加载在项目的<code>static</code>文件夹下的<code>style.css</code>的文件。那么示例代码如下：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load static %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&#123;% static &#x27;style.css&#x27; %&#125;&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><p>如果不想每次在模版中加载静态文件都使用<code>load</code>加载<code>static</code>标签，那么可以在<code>settings.py</code>中的<code>TEMPLATES/OPTIONS</code>添加<code>&#39;builtins&#39;:[&#39;django.templatetags.static&#39;]</code>，这样以后在模版中就可以直接使用<code>static</code>标签，而不用手动的<code>load</code>了。</p>
+</li>
+<li><p>如果没有在<code>settings.INSTALLED_APPS</code>中添加<code>django.contrib.staticfiles</code>。那么我们就需要手动的将请求静态文件的<code>url</code>与静态文件的路径进行映射了。很少用到。示例代码如下：</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.conf <span class="keyword">import</span> settings</span><br><span class="line"><span class="keyword">from</span> django.conf.urls.static <span class="keyword">import</span> static</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    <span class="comment"># 其他的url映射</span></span><br><span class="line">] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)</span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>请作者喝冰阔落</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="July 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>July
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wuliuqi.xyz/2019/01/14/django%E7%AC%94%E8%AE%B003/" title="django笔记03 - 模板">http://wuliuqi.xyz/2019/01/14/django笔记03/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/django/" rel="tag"><i class="fa fa-tag"></i> django</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/14/python%E7%AC%94%E8%AE%B0/" rel="prev" title="python笔记">
+      <i class="fa fa-chevron-left"></i> python笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/01/26/django%E7%AC%94%E8%AE%B004/" rel="next" title="django笔记04 - 数据库">
+      django笔记04 - 数据库 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.</span> <span class="nav-text">模板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E6%A8%A1%E6%9D%BF"><span class="nav-number">1.1.</span> <span class="nav-text">渲染模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%9F%A5%E6%89%BE%E8%B7%AF%E5%BE%84"><span class="nav-number">1.2.</span> <span class="nav-text">模板查找路径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%8F%98%E9%87%8F"><span class="nav-number">1.3.</span> <span class="nav-text">模板变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.</span> <span class="nav-text">模板标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.1.</span> <span class="nav-text">if标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in-%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.2.</span> <span class="nav-text">for...in...标签</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for%E2%80%A6in%E2%80%A6empty%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">for…in…empty标签</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#with%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.3.</span> <span class="nav-text">with标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#url%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.4.</span> <span class="nav-text">url标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#autosecape%E6%A0%87%E7%AD%BE"><span class="nav-number">1.4.5.</span> <span class="nav-text">autosecape标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#verbatim%E6%A0%87%E7%AD%BE%EF%BC%9A"><span class="nav-number">1.4.6.</span> <span class="nav-text">verbatim标签：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">1.4.7.</span> <span class="nav-text">join</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#length"><span class="nav-number">1.4.8.</span> <span class="nav-text">length</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lower"><span class="nav-number">1.4.9.</span> <span class="nav-text">lower</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#upper"><span class="nav-number">1.4.10.</span> <span class="nav-text">upper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#random"><span class="nav-number">1.4.11.</span> <span class="nav-text">random</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#safe"><span class="nav-number">1.4.12.</span> <span class="nav-text">safe</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">1.4.13.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stringtags"><span class="nav-number">1.4.14.</span> <span class="nav-text">stringtags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#truncatechars"><span class="nav-number">1.4.15.</span> <span class="nav-text">truncatechars</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#truncatechars-html"><span class="nav-number">1.4.16.</span> <span class="nav-text">truncatechars_html</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">1.5.</span> <span class="nav-text">自定义过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="nav-number">1.6.</span> <span class="nav-text">模板结构优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#include%E6%A0%87%E7%AD%BE"><span class="nav-number">1.6.1.</span> <span class="nav-text">include标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E7%BB%A7%E6%89%BF"><span class="nav-number">1.6.2.</span> <span class="nav-text">模板继承</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E9%9D%99%E6%80%81%E6%96%87%E4%BB%B6"><span class="nav-number">1.7.</span> <span class="nav-text">加载静态文件</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="July"
+      src="/images/memory.jpg">
+  <p class="site-author-name" itemprop="name">July</p>
+  <div class="site-description" itemprop="description">落花似人有情这个季节</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">July</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.6k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

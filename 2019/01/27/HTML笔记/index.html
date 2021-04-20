@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/qi.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/qi.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/qi.png">
+  <link rel="mask-icon" href="/images/qi.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"wuliuqi.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="标签123456# 段落标签&lt;p&gt;My cat is very grumpy&lt;&#x2F;p&gt;  # 斜体&lt;em&gt;This is my text.&lt;&#x2F;em&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML笔记">
+<meta property="og:url" content="http://wuliuqi.xyz/2019/01/27/HTML%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="July&#39;s Blog">
+<meta property="og:description" content="标签123456# 段落标签&lt;p&gt;My cat is very grumpy&lt;&#x2F;p&gt;  # 斜体&lt;em&gt;This is my text.&lt;&#x2F;em&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-01-27T04:50:13.000Z">
+<meta property="article:modified_time" content="2019-01-27T08:05:10.000Z">
+<meta property="article:author" content="July">
+<meta property="article:tag" content="HTML">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://wuliuqi.xyz/2019/01/27/HTML%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>HTML笔记 | July's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">July's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">花有重开日，人无再少年</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://wuliuqi.xyz/2019/01/27/HTML%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/memory.jpg">
+      <meta itemprop="name" content="July">
+      <meta itemprop="description" content="落花似人有情这个季节">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="July's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2019-01-27 12:50:13 / 修改时间：16:05:10" itemprop="dateCreated datePublished" datetime="2019-01-27T12:50:13+08:00">2019-01-27</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/HTML/" itemprop="url" rel="index"><span itemprop="name">HTML</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 段落标签</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>My cat is very grumpy<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"># 斜体</span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>This is my text.<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h1 id="块级元素和内联元素"><a href="#块级元素和内联元素" class="headerlink" title="块级元素和内联元素"></a>块级元素和内联元素</h1><ul>
+<li>块级元素在页面中以块的形式展现 —— 相对与其前面的内容它会出现在新的一行，其后的内容也会被挤到下一行展现。块级元素通常用于展示页面上结构化的内容，例如段落、列表、导航菜单、页脚等等。一个以<code>block</code>形式展现的块级元素不会被嵌套进内联元素中，但可以嵌套在其它块级元素中。</li>
+<li>内联元素通常出现在块级元素中并包裹文档内容的一小部分，而不是一整个段落或者一组内容。内联元素不会导致文本换行：它通常出现在一堆文字之间例如超链接元素<code>&lt;a&gt;</code>或者强调元素<code>&lt;em&gt;</code>和<code>&lt;strong&gt;</code>。</li>
+</ul>
+<h1 id="空元素"><a href="#空元素" class="headerlink" title="空元素"></a>空元素</h1><p>不是所有元素都拥有开始标签，内容和结束标记. 一些元素只有一个标签，通常用来在此元素所在位置插入/嵌入一些东西 。例如：元素<code>&lt;img&gt;</code>是用来在元素<code>&lt;img&gt;</code>所在位置插入一张指定的图片。例子如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;editor-note&quot;</span>&gt;</span>My cat is very grumpy<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这个class属性给元素赋了一个识别的名字（id），这个名字此后可以被用来识别此元素的样式信息和其他信息。</p>
+<p>元素<code>&lt;a&gt;</code>是锚，它使被标签包裹的内容成为一个超链接。此元素也可以添加大量的属性，其中几个如下：</p>
+<ul>
+<li><code>href</code>: 这个属性声明超链接的web地址，当这个链接被点击浏览器会跳转至href声明的web地址。例如： <code>href=&quot;https://www.mozilla.org/&quot;</code>。</li>
+<li><code>title</code>: 标题title 属性为超链接声明额外的信息，比如你将链接至那个页面。例如：<code>title=&quot;The Mozilla homepage&quot;</code>。当鼠标悬浮时，将出现一个工具提示。</li>
+<li><code>target</code>: 目标target 属性指定将用于显示链接的浏览上下文。例如，<code>target=&quot;_blank&quot;</code>将在新标签页中显示链接。如果你希望在目前标签页显示链接，只需忽略这个属性。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>A link to my <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.mozilla.org/&quot;</span> <span class="attr">title</span>=<span class="string">&quot;The Mozilla homepage&quot;</span>&gt;</span>favorite website<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="布尔属性"><a href="#布尔属性" class="headerlink" title="布尔属性"></a>布尔属性</h2><p>有时你会看到没有值的属性，它是合法的。这些属性被称为布尔属性，他们只能有跟它的属性名一样的属性值。例如 disabled 属性，他们可以标记表单输入使之变为不可用(变灰色)，此时用户不能向他们输入任何数据。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">disabled</span>=<span class="string">&quot;disabled&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 可以简写为</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">disabled</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="分析html文档"><a href="#分析html文档" class="headerlink" title="分析html文档"></a>分析html文档</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>My test page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is my page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li><code>&lt;!DOCTYPE html&gt;</code>: 声明文档类型. 很久以前，早期的HTML(大约1991年2月)，文档类型声明类似于链接，规定了HTML页面必须遵从的良好规则，能自动检测错误和其他有用的东西。使用如下：</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然而现在没有人再这样写，需要保证每一个东西都正常工作已成为历史。你只需要知道<code>&lt;!DOCTYPE html&gt;</code>是最短的有效的文档声明。<br>2. <code>&lt;html&gt;&lt;/html&gt;</code>: <code>&lt;html&gt;</code>元素。这个元素包裹了整个完整的页面，是一个根元素。<br>3. <code>&lt;head&gt;&lt;/head&gt;</code>: <code>&lt;head&gt;</code>元素. 这个元素是一个容器，它包含了所有你想包含在HTML页面中但不想在HTML页面中显示的内容。这些内容包括你想在搜索结果中出现的关键字和页面描述，CSS样式，字符集声明等等。以后的章节能学到更多关于<head>元素的内容。<br>4. <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code>: 这个元素设置文档使用<code>utf-8</code>字符集编码，<code>utf-8</code>字符集包含了人类大部分的文字。基本上他能识别你放上去的所有文本内容。毫无疑问要使用它，并且它能在以后避免很多其他问题。<br>5. <code>&lt;title&gt;&lt;/title&gt;</code>: 设置页面标题，出现在浏览器标签上，当你标记/收藏页面时它可用来描述页面。<br>6. <code>&lt;body&gt;&lt;/body&gt;</code>: <code>&lt;body&gt;</code>元素。 包含了你访问页面时所有显示在页面上的内容，文本，图片，音频，游戏等等。</p>
+<h1 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h1><p>| 原义字符 | 等价字符引用 |<br>| —- | —- | —- |<br>| &lt; | <code>&amp;lt;</code> |<br>| &gt; | <code>&amp;gt;</code> |<br>| “ | <code>&amp;quot;</code> |<br>| ‘ | <code>&amp;apos;</code> |<br>| &amp; | <code>&amp;amp;</code> |</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>为了将一段HTML中的内容置为注释，你需要将其用特殊的记号<code>&lt;!--和--&gt;</code>包括起来， 比如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;p&gt;I am!&lt;/p&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div>请作者喝冰阔落</div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="July 微信支付">
+        <p>微信支付</p>
+      </div>
+
+  </div>
+</div>
+
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>July
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://wuliuqi.xyz/2019/01/27/HTML%E7%AC%94%E8%AE%B0/" title="HTML笔记">http://wuliuqi.xyz/2019/01/27/HTML笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i> HTML</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/01/26/django%E7%AC%94%E8%AE%B004/" rel="prev" title="django笔记04 - 数据库">
+      <i class="fa fa-chevron-left"></i> django笔记04 - 数据库
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/02/09/%E3%80%8AMySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E7%AC%94%E8%AE%B0/" rel="next" title="《MySQL必知必会》笔记">
+      《MySQL必知必会》笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE"><span class="nav-number">1.</span> <span class="nav-text">标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0%E5%92%8C%E5%86%85%E8%81%94%E5%85%83%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">块级元素和内联元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A9%BA%E5%85%83%E7%B4%A0"><span class="nav-number">3.</span> <span class="nav-text">空元素</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B1%9E%E6%80%A7"><span class="nav-number">4.</span> <span class="nav-text">属性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E5%B1%9E%E6%80%A7"><span class="nav-number">4.1.</span> <span class="nav-text">布尔属性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%88%86%E6%9E%90html%E6%96%87%E6%A1%A3"><span class="nav-number">5.</span> <span class="nav-text">分析html文档</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%BC%95%E7%94%A8"><span class="nav-number">6.</span> <span class="nav-text">实体引用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E9%87%8A"><span class="nav-number">7.</span> <span class="nav-text">注释</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="July"
+      src="/images/memory.jpg">
+  <p class="site-author-name" itemprop="name">July</p>
+  <div class="site-description" itemprop="description">落花似人有情这个季节</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">July</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共61.6k字</span>
+  <span class="post-meta-divider">|</span>
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  <span class="post-meta-divider">|</span>
+  本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  <span class="post-meta-divider">|</span>
+  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
