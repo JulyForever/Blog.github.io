@@ -1,97 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>django笔记 - 虚拟环境</title>
-    <url>/2019/01/09/django%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>以下命令均在win10的cmd中执行</p>
-<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install virtualenv  <span class="comment">#virtual environment</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv abc-env   <span class="comment">#在当前目录位置，创建名为abc-env的虚拟环境</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="进入虚拟环境（Windows）"><a href="#进入虚拟环境（Windows）" class="headerlink" title="进入虚拟环境（Windows）"></a>进入虚拟环境（Windows）</h3><p>进入<code>Scripts</code>文件夹，如<code>\abc-env\Scripts</code>，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
-
-<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建时指定Python解释器"><a href="#创建时指定Python解释器" class="headerlink" title="创建时指定Python解释器"></a>创建时指定<code>Python</code>解释器</h3><p>一般不用，如果装了多个，<code>-p</code>参数指定具体的<code>Python</code>解释器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv -p C:\Python36\python.exe [virtualenv name]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="virtualenvwrapper"><a href="#virtualenvwrapper" class="headerlink" title="virtualenvwrapper"></a>virtualenvwrapper</h2><p>//wrapper 包装材料，包装纸</p>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>可以直接安装这个，会自动安装virtualenv</p>
-<ol>
-<li>Windows：<code>pip install virtualenvwrapper-win</code></li>
-<li>Linux： <code>pip install virtualenvwrapper</code></li>
-</ol>
-<h3 id="创建虚拟环境-1"><a href="#创建虚拟环境-1" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv my_env   <span class="comment">#创建名为`my_env`的虚拟环境</span></span><br></pre></td></tr></table></figure>
-
-<p>会在当前用户下创建一个Env的文件夹，将虚拟环境安装到这个目录下</p>
-<h3 id="切换到某个虚拟环境"><a href="#切换到某个虚拟环境" class="headerlink" title="切换到某个虚拟环境"></a>切换到某个虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">workon my_env</span><br></pre></td></tr></table></figure>
-
-<h3 id="退出当前虚拟环境"><a href="#退出当前虚拟环境" class="headerlink" title="退出当前虚拟环境"></a>退出当前虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除虚拟环境"><a href="#删除虚拟环境" class="headerlink" title="删除虚拟环境"></a>删除虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmvirtualenv my_env</span><br></pre></td></tr></table></figure>
-
-<h3 id="列出所有虚拟环境"><a href="#列出所有虚拟环境" class="headerlink" title="列出所有虚拟环境"></a>列出所有虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsvirtualenv</span><br></pre></td></tr></table></figure>
-
-<h3 id="进入当前虚拟环境所在的目录"><a href="#进入当前虚拟环境所在的目录" class="headerlink" title="进入当前虚拟环境所在的目录"></a>进入当前虚拟环境所在的目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cdvirtualenv</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改mkvirtualenv的默认路径"><a href="#修改mkvirtualenv的默认路径" class="headerlink" title="修改mkvirtualenv的默认路径"></a>修改<code>mkvirtualenv</code>的默认路径</h3><p>在<code>环境变量-&gt;系统变量</code>中，新建一个变量，变量名为<code>WORKON_HOME</code>，变量值为目标路径，我用了<code>E:\Projects\Envs</code></p>
-<h3 id="创建时指定Python版本"><a href="#创建时指定Python版本" class="headerlink" title="创建时指定Python版本"></a>创建时指定Python版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv  --python==C:\Python36\python.exe hy_env</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>django</category>
-      </categories>
-      <tags>
-        <tag>django</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>HTML笔记</title>
-    <url>/2019/01/27/HTML%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"># 段落标签</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>My cat is very grumpy<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"># 斜体</span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>This is my text.<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>C++笔记</title>
+    <url>/2020/03/04/C++%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p>结束条件：[enter],[space],[tab]<br>处理方法：cin遇到缓冲区中的[enter],[space],[tab]会结束当前输入，并舍弃[enter],[space],[tab]，继续下一项输入，当有连续[space],[enter,[tab]会全部舍弃</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">    <span class="keyword">char</span> a[<span class="number">10</span>],b[<span class="number">10</span>];</span><br><span class="line">    cin &gt;&gt;a;<span class="number">12</span></span><br><span class="line">    cin &gt;&gt;b;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt;endl &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h1 id="块级元素和内联元素"><a href="#块级元素和内联元素" class="headerlink" title="块级元素和内联元素"></a>块级元素和内联元素</h1><ul>
-<li>块级元素在页面中以块的形式展现 —— 相对与其前面的内容它会出现在新的一行，其后的内容也会被挤到下一行展现。块级元素通常用于展示页面上结构化的内容，例如段落、列表、导航菜单、页脚等等。一个以<code>block</code>形式展现的块级元素不会被嵌套进内联元素中，但可以嵌套在其它块级元素中。</li>
-<li>内联元素通常出现在块级元素中并包裹文档内容的一小部分，而不是一整个段落或者一组内容。内联元素不会导致文本换行：它通常出现在一堆文字之间例如超链接元素<code>&lt;a&gt;</code>或者强调元素<code>&lt;em&gt;</code>和<code>&lt;strong&gt;</code>。</li>
-</ul>
-<h1 id="空元素"><a href="#空元素" class="headerlink" title="空元素"></a>空元素</h1><p>不是所有元素都拥有开始标签，内容和结束标记. 一些元素只有一个标签，通常用来在此元素所在位置插入/嵌入一些东西 。例如：元素<code>&lt;img&gt;</code>是用来在元素<code>&lt;img&gt;</code>所在位置插入一张指定的图片。例子如下：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>输入</strong>：1234[enter]5678[enter]<br><strong>输出</strong>：1234  【此处换行】   5678</p>
+<p><strong>输入</strong>：1234[enter][enter[enter]   …   [enter]5678[enter]<br><strong>输出</strong>：1234  【此处换行】 5678  （说明不管缓冲区中有几个enter，cin都会无视，直到不是enter开始继续读入）tab，space同理<br>综上：cin的输入很简单，整体的看输入，遇到[enter],[space],[tab]表示当前输入结束，下一个输入从非[enter],[sapce],[tab]开始，两输入间无线多个[space][]enter[tab]都是无效的</p>
+<h2 id="cin-get"><a href="#cin-get" class="headerlink" title="cin.get()"></a>cin.get()</h2><h3 id="1个参数"><a href="#1个参数" class="headerlink" title="1个参数"></a>1个参数</h3><p>用法：<code>a = cin.get()</code>或者<code>cin.get(a)</code><br>结束条件：输入字符足够后回车<br>说明：这个是单字符的输入，用途是输入一个字符，把它的ASCALL码存入到a中<br>处理方法：与<code>cin</code>不同，<code>cin.get()</code>在缓冲区遇到[enter]，[space]，[tab]不会作为舍弃，而是继续留在缓冲区中</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a,b,c,d;</span><br><span class="line">	a = cin.<span class="built_in">get</span>();</span><br><span class="line">	b = cin.<span class="built_in">get</span>();</span><br><span class="line">	c = cin.<span class="built_in">get</span>();</span><br><span class="line">	d = cin.<span class="built_in">get</span>();</span><br><span class="line">	cout&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(a)&lt;&lt;<span class="string">&#x27;,&#x27;</span>&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b)&lt;&lt;<span class="string">&#x27;,&#x27;</span>&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(c)&lt;&lt;<span class="string">&#x27;,&#x27;</span>&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(d)&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
 
-<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;editor-note&quot;</span>&gt;</span>My cat is very grumpy<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输入：[enter]  <br>输出：不会结束，因为需要输入4个字符才结束（结束需要字符数够后回车）</p>
+<p>输入：[enter][enter][enter][enter]      <br>输出：10,10,10,10  </p>
+<p>输入：abcdef[enter]    <br>输出：97,98,99,100   字符太多时取前几个</p>
+<p>输入：[tab][enter][space]a[enter]    <br>输出：9,10,32,97（分别为[tab]，[enter]，[space]，a的ASCALL码）不舍弃[enter],[tab],[space],统一看成字符</p>
+<p>综上，一参数的cin.get()当输入字符足够后回车结束输入，把回车[enter],空格[space]也看成字符，在缓冲区中遇到不舍弃。当输入过多时，取前几个</p>
+<h3 id="2个参数"><a href="#2个参数" class="headerlink" title="2个参数"></a>2个参数</h3><p>用法：<code>cin.get(arrayname,size)</code> 把字符输入到<code>arrayname</code>中，长度不超过<code>size</code><br>注释：<code>arrayname</code>必须是<code>char[]</code>类型，即<code>char</code>数组类型，不可以为<code>string</code>类型；<code>size</code>是指输入长度，即允许输入的最大长度。<br>处理方法：假设把数据输入到<code>char a[arraylength]</code>,数组长度为<code>arraylength</code><br><code>cin.get(a,size)</code>—<code>size</code>,<code>arraylength</code>不同可以分为四类：</p>
+<h4 id="类1：输入串长-lt-size，输入串长-gt-arraylength，"><a href="#类1：输入串长-lt-size，输入串长-gt-arraylength，" class="headerlink" title="类1：输入串长 &lt; size，输入串长 &gt; arraylength，"></a>类1：输入串长 &lt; size，输入串长 &gt; arraylength，</h4><p>会自动扩张arrayname大小，使能保存所有数据</p>
+<p>例1：char a[10];cin,get(a,20);</p>
+<p>输入：123456789012[enter]<br>输出a数组：123456789012 可以发现，输入12个字符到a[10]中，系统自动扩充a[10]，此时实际数组长为13（‘123456789012’\0’’）。但当计算sizeof(a)时，还是现实为10</p>
+<h4 id="类2：输入串长-lt-size，输入串长-lt-arraylength，"><a href="#类2：输入串长-lt-size，输入串长-lt-arraylength，" class="headerlink" title="类2：输入串长 &lt; size，输入串长 &lt; arraylength，"></a>类2：输入串长 &lt; size，输入串长 &lt; arraylength，</h4><p>把串全部输入，后面补‘\0’</p>
+<p>例2：char a[10];cin.get(a,20);</p>
+<p>输入：12345[enter] <br>输出：12345，此时数组内数据为‘12345‘\0’’</p>
+<h4 id="类3：输入串长-gt-size，大于arraylength"><a href="#类3：输入串长-gt-size，大于arraylength" class="headerlink" title="类3：输入串长&gt;size，大于arraylength"></a>类3：输入串长&gt;size，大于arraylength</h4><p>先截取size个字符，若还是大于arraylength，则输入前arraylength-1个字符，最后补充‘\0’</p>
+<p>例3：char a[5];cin,get(a,10);</p>
+<p>输入：123456789012[enter]<br>输出：123456789   先截取了9个字符变成‘123456789‘/0‘’，然后放入到a中，a自动扩张长度</p>
+<h4 id="类4：输入串长-gt-size，小于arraylength"><a href="#类4：输入串长-gt-size，小于arraylength" class="headerlink" title="类4：输入串长&gt;size，小于arraylength"></a>类4：输入串长&gt;size，小于arraylength</h4><p>先截取size个字符，若小于arraylength，则把截取串放入数组中，最后补充‘\0’</p>
+<p>例4：char a[15],cin.get(a,10)</p>
+<p>输入：123456789012[enter]<br>输出：123456789   此时数组内为‘123456789‘\0’’   注意：前size-1有效，最后一个补‘\0’</p>
+<p>综上：当吧大于数组长度的字符串放出char a[arraylength]中，系统自动扩张数组a的长度使a能放得下，但是这么做容易产生运行错误</p>
+<h3 id="3个参数"><a href="#3个参数" class="headerlink" title="3个参数"></a>3个参数</h3><p>用法：<code>cin.get(arrayname,size,s)</code> 把数据输入到<code>arrayname</code>字符数组中，当到达长度<code>size</code>时结束或者遇到字符<code>s</code>时结束<br>注释：<code>arrayname</code>必须是字符数组，即<code>char arrayname[]</code>类型，不可为<code>string</code>类型；<code>size</code>为最大的输入长度；<code>s</code>为控制，遇到<code>s</code>则当前输入结束缓存区里的<code>s</code>将被舍弃</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];</span><br><span class="line">	cin.<span class="built_in">get</span>(a,<span class="number">10</span>,<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">	cout&lt;&lt;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这个class属性给元素赋了一个识别的名字（id），这个名字此后可以被用来识别此元素的样式信息和其他信息。</p>
-<p>元素<code>&lt;a&gt;</code>是锚，它使被标签包裹的内容成为一个超链接。此元素也可以添加大量的属性，其中几个如下：</p>
-<ul>
-<li><code>href</code>: 这个属性声明超链接的web地址，当这个链接被点击浏览器会跳转至href声明的web地址。例如： <code>href=&quot;https://www.mozilla.org/&quot;</code>。</li>
-<li><code>title</code>: 标题title 属性为超链接声明额外的信息，比如你将链接至那个页面。例如：<code>title=&quot;The Mozilla homepage&quot;</code>。当鼠标悬浮时，将出现一个工具提示。</li>
-<li><code>target</code>: 目标target 属性指定将用于显示链接的浏览上下文。例如，<code>target=&quot;_blank&quot;</code>将在新标签页中显示链接。如果你希望在目前标签页显示链接，只需忽略这个属性。</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>A link to my <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.mozilla.org/&quot;</span> <span class="attr">title</span>=<span class="string">&quot;The Mozilla homepage&quot;</span>&gt;</span>favorite website<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输入：abc.123<br>输出：abc    遇到  ’.‘ 输入结束</p>
+<h2 id="cin-getline"><a href="#cin-getline" class="headerlink" title="cin.getline()"></a>cin.getline()</h2><p><code>cin.getline()</code>的用法和<code>cin.get()</code>用法大致相同，没有一参数用法，只有二参数，三参数两类<br><code>cin.gerline(arrayname,size)</code><br><code>cin.getline(arrayname,size,s)</code>用法与<code>cin.get()</code>效果大致相同，但也有些区别</p>
+<h3 id="cin-getline-arrayname-size-与cin-get-arrayname-size-的区别"><a href="#cin-getline-arrayname-size-与cin-get-arrayname-size-的区别" class="headerlink" title="cin.getline(arrayname,size)与cin.get(arrayname,size)的区别"></a>cin.getline(arrayname,size)与cin.get(arrayname,size)的区别</h3><p><code>cin.get(arrayname,size)</code>当遇到[enter]时会结束目前输入，他不会删除缓冲区中的[enter]<br><code>cin.getline(arrayname,size)</code>当遇到[enter]时会结束当前输入，但是会删除缓冲区中的[enter]</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">get</span>(a,<span class="number">10</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="布尔属性"><a href="#布尔属性" class="headerlink" title="布尔属性"></a>布尔属性</h2><p>有时你会看到没有值的属性，它是合法的。这些属性被称为布尔属性，他们只能有跟它的属性名一样的属性值。例如 disabled 属性，他们可以标记表单输入使之变为不可用(变灰色)，此时用户不能向他们输入任何数据。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">disabled</span>=<span class="string">&quot;disabled&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 可以简写为</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">disabled</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输入：12345[enter]<br>输出：12345 【换行】 10<br>说明：cin.get(a,10)把12345到a中，遇到[enter]结束，但是不把[enter]删除，则把[enter]输入到b中，（enter的ASCALL码为10）</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">getline</span>(a,<span class="number">10</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="分析html文档"><a href="#分析html文档" class="headerlink" title="分析html文档"></a>分析html文档</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>My test page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is my page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>输入：12345[enter]a[enter]<br>输出：12345【换行】97<br>说明：cin.getline(a,10)吧12345输入到a中，遇到[enter]结束，并把缓冲区中[enter]删除，把接下来的a输入到b中</p>
+<h3 id="cin-getline-arrayname-size-s-与cin-gei-arrayname-size-s-的区别"><a href="#cin-getline-arrayname-size-s-与cin-gei-arrayname-size-s-的区别" class="headerlink" title="cin.getline(arrayname,size,s)与cin.gei(arrayname,size,s)的区别"></a>cin.getline(arrayname,size,s)与cin.gei(arrayname,size,s)的区别</h3><p><code>cin.get（arrayname,size,s）</code>当遇到s时会结束输入，但不会删除缓冲区中的s<br><code>cin.getline(arrayname,size,s)</code>当遇到s时会结束输入，并把s从缓冲区中删除</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">get</span>(a,<span class="number">10</span>,<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输入：12345,[enter]<br>输出：12345【换行】，<br>说明：cin.get不会删除缓冲区的，缓存中的，被写入b中</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">getline</span>(a,<span class="number">10</span>,<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol>
-<li><code>&lt;!DOCTYPE html&gt;</code>: 声明文档类型. 很久以前，早期的HTML(大约1991年2月)，文档类型声明类似于链接，规定了HTML页面必须遵从的良好规则，能自动检测错误和其他有用的东西。使用如下：</li>
+<p>输入：12345，[enter]<br>输出：12345【换行】10<br>说明：cin.getline吧12345输入到a中，遇到’，‘结束，并删除缓冲区的’，‘，后面的[enter]输入到b中</p>
+<h1 id="类中static和const关键字声明变量的初始化方式"><a href="#类中static和const关键字声明变量的初始化方式" class="headerlink" title="类中static和const关键字声明变量的初始化方式"></a>类中static和const关键字声明变量的初始化方式</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">TestClass</span>() <span class="comment">//:a(16)</span></span><br><span class="line">  	&#123;</span><br><span class="line">  		cout &lt;&lt; <span class="string">&quot;TestClass Constructor .&quot;</span> &lt;&lt; endl;</span><br><span class="line">   	&#125;</span><br><span class="line">   	~<span class="built_in">TestClass</span>()</span><br><span class="line"> 	&#123;</span><br><span class="line">  		cout &lt;&lt; <span class="string">&quot;TestClass Destructor .&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">   	<span class="keyword">int</span> temp_a; <span class="comment">// = 5;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> temp_b;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> temp_c; <span class="comment">// = 25;</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">int</span> temp_d; <span class="comment">// = 35;</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">float</span> temp_e;    </span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="int-temp-a"><a href="#int-temp-a" class="headerlink" title="int temp_a;"></a>int temp_a;</h2><ol>
+<li>在声明处初始化；</li>
+<li>在构造函数初始化列表中初始化；</li>
 </ol>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>然而现在没有人再这样写，需要保证每一个东西都正常工作已成为历史。你只需要知道<code>&lt;!DOCTYPE html&gt;</code>是最短的有效的文档声明。<br>2. <code>&lt;html&gt;&lt;/html&gt;</code>: <code>&lt;html&gt;</code>元素。这个元素包裹了整个完整的页面，是一个根元素。<br>3. <code>&lt;head&gt;&lt;/head&gt;</code>: <code>&lt;head&gt;</code>元素. 这个元素是一个容器，它包含了所有你想包含在HTML页面中但不想在HTML页面中显示的内容。这些内容包括你想在搜索结果中出现的关键字和页面描述，CSS样式，字符集声明等等。以后的章节能学到更多关于<head>元素的内容。<br>4. <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code>: 这个元素设置文档使用<code>utf-8</code>字符集编码，<code>utf-8</code>字符集包含了人类大部分的文字。基本上他能识别你放上去的所有文本内容。毫无疑问要使用它，并且它能在以后避免很多其他问题。<br>5. <code>&lt;title&gt;&lt;/title&gt;</code>: 设置页面标题，出现在浏览器标签上，当你标记/收藏页面时它可用来描述页面。<br>6. <code>&lt;body&gt;&lt;/body&gt;</code>: <code>&lt;body&gt;</code>元素。 包含了你访问页面时所有显示在页面上的内容，文本，图片，音频，游戏等等。</p>
-<h1 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h1><p>| 原义字符 | 等价字符引用 |<br>| —- | —- | —- |<br>| &lt; | <code>&amp;lt;</code> |<br>| &gt; | <code>&amp;gt;</code> |<br>| “ | <code>&amp;quot;</code> |<br>| ‘ | <code>&amp;apos;</code> |<br>| &amp; | <code>&amp;amp;</code> |</p>
-<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>为了将一段HTML中的内容置为注释，你需要将其用特殊的记号<code>&lt;!--和--&gt;</code>包括起来， 比如：</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;p&gt;I am!&lt;/p&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
+<p>对于非static、非const声明的变量，这两种初始化可以同时使用，同时使用时列表中的值会自动覆盖声明处的值。初始化不是必须的，若不进行初始化，其值是不确定的，可简单认为是随机的。该变量属于对象。</p>
+<h2 id="static-int-temp-b"><a href="#static-int-temp-b" class="headerlink" title="static int temp_b;"></a>static int temp_b;</h2><p>必须在类的声明体外进行定义(若在定义时不给初值，则编译器自动赋予默认值，<code>int</code>型变量的默认值为0，定义时不使用关键字<code>static</code>。例如：<code>int TestClass::temp_b = 12</code>;<br>该变量属于类，不属于特定的对象，可以理解为全局的，为所有所实例化的对象所共享。可在程序中通过类名作用域符号的方式访问（如：<code>TestClass::temp_b = 18;</code>)，也可以通过对象访问。</p>
+<h2 id="const-int-temp-c"><a href="#const-int-temp-c" class="headerlink" title="const int temp_c;"></a>const int temp_c;</h2><ol>
+<li>在声明处初始化；</li>
+<li>在构造函数初始化列表中初始化；</li>
+</ol>
+<p>必须初始化，这两种初始化可以同时使用，同时使用时构造函数初始化列表中的值会自动覆盖声明处给的初值。<br>该常量属于对象，在对象声明时进行初始化，对象声明以后就不能再改变常量的值，即在对象的生存周期内其值不变。</p>
+<h2 id="const-static-int-temp-d-char-short-int-long"><a href="#const-static-int-temp-d-char-short-int-long" class="headerlink" title="const static int temp_d;//char short int long"></a>const static int temp_d;//char short int long</h2><ol>
+<li>在声明处初始化；（在声明处初始化，则可以不用在类的声明体外进行定义）</li>
+<li>在类的声明体外进行定义并初始化；<code>const int TestClass::temp_d = 15</code>;</li>
+</ol>
+<p>必须初始化，并且只能有一次初始化赋值（即1和2中，二选一）。<code>char</code>、<code>short</code>、<code>long</code>型静态常量都属于这种情况。<br>静态常量属于类，为所有的对象共享，既然是常量，初始化以后肯定就不能再有赋值操作。</p>
+<h2 id="const-static-float-temp-e-float-double"><a href="#const-static-float-temp-e-float-double" class="headerlink" title="const static float temp_e; //float double"></a>const static float temp_e; //float double</h2><p>只能且必须在类的声明体外进行定义和初始化<code>const float TestClass::temp_e = 0.234f;</code> 静态常量的浮点型数据属于这种情况。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
+<li>仅仅有关键字<code>const</code>，由于是常量，就必须进行初始化；可在声明处和构造函数列表中进行初始化，可以二选一，亦可以在这两处都初始化，初始化列表中的赋值会自动覆盖声明处的值。</li>
+<li>仅仅有<code>static</code>,由于是静态变量，属于类本身，则必须在类的生命体外进行定义（若不给初值，则为默认值）</li>
+<li>同时又<code>static</code>和<code>const</code>，这两个关键字的前后顺序无所谓，由于是静态常量，即同时具有静态和长常量的属性，使用条件就更加苛刻（即为一个常量，那就必须有初始化，并且还是静态的，那就自然属于类本身了）。整形数据可以在声明处初始化或者在类的声明体外进行定义并初始化，二选一。浮点型数据只能且必须在类的声明体外进行定义并初始化。</li>
+</ol>
 ]]></content>
       <categories>
         <category>学习笔记</category>
-        <category>HTML</category>
+        <category>C++</category>
       </categories>
       <tags>
-        <tag>HTML</tag>
+        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
@@ -248,86 +237,97 @@
       </tags>
   </entry>
   <entry>
-    <title>C++笔记</title>
-    <url>/2020/03/04/C++%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h1><h2 id="cin"><a href="#cin" class="headerlink" title="cin"></a>cin</h2><p>结束条件：[enter],[space],[tab]<br>处理方法：cin遇到缓冲区中的[enter],[space],[tab]会结束当前输入，并舍弃[enter],[space],[tab]，继续下一项输入，当有连续[space],[enter,[tab]会全部舍弃</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line">    <span class="keyword">char</span> a[<span class="number">10</span>],b[<span class="number">10</span>];</span><br><span class="line">    cin &gt;&gt;a;<span class="number">12</span></span><br><span class="line">    cin &gt;&gt;b;</span><br><span class="line">    cout &lt;&lt; a &lt;&lt;endl &lt;&lt; b &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>HTML笔记</title>
+    <url>/2019/01/27/HTML%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"># 段落标签</span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>My cat is very grumpy<span class="tag">&lt;/<span class="name">p</span>&gt;</span>  </span><br><span class="line"></span><br><span class="line"># 斜体</span><br><span class="line"><span class="tag">&lt;<span class="name">em</span>&gt;</span>This is my text.<span class="tag">&lt;/<span class="name">em</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<p><strong>输入</strong>：1234[enter]5678[enter]<br><strong>输出</strong>：1234  【此处换行】   5678</p>
-<p><strong>输入</strong>：1234[enter][enter[enter]   …   [enter]5678[enter]<br><strong>输出</strong>：1234  【此处换行】 5678  （说明不管缓冲区中有几个enter，cin都会无视，直到不是enter开始继续读入）tab，space同理<br>综上：cin的输入很简单，整体的看输入，遇到[enter],[space],[tab]表示当前输入结束，下一个输入从非[enter],[sapce],[tab]开始，两输入间无线多个[space][]enter[tab]都是无效的</p>
-<h2 id="cin-get"><a href="#cin-get" class="headerlink" title="cin.get()"></a>cin.get()</h2><h3 id="1个参数"><a href="#1个参数" class="headerlink" title="1个参数"></a>1个参数</h3><p>用法：<code>a = cin.get()</code>或者<code>cin.get(a)</code><br>结束条件：输入字符足够后回车<br>说明：这个是单字符的输入，用途是输入一个字符，把它的ASCALL码存入到a中<br>处理方法：与<code>cin</code>不同，<code>cin.get()</code>在缓冲区遇到[enter]，[space]，[tab]不会作为舍弃，而是继续留在缓冲区中</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a,b,c,d;</span><br><span class="line">	a = cin.<span class="built_in">get</span>();</span><br><span class="line">	b = cin.<span class="built_in">get</span>();</span><br><span class="line">	c = cin.<span class="built_in">get</span>();</span><br><span class="line">	d = cin.<span class="built_in">get</span>();</span><br><span class="line">	cout&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(a)&lt;&lt;<span class="string">&#x27;,&#x27;</span>&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b)&lt;&lt;<span class="string">&#x27;,&#x27;</span>&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(c)&lt;&lt;<span class="string">&#x27;,&#x27;</span>&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(d)&lt;&lt;endl;</span><br></pre></td></tr></table></figure>
+<h1 id="块级元素和内联元素"><a href="#块级元素和内联元素" class="headerlink" title="块级元素和内联元素"></a>块级元素和内联元素</h1><ul>
+<li>块级元素在页面中以块的形式展现 —— 相对与其前面的内容它会出现在新的一行，其后的内容也会被挤到下一行展现。块级元素通常用于展示页面上结构化的内容，例如段落、列表、导航菜单、页脚等等。一个以<code>block</code>形式展现的块级元素不会被嵌套进内联元素中，但可以嵌套在其它块级元素中。</li>
+<li>内联元素通常出现在块级元素中并包裹文档内容的一小部分，而不是一整个段落或者一组内容。内联元素不会导致文本换行：它通常出现在一堆文字之间例如超链接元素<code>&lt;a&gt;</code>或者强调元素<code>&lt;em&gt;</code>和<code>&lt;strong&gt;</code>。</li>
+</ul>
+<h1 id="空元素"><a href="#空元素" class="headerlink" title="空元素"></a>空元素</h1><p>不是所有元素都拥有开始标签，内容和结束标记. 一些元素只有一个标签，通常用来在此元素所在位置插入/嵌入一些东西 。例如：元素<code>&lt;img&gt;</code>是用来在元素<code>&lt;img&gt;</code>所在位置插入一张指定的图片。例子如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://raw.githubusercontent.com/mdn/beginner-html-site/gh-pages/images/firefox-icon.png&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>输入：[enter]  <br>输出：不会结束，因为需要输入4个字符才结束（结束需要字符数够后回车）</p>
-<p>输入：[enter][enter][enter][enter]      <br>输出：10,10,10,10  </p>
-<p>输入：abcdef[enter]    <br>输出：97,98,99,100   字符太多时取前几个</p>
-<p>输入：[tab][enter][space]a[enter]    <br>输出：9,10,32,97（分别为[tab]，[enter]，[space]，a的ASCALL码）不舍弃[enter],[tab],[space],统一看成字符</p>
-<p>综上，一参数的cin.get()当输入字符足够后回车结束输入，把回车[enter],空格[space]也看成字符，在缓冲区中遇到不舍弃。当输入过多时，取前几个</p>
-<h3 id="2个参数"><a href="#2个参数" class="headerlink" title="2个参数"></a>2个参数</h3><p>用法：<code>cin.get(arrayname,size)</code> 把字符输入到<code>arrayname</code>中，长度不超过<code>size</code><br>注释：<code>arrayname</code>必须是<code>char[]</code>类型，即<code>char</code>数组类型，不可以为<code>string</code>类型；<code>size</code>是指输入长度，即允许输入的最大长度。<br>处理方法：假设把数据输入到<code>char a[arraylength]</code>,数组长度为<code>arraylength</code><br><code>cin.get(a,size)</code>—<code>size</code>,<code>arraylength</code>不同可以分为四类：</p>
-<h4 id="类1：输入串长-lt-size，输入串长-gt-arraylength，"><a href="#类1：输入串长-lt-size，输入串长-gt-arraylength，" class="headerlink" title="类1：输入串长 &lt; size，输入串长 &gt; arraylength，"></a>类1：输入串长 &lt; size，输入串长 &gt; arraylength，</h4><p>会自动扩张arrayname大小，使能保存所有数据</p>
-<p>例1：char a[10];cin,get(a,20);</p>
-<p>输入：123456789012[enter]<br>输出a数组：123456789012 可以发现，输入12个字符到a[10]中，系统自动扩充a[10]，此时实际数组长为13（‘123456789012’\0’’）。但当计算sizeof(a)时，还是现实为10</p>
-<h4 id="类2：输入串长-lt-size，输入串长-lt-arraylength，"><a href="#类2：输入串长-lt-size，输入串长-lt-arraylength，" class="headerlink" title="类2：输入串长 &lt; size，输入串长 &lt; arraylength，"></a>类2：输入串长 &lt; size，输入串长 &lt; arraylength，</h4><p>把串全部输入，后面补‘\0’</p>
-<p>例2：char a[10];cin.get(a,20);</p>
-<p>输入：12345[enter] <br>输出：12345，此时数组内数据为‘12345‘\0’’</p>
-<h4 id="类3：输入串长-gt-size，大于arraylength"><a href="#类3：输入串长-gt-size，大于arraylength" class="headerlink" title="类3：输入串长&gt;size，大于arraylength"></a>类3：输入串长&gt;size，大于arraylength</h4><p>先截取size个字符，若还是大于arraylength，则输入前arraylength-1个字符，最后补充‘\0’</p>
-<p>例3：char a[5];cin,get(a,10);</p>
-<p>输入：123456789012[enter]<br>输出：123456789   先截取了9个字符变成‘123456789‘/0‘’，然后放入到a中，a自动扩张长度</p>
-<h4 id="类4：输入串长-gt-size，小于arraylength"><a href="#类4：输入串长-gt-size，小于arraylength" class="headerlink" title="类4：输入串长&gt;size，小于arraylength"></a>类4：输入串长&gt;size，小于arraylength</h4><p>先截取size个字符，若小于arraylength，则把截取串放入数组中，最后补充‘\0’</p>
-<p>例4：char a[15],cin.get(a,10)</p>
-<p>输入：123456789012[enter]<br>输出：123456789   此时数组内为‘123456789‘\0’’   注意：前size-1有效，最后一个补‘\0’</p>
-<p>综上：当吧大于数组长度的字符串放出char a[arraylength]中，系统自动扩张数组a的长度使a能放得下，但是这么做容易产生运行错误</p>
-<h3 id="3个参数"><a href="#3个参数" class="headerlink" title="3个参数"></a>3个参数</h3><p>用法：<code>cin.get(arrayname,size,s)</code> 把数据输入到<code>arrayname</code>字符数组中，当到达长度<code>size</code>时结束或者遇到字符<code>s</code>时结束<br>注释：<code>arrayname</code>必须是字符数组，即<code>char arrayname[]</code>类型，不可为<code>string</code>类型；<code>size</code>为最大的输入长度；<code>s</code>为控制，遇到<code>s</code>则当前输入结束缓存区里的<code>s</code>将被舍弃</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];</span><br><span class="line">	cin.<span class="built_in">get</span>(a,<span class="number">10</span>,<span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">	cout&lt;&lt;a;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;editor-note&quot;</span>&gt;</span>My cat is very grumpy<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>输入：abc.123<br>输出：abc    遇到  ’.‘ 输入结束</p>
-<h2 id="cin-getline"><a href="#cin-getline" class="headerlink" title="cin.getline()"></a>cin.getline()</h2><p><code>cin.getline()</code>的用法和<code>cin.get()</code>用法大致相同，没有一参数用法，只有二参数，三参数两类<br><code>cin.gerline(arrayname,size)</code><br><code>cin.getline(arrayname,size,s)</code>用法与<code>cin.get()</code>效果大致相同，但也有些区别</p>
-<h3 id="cin-getline-arrayname-size-与cin-get-arrayname-size-的区别"><a href="#cin-getline-arrayname-size-与cin-get-arrayname-size-的区别" class="headerlink" title="cin.getline(arrayname,size)与cin.get(arrayname,size)的区别"></a>cin.getline(arrayname,size)与cin.get(arrayname,size)的区别</h3><p><code>cin.get(arrayname,size)</code>当遇到[enter]时会结束目前输入，他不会删除缓冲区中的[enter]<br><code>cin.getline(arrayname,size)</code>当遇到[enter]时会结束当前输入，但是会删除缓冲区中的[enter]</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">get</span>(a,<span class="number">10</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个class属性给元素赋了一个识别的名字（id），这个名字此后可以被用来识别此元素的样式信息和其他信息。</p>
+<p>元素<code>&lt;a&gt;</code>是锚，它使被标签包裹的内容成为一个超链接。此元素也可以添加大量的属性，其中几个如下：</p>
+<ul>
+<li><code>href</code>: 这个属性声明超链接的web地址，当这个链接被点击浏览器会跳转至href声明的web地址。例如： <code>href=&quot;https://www.mozilla.org/&quot;</code>。</li>
+<li><code>title</code>: 标题title 属性为超链接声明额外的信息，比如你将链接至那个页面。例如：<code>title=&quot;The Mozilla homepage&quot;</code>。当鼠标悬浮时，将出现一个工具提示。</li>
+<li><code>target</code>: 目标target 属性指定将用于显示链接的浏览上下文。例如，<code>target=&quot;_blank&quot;</code>将在新标签页中显示链接。如果你希望在目前标签页显示链接，只需忽略这个属性。</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>A link to my <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.mozilla.org/&quot;</span> <span class="attr">title</span>=<span class="string">&quot;The Mozilla homepage&quot;</span>&gt;</span>favorite website<span class="tag">&lt;/<span class="name">a</span>&gt;</span>.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>输入：12345[enter]<br>输出：12345 【换行】 10<br>说明：cin.get(a,10)把12345到a中，遇到[enter]结束，但是不把[enter]删除，则把[enter]输入到b中，（enter的ASCALL码为10）</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">getline</span>(a,<span class="number">10</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="布尔属性"><a href="#布尔属性" class="headerlink" title="布尔属性"></a>布尔属性</h2><p>有时你会看到没有值的属性，它是合法的。这些属性被称为布尔属性，他们只能有跟它的属性名一样的属性值。例如 disabled 属性，他们可以标记表单输入使之变为不可用(变灰色)，此时用户不能向他们输入任何数据。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">disabled</span>=<span class="string">&quot;disabled&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"># 可以简写为</span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">disabled</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>输入：12345[enter]a[enter]<br>输出：12345【换行】97<br>说明：cin.getline(a,10)吧12345输入到a中，遇到[enter]结束，并把缓冲区中[enter]删除，把接下来的a输入到b中</p>
-<h3 id="cin-getline-arrayname-size-s-与cin-gei-arrayname-size-s-的区别"><a href="#cin-getline-arrayname-size-s-与cin-gei-arrayname-size-s-的区别" class="headerlink" title="cin.getline(arrayname,size,s)与cin.gei(arrayname,size,s)的区别"></a>cin.getline(arrayname,size,s)与cin.gei(arrayname,size,s)的区别</h3><p><code>cin.get（arrayname,size,s）</code>当遇到s时会结束输入，但不会删除缓冲区中的s<br><code>cin.getline(arrayname,size,s)</code>当遇到s时会结束输入，并把s从缓冲区中删除</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">get</span>(a,<span class="number">10</span>,<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输入：12345,[enter]<br>输出：12345【换行】，<br>说明：cin.get不会删除缓冲区的，缓存中的，被写入b中</p>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">char</span> a[<span class="number">10</span>];<span class="keyword">char</span> b;</span><br><span class="line">    cin.<span class="built_in">getline</span>(a,<span class="number">10</span>,<span class="string">&#x27;,&#x27;</span>);</span><br><span class="line">	cin.<span class="built_in">get</span>(b);</span><br><span class="line">	cout&lt;&lt;a&lt;&lt;endl&lt;&lt;<span class="built_in"><span class="keyword">int</span></span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="分析html文档"><a href="#分析html文档" class="headerlink" title="分析html文档"></a>分析html文档</h1><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>My test page<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>This is my page<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p>输入：12345，[enter]<br>输出：12345【换行】10<br>说明：cin.getline吧12345输入到a中，遇到’，‘结束，并删除缓冲区的’，‘，后面的[enter]输入到b中</p>
-<h1 id="类中static和const关键字声明变量的初始化方式"><a href="#类中static和const关键字声明变量的初始化方式" class="headerlink" title="类中static和const关键字声明变量的初始化方式"></a>类中static和const关键字声明变量的初始化方式</h1><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">TestClass</span>() <span class="comment">//:a(16)</span></span><br><span class="line">  	&#123;</span><br><span class="line">  		cout &lt;&lt; <span class="string">&quot;TestClass Constructor .&quot;</span> &lt;&lt; endl;</span><br><span class="line">   	&#125;</span><br><span class="line">   	~<span class="built_in">TestClass</span>()</span><br><span class="line"> 	&#123;</span><br><span class="line">  		cout &lt;&lt; <span class="string">&quot;TestClass Destructor .&quot;</span> &lt;&lt; endl;</span><br><span class="line">	&#125;</span><br><span class="line"> </span><br><span class="line">   	<span class="keyword">int</span> temp_a; <span class="comment">// = 5;</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> temp_b;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> temp_c; <span class="comment">// = 25;</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">int</span> temp_d; <span class="comment">// = 35;</span></span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">static</span> <span class="keyword">float</span> temp_e;    </span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
-
-<h2 id="int-temp-a"><a href="#int-temp-a" class="headerlink" title="int temp_a;"></a>int temp_a;</h2><ol>
-<li>在声明处初始化；</li>
-<li>在构造函数初始化列表中初始化；</li>
+<ol>
+<li><code>&lt;!DOCTYPE html&gt;</code>: 声明文档类型. 很久以前，早期的HTML(大约1991年2月)，文档类型声明类似于链接，规定了HTML页面必须遵从的良好规则，能自动检测错误和其他有用的东西。使用如下：</li>
 </ol>
-<p>对于非static、非const声明的变量，这两种初始化可以同时使用，同时使用时列表中的值会自动覆盖声明处的值。初始化不是必须的，若不进行初始化，其值是不确定的，可简单认为是随机的。该变量属于对象。</p>
-<h2 id="static-int-temp-b"><a href="#static-int-temp-b" class="headerlink" title="static int temp_b;"></a>static int temp_b;</h2><p>必须在类的声明体外进行定义(若在定义时不给初值，则编译器自动赋予默认值，<code>int</code>型变量的默认值为0，定义时不使用关键字<code>static</code>。例如：<code>int TestClass::temp_b = 12</code>;<br>该变量属于类，不属于特定的对象，可以理解为全局的，为所有所实例化的对象所共享。可在程序中通过类名作用域符号的方式访问（如：<code>TestClass::temp_b = 18;</code>)，也可以通过对象访问。</p>
-<h2 id="const-int-temp-c"><a href="#const-int-temp-c" class="headerlink" title="const int temp_c;"></a>const int temp_c;</h2><ol>
-<li>在声明处初始化；</li>
-<li>在构造函数初始化列表中初始化；</li>
-</ol>
-<p>必须初始化，这两种初始化可以同时使用，同时使用时构造函数初始化列表中的值会自动覆盖声明处给的初值。<br>该常量属于对象，在对象声明时进行初始化，对象声明以后就不能再改变常量的值，即在对象的生存周期内其值不变。</p>
-<h2 id="const-static-int-temp-d-char-short-int-long"><a href="#const-static-int-temp-d-char-short-int-long" class="headerlink" title="const static int temp_d;//char short int long"></a>const static int temp_d;//char short int long</h2><ol>
-<li>在声明处初始化；（在声明处初始化，则可以不用在类的声明体外进行定义）</li>
-<li>在类的声明体外进行定义并初始化；<code>const int TestClass::temp_d = 15</code>;</li>
-</ol>
-<p>必须初始化，并且只能有一次初始化赋值（即1和2中，二选一）。<code>char</code>、<code>short</code>、<code>long</code>型静态常量都属于这种情况。<br>静态常量属于类，为所有的对象共享，既然是常量，初始化以后肯定就不能再有赋值操作。</p>
-<h2 id="const-static-float-temp-e-float-double"><a href="#const-static-float-temp-e-float-double" class="headerlink" title="const static float temp_e; //float double"></a>const static float temp_e; //float double</h2><p>只能且必须在类的声明体外进行定义和初始化<code>const float TestClass::temp_e = 0.234f;</code> 静态常量的浮点型数据属于这种情况。</p>
-<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
-<li>仅仅有关键字<code>const</code>，由于是常量，就必须进行初始化；可在声明处和构造函数列表中进行初始化，可以二选一，亦可以在这两处都初始化，初始化列表中的赋值会自动覆盖声明处的值。</li>
-<li>仅仅有<code>static</code>,由于是静态变量，属于类本身，则必须在类的生命体外进行定义（若不给初值，则为默认值）</li>
-<li>同时又<code>static</code>和<code>const</code>，这两个关键字的前后顺序无所谓，由于是静态常量，即同时具有静态和长常量的属性，使用条件就更加苛刻（即为一个常量，那就必须有初始化，并且还是静态的，那就自然属于类本身了）。整形数据可以在声明处初始化或者在类的声明体外进行定义并初始化，二选一。浮点型数据只能且必须在类的声明体外进行定义并初始化。</li>
-</ol>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot;</span></span></span><br><span class="line"><span class="meta"><span class="meta-string">&quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>然而现在没有人再这样写，需要保证每一个东西都正常工作已成为历史。你只需要知道<code>&lt;!DOCTYPE html&gt;</code>是最短的有效的文档声明。<br>2. <code>&lt;html&gt;&lt;/html&gt;</code>: <code>&lt;html&gt;</code>元素。这个元素包裹了整个完整的页面，是一个根元素。<br>3. <code>&lt;head&gt;&lt;/head&gt;</code>: <code>&lt;head&gt;</code>元素. 这个元素是一个容器，它包含了所有你想包含在HTML页面中但不想在HTML页面中显示的内容。这些内容包括你想在搜索结果中出现的关键字和页面描述，CSS样式，字符集声明等等。以后的章节能学到更多关于<head>元素的内容。<br>4. <code>&lt;meta charset=&quot;utf-8&quot;&gt;</code>: 这个元素设置文档使用<code>utf-8</code>字符集编码，<code>utf-8</code>字符集包含了人类大部分的文字。基本上他能识别你放上去的所有文本内容。毫无疑问要使用它，并且它能在以后避免很多其他问题。<br>5. <code>&lt;title&gt;&lt;/title&gt;</code>: 设置页面标题，出现在浏览器标签上，当你标记/收藏页面时它可用来描述页面。<br>6. <code>&lt;body&gt;&lt;/body&gt;</code>: <code>&lt;body&gt;</code>元素。 包含了你访问页面时所有显示在页面上的内容，文本，图片，音频，游戏等等。</p>
+<h1 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h1><p>| 原义字符 | 等价字符引用 |<br>| —- | —- | —- |<br>| &lt; | <code>&amp;lt;</code> |<br>| &gt; | <code>&amp;gt;</code> |<br>| “ | <code>&amp;quot;</code> |<br>| ‘ | <code>&amp;apos;</code> |<br>| &amp; | <code>&amp;amp;</code> |</p>
+<h1 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h1><p>为了将一段HTML中的内容置为注释，你需要将其用特殊的记号<code>&lt;!--和--&gt;</code>包括起来， 比如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- &lt;p&gt;I am!&lt;/p&gt; --&gt;</span></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>学习笔记</category>
-        <category>C++</category>
+        <category>HTML</category>
       </categories>
       <tags>
-        <tag>c++</tag>
+        <tag>HTML</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>django笔记 - 虚拟环境</title>
+    <url>/2019/01/09/django%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>以下命令均在win10的cmd中执行</p>
+<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install virtualenv  <span class="comment">#virtual environment</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv abc-env   <span class="comment">#在当前目录位置，创建名为abc-env的虚拟环境</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="进入虚拟环境（Windows）"><a href="#进入虚拟环境（Windows）" class="headerlink" title="进入虚拟环境（Windows）"></a>进入虚拟环境（Windows）</h3><p>进入<code>Scripts</code>文件夹，如<code>\abc-env\Scripts</code>，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建时指定Python解释器"><a href="#创建时指定Python解释器" class="headerlink" title="创建时指定Python解释器"></a>创建时指定<code>Python</code>解释器</h3><p>一般不用，如果装了多个，<code>-p</code>参数指定具体的<code>Python</code>解释器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv -p C:\Python36\python.exe [virtualenv name]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="virtualenvwrapper"><a href="#virtualenvwrapper" class="headerlink" title="virtualenvwrapper"></a>virtualenvwrapper</h2><p>//wrapper 包装材料，包装纸</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>可以直接安装这个，会自动安装virtualenv</p>
+<ol>
+<li>Windows：<code>pip install virtualenvwrapper-win</code></li>
+<li>Linux： <code>pip install virtualenvwrapper</code></li>
+</ol>
+<h3 id="创建虚拟环境-1"><a href="#创建虚拟环境-1" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv my_env   <span class="comment">#创建名为`my_env`的虚拟环境</span></span><br></pre></td></tr></table></figure>
+
+<p>会在当前用户下创建一个Env的文件夹，将虚拟环境安装到这个目录下</p>
+<h3 id="切换到某个虚拟环境"><a href="#切换到某个虚拟环境" class="headerlink" title="切换到某个虚拟环境"></a>切换到某个虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">workon my_env</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出当前虚拟环境"><a href="#退出当前虚拟环境" class="headerlink" title="退出当前虚拟环境"></a>退出当前虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除虚拟环境"><a href="#删除虚拟环境" class="headerlink" title="删除虚拟环境"></a>删除虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmvirtualenv my_env</span><br></pre></td></tr></table></figure>
+
+<h3 id="列出所有虚拟环境"><a href="#列出所有虚拟环境" class="headerlink" title="列出所有虚拟环境"></a>列出所有虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsvirtualenv</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入当前虚拟环境所在的目录"><a href="#进入当前虚拟环境所在的目录" class="headerlink" title="进入当前虚拟环境所在的目录"></a>进入当前虚拟环境所在的目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cdvirtualenv</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改mkvirtualenv的默认路径"><a href="#修改mkvirtualenv的默认路径" class="headerlink" title="修改mkvirtualenv的默认路径"></a>修改<code>mkvirtualenv</code>的默认路径</h3><p>在<code>环境变量-&gt;系统变量</code>中，新建一个变量，变量名为<code>WORKON_HOME</code>，变量值为目标路径，我用了<code>E:\Projects\Envs</code></p>
+<h3 id="创建时指定Python版本"><a href="#创建时指定Python版本" class="headerlink" title="创建时指定Python版本"></a>创建时指定Python版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv  --python==C:\Python36\python.exe hy_env</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>django</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
       </tags>
   </entry>
   <entry>
@@ -518,6 +518,53 @@
       </categories>
       <tags>
         <tag>django</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python笔记</title>
+    <url>/2019/01/14/python%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h1><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将字符串abc中的每个成员，以字符&#x27;,&#x27;分隔开再拼接成一个字符串</span></span><br><span class="line"><span class="string">&#x27;,&#x27;</span>.join(<span class="string">&#x27;abc&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为<code>&#39;a,b,c&#39;</code></p>
+<p>join里放列表、元组、字典也是可以的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;;&#x27;</span>.join([a,b,c])</span><br><span class="line">&gt;&gt;  <span class="string">&#x27;a;b;c&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://blog.csdn.net/chixujohnny/article/details/53301995">Python中的 .join()用法</a></p>
+<span id="more"></span>
+
+<h1 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h1><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
+<ul>
+<li><code>sep</code>：表示为分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等，但是不能为空(‘’)。若字符串中没有分隔符，则把整个字符串作为列表的一个元素</li>
+<li><code>num</code>：表示分割次数。如果存在参数num，则仅分隔成 num+1 个子字符串，并且每一个子字符串可以赋给新的变量</li>
+<li><code>[n]</code>：表示选取第n个分片</li>
+</ul>
+<ol>
+<li>无参数的情况</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;my name is zhangkang&quot;</span></span><br><span class="line">b=<span class="string">&quot;my\nname\nis\nzhangkang&quot;</span></span><br><span class="line">c=<span class="string">&quot;my\tname\tis\tzhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">a=a.split()</span><br><span class="line">b=b.split()</span><br><span class="line">c=c.split()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>有参数的情况</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d=<span class="string">&quot;my,name,is,zhangkang&quot;</span></span><br><span class="line">e=<span class="string">&quot;my;name;is;zhangkang&quot;</span></span><br><span class="line">f=<span class="string">&quot;my-name-is-zhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">d=d.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">e=e.split(<span class="string">&quot;;&quot;</span>)</span><br><span class="line">f=f.split(<span class="string">&quot;-&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(d)</span><br><span class="line"><span class="built_in">print</span>(e)</span><br><span class="line"><span class="built_in">print</span>(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>有两个参数的情况</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;My,name,is,zhangkang,and,I,am,a,student&quot;</span></span><br><span class="line">b1=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">1</span>)</span><br><span class="line">b2=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">2</span>)</span><br><span class="line">b8=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">8</span>)</span><br><span class="line">b9=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b1)</span><br><span class="line"><span class="built_in">print</span>(b2)</span><br><span class="line"><span class="built_in">print</span>(b8)</span><br><span class="line"><span class="built_in">print</span>(b9)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name,is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>] <span class="comment">#超过最大分割次数，还是最大分割，不报错</span></span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://blog.csdn.net/csdn15698845876/article/details/74012511">python中split()函数讲解</a></p>
+<h1 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h1><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
+<p><code>s.strip(rm)</code>，删除s字符串中开头、结尾处，位于rm删除序列的字符<br><code>s.lstrip(rm)</code>，删除s字符串中开头处，位于rm删除序列的字符<br><code>s.rstrip(rm)</code>，删除s字符串中结尾处，位于rm删除序列的字符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">b = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;12&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;21&#x27;</span>) <span class="comment"># 没有顺序</span></span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;31&#x27;</span>) <span class="comment"># 只要开头和结尾中含有rm中的字符 就删除</span></span><br><span class="line"><span class="string">&#x27;23abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;bc&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;123a&#x27;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -781,91 +828,6 @@ int LocateElem(SqList L, ElemType e)&#123;
       </tags>
   </entry>
   <entry>
-    <title>python笔记</title>
-    <url>/2019/01/14/python%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h1><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将字符串abc中的每个成员，以字符&#x27;,&#x27;分隔开再拼接成一个字符串</span></span><br><span class="line"><span class="string">&#x27;,&#x27;</span>.join(<span class="string">&#x27;abc&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为<code>&#39;a,b,c&#39;</code></p>
-<p>join里放列表、元组、字典也是可以的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;;&#x27;</span>.join([a,b,c])</span><br><span class="line">&gt;&gt;  <span class="string">&#x27;a;b;c&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://blog.csdn.net/chixujohnny/article/details/53301995">Python中的 .join()用法</a></p>
-<span id="more"></span>
-
-<h1 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h1><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
-<ul>
-<li><code>sep</code>：表示为分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等，但是不能为空(‘’)。若字符串中没有分隔符，则把整个字符串作为列表的一个元素</li>
-<li><code>num</code>：表示分割次数。如果存在参数num，则仅分隔成 num+1 个子字符串，并且每一个子字符串可以赋给新的变量</li>
-<li><code>[n]</code>：表示选取第n个分片</li>
-</ul>
-<ol>
-<li>无参数的情况</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;my name is zhangkang&quot;</span></span><br><span class="line">b=<span class="string">&quot;my\nname\nis\nzhangkang&quot;</span></span><br><span class="line">c=<span class="string">&quot;my\tname\tis\tzhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">a=a.split()</span><br><span class="line">b=b.split()</span><br><span class="line">c=c.split()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>有参数的情况</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d=<span class="string">&quot;my,name,is,zhangkang&quot;</span></span><br><span class="line">e=<span class="string">&quot;my;name;is;zhangkang&quot;</span></span><br><span class="line">f=<span class="string">&quot;my-name-is-zhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">d=d.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">e=e.split(<span class="string">&quot;;&quot;</span>)</span><br><span class="line">f=f.split(<span class="string">&quot;-&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(d)</span><br><span class="line"><span class="built_in">print</span>(e)</span><br><span class="line"><span class="built_in">print</span>(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>有两个参数的情况</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;My,name,is,zhangkang,and,I,am,a,student&quot;</span></span><br><span class="line">b1=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">1</span>)</span><br><span class="line">b2=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">2</span>)</span><br><span class="line">b8=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">8</span>)</span><br><span class="line">b9=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b1)</span><br><span class="line"><span class="built_in">print</span>(b2)</span><br><span class="line"><span class="built_in">print</span>(b8)</span><br><span class="line"><span class="built_in">print</span>(b9)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name,is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>] <span class="comment">#超过最大分割次数，还是最大分割，不报错</span></span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://blog.csdn.net/csdn15698845876/article/details/74012511">python中split()函数讲解</a></p>
-<h1 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h1><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
-<p><code>s.strip(rm)</code>，删除s字符串中开头、结尾处，位于rm删除序列的字符<br><code>s.lstrip(rm)</code>，删除s字符串中开头处，位于rm删除序列的字符<br><code>s.rstrip(rm)</code>，删除s字符串中结尾处，位于rm删除序列的字符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">b = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;12&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;21&#x27;</span>) <span class="comment"># 没有顺序</span></span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;31&#x27;</span>) <span class="comment"># 只要开头和结尾中含有rm中的字符 就删除</span></span><br><span class="line"><span class="string">&#x27;23abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;bc&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;123a&#x27;</span></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>爬虫笔记03 - 网络请求</title>
-    <url>/2019/02/19/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B003/</url>
-    <content><![CDATA[<h1 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h1><p><code>urllib</code>库是<code>Python</code>中一个最基本的网络请求库。可以模拟浏览器的行为，向指定的服务器发送一个请求，并可以保存服务器返回的数据。</p>
-<span id="more"></span>
-
-<h2 id="urlopen函数"><a href="#urlopen函数" class="headerlink" title="urlopen函数"></a>urlopen函数</h2><p>在<code>Python3</code>的<code>urllib</code>库中，所有和网络请求相关的方法，都被集到<code>urllib.request</code>模块下面了，以先来看下<code>urlopen</code>函数基本的使用：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line">resp = request.urlopen(<span class="string">&#x27;http://www.baidu.com&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp.read())</span><br></pre></td></tr></table></figure>
-
-<p><code>urlopen</code>函数参数为：</p>
-<ul>
-<li><code>url</code>：请求的url。</li>
-<li><code>data</code>：请求的data，如果设置了这个值，那么将变成post请求。</li>
-</ul>
-<p><code>urlopen</code>的返回值是一个<code>http.client.HTTPResponse</code>对象，这个对象是一个类文件句柄对象。有<code>read(size)</code>、<code>readline</code>、<code>readlines</code>以及<code>getcode</code>等方法。</p>
-<h2 id="urlretrieve函数"><a href="#urlretrieve函数" class="headerlink" title="urlretrieve函数"></a>urlretrieve函数</h2><p>这个函数可以方便的将网页上的一个文件保存到本地。以下代码可以非常方便的将百度的首页下载到本地：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line">request.urlretrieve(<span class="string">&#x27;http://www.baidu.com/&#x27;</span>,<span class="string">&#x27;baidu.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<h2 id="urlencode函数"><a href="#urlencode函数" class="headerlink" title="urlencode函数"></a>urlencode函数</h2><p>用浏览器发送请求的时候，如果<code>url</code>中包含了中文或者其他特殊字符，那么浏览器会自动的给我们进行编码。而如果使用代码发送请求，那么就必须手动的进行编码，这时候就应该使用<code>urlencode</code>函数来实现。<code>urlencode</code>可以把字典数据转换为<code>URL</code>编码的数据。示例代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;爬虫基础&#x27;</span>,<span class="string">&#x27;greet&#x27;</span>:<span class="string">&#x27;hello world&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="number">100</span>&#125;</span><br><span class="line">qs = parse.urlencode(data)</span><br><span class="line"><span class="built_in">print</span>(qs)</span><br></pre></td></tr></table></figure>
-
-<h2 id="parse-qs函数"><a href="#parse-qs函数" class="headerlink" title="parse_qs函数"></a>parse_qs函数</h2><p>可以将经过编码后的url参数进行解码。示例代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line">qs = <span class="string">&quot;name=%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80&amp;greet=hello+world&amp;age=100&quot;</span></span><br><span class="line"><span class="built_in">print</span>(parse.parse_qs(qs))</span><br></pre></td></tr></table></figure>
-
-<h2 id="urlparse和urlsplit"><a href="#urlparse和urlsplit" class="headerlink" title="urlparse和urlsplit"></a><code>urlparse</code>和<code>urlsplit</code></h2><p>有时候拿到一个url，想要对这个url中的各个组成部分进行分割，那么这时候就可以使用<code>urlparse</code>或者是<code>urlsplit</code>来进行分割。示例代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://www.baidu.com/s?username=zhiliao&#x27;</span></span><br><span class="line"></span><br><span class="line">result = parse.urlsplit(url)</span><br><span class="line"><span class="comment"># result = parse.urlparse(url)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;scheme:&#x27;</span>,result.scheme)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;netloc:&#x27;</span>,result.netloc)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;path:&#x27;</span>,result.path)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;query:&#x27;</span>,result.query)</span><br></pre></td></tr></table></figure>
-
-<p><code>urlparse</code>和<code>urlsplit</code>基本上是一模一样的。唯一不一样的地方是，<code>urlparse</code>里面多了一个<code>params</code>属性，而<code>urlsplit</code>没有这个<code>params</code>属性。比如有一个url为：<code>url = &#39;http://www.baidu.com/s;hello?wd=python&amp;username=abc#1&#39;</code>，那么<code>urlparse</code>可以获取到<code>hello</code>，而<code>urlsplit</code>不可以获取到。<code>url</code>中的<code>params</code>也用得比较少。</p>
-<h2 id="request-Request类"><a href="#request-Request类" class="headerlink" title="request.Request类"></a>request.Request类</h2><p>如果想要在请求的时候增加一些请求头，那么就必须使用<code>request.Request</code>类来实现。比如要增加一个<code>User-Agent</code>，示例代码如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">req = request.Request(<span class="string">&quot;http://www.baidu.com/&quot;</span>,headers=headers)</span><br><span class="line">resp = request.urlopen(req)</span><br><span class="line"><span class="built_in">print</span>(resp.read())</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>爬虫</category>
-      </categories>
-      <tags>
-        <tag>urllib</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>爬虫笔记02 - 数据存储</title>
     <url>/2019/02/18/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B002/</url>
     <content><![CDATA[<h1 id="json"><a href="#json" class="headerlink" title="json"></a>json</h1><h2 id="什么是json"><a href="#什么是json" class="headerlink" title="什么是json"></a>什么是json</h2><p>JSON(JavaScript Object Notation, JS 对象标记) 是一种轻量级的数据交换格式。它基于 ECMAScript (w3c制定的js规范)的一个子集，采用完全独立于编程语言的文本格式来存储和表示数据。简洁和清晰的层次结构使得 JSON 成为理想的数据交换语言。 易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。</p>
@@ -1073,49 +1035,41 @@ int LocateElem(SqList L, ElemType e)&#123;
       </tags>
   </entry>
   <entry>
-    <title>django笔记 - 虚拟环境</title>
-    <url>/2019/01/09/%E3%80%8AMySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E7%AC%94%E8%AE%B0/django%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>以下命令均在win10的cmd中执行</p>
-<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install virtualenv  <span class="comment">#virtual environment</span></span><br></pre></td></tr></table></figure>
+    <title>爬虫笔记03 - 网络请求</title>
+    <url>/2019/02/19/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B003/</url>
+    <content><![CDATA[<h1 id="urllib"><a href="#urllib" class="headerlink" title="urllib"></a>urllib</h1><p><code>urllib</code>库是<code>Python</code>中一个最基本的网络请求库。可以模拟浏览器的行为，向指定的服务器发送一个请求，并可以保存服务器返回的数据。</p>
+<span id="more"></span>
 
-<h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv abc-env   <span class="comment">#在当前目录位置，创建名为abc-env的虚拟环境</span></span><br></pre></td></tr></table></figure>
+<h2 id="urlopen函数"><a href="#urlopen函数" class="headerlink" title="urlopen函数"></a>urlopen函数</h2><p>在<code>Python3</code>的<code>urllib</code>库中，所有和网络请求相关的方法，都被集到<code>urllib.request</code>模块下面了，以先来看下<code>urlopen</code>函数基本的使用：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line">resp = request.urlopen(<span class="string">&#x27;http://www.baidu.com&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(resp.read())</span><br></pre></td></tr></table></figure>
 
-<h3 id="进入虚拟环境（Windows）"><a href="#进入虚拟环境（Windows）" class="headerlink" title="进入虚拟环境（Windows）"></a>进入虚拟环境（Windows）</h3><p>进入<code>Scripts</code>文件夹，如<code>\abc-env\Scripts</code>，然后执行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
+<p><code>urlopen</code>函数参数为：</p>
+<ul>
+<li><code>url</code>：请求的url。</li>
+<li><code>data</code>：请求的data，如果设置了这个值，那么将变成post请求。</li>
+</ul>
+<p><code>urlopen</code>的返回值是一个<code>http.client.HTTPResponse</code>对象，这个对象是一个类文件句柄对象。有<code>read(size)</code>、<code>readline</code>、<code>readlines</code>以及<code>getcode</code>等方法。</p>
+<h2 id="urlretrieve函数"><a href="#urlretrieve函数" class="headerlink" title="urlretrieve函数"></a>urlretrieve函数</h2><p>这个函数可以方便的将网页上的一个文件保存到本地。以下代码可以非常方便的将百度的首页下载到本地：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line">request.urlretrieve(<span class="string">&#x27;http://www.baidu.com/&#x27;</span>,<span class="string">&#x27;baidu.html&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
-<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+<h2 id="urlencode函数"><a href="#urlencode函数" class="headerlink" title="urlencode函数"></a>urlencode函数</h2><p>用浏览器发送请求的时候，如果<code>url</code>中包含了中文或者其他特殊字符，那么浏览器会自动的给我们进行编码。而如果使用代码发送请求，那么就必须手动的进行编码，这时候就应该使用<code>urlencode</code>函数来实现。<code>urlencode</code>可以把字典数据转换为<code>URL</code>编码的数据。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line">data = &#123;<span class="string">&#x27;name&#x27;</span>:<span class="string">&#x27;爬虫基础&#x27;</span>,<span class="string">&#x27;greet&#x27;</span>:<span class="string">&#x27;hello world&#x27;</span>,<span class="string">&#x27;age&#x27;</span>:<span class="number">100</span>&#125;</span><br><span class="line">qs = parse.urlencode(data)</span><br><span class="line"><span class="built_in">print</span>(qs)</span><br></pre></td></tr></table></figure>
 
-<h3 id="创建时指定Python解释器"><a href="#创建时指定Python解释器" class="headerlink" title="创建时指定Python解释器"></a>创建时指定<code>Python</code>解释器</h3><p>一般不用，如果装了多个，<code>-p</code>参数指定具体的<code>Python</code>解释器</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv -p C:\Python36\python.exe [virtualenv name]</span><br></pre></td></tr></table></figure>
+<h2 id="parse-qs函数"><a href="#parse-qs函数" class="headerlink" title="parse_qs函数"></a>parse_qs函数</h2><p>可以将经过编码后的url参数进行解码。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line">qs = <span class="string">&quot;name=%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80&amp;greet=hello+world&amp;age=100&quot;</span></span><br><span class="line"><span class="built_in">print</span>(parse.parse_qs(qs))</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="virtualenvwrapper"><a href="#virtualenvwrapper" class="headerlink" title="virtualenvwrapper"></a>virtualenvwrapper</h2><p>//wrapper 包装材料，包装纸</p>
-<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>可以直接安装这个，会自动安装virtualenv</p>
-<ol>
-<li>Windows：<code>pip install virtualenvwrapper-win</code></li>
-<li>Linux： <code>pip install virtualenvwrapper</code></li>
-</ol>
-<h3 id="创建虚拟环境-1"><a href="#创建虚拟环境-1" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv my_env   <span class="comment">#创建名为`my_env`的虚拟环境</span></span><br></pre></td></tr></table></figure>
+<h2 id="urlparse和urlsplit"><a href="#urlparse和urlsplit" class="headerlink" title="urlparse和urlsplit"></a><code>urlparse</code>和<code>urlsplit</code></h2><p>有时候拿到一个url，想要对这个url中的各个组成部分进行分割，那么这时候就可以使用<code>urlparse</code>或者是<code>urlsplit</code>来进行分割。示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> parse</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://www.baidu.com/s?username=zhiliao&#x27;</span></span><br><span class="line"></span><br><span class="line">result = parse.urlsplit(url)</span><br><span class="line"><span class="comment"># result = parse.urlparse(url)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;scheme:&#x27;</span>,result.scheme)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;netloc:&#x27;</span>,result.netloc)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;path:&#x27;</span>,result.path)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&#x27;query:&#x27;</span>,result.query)</span><br></pre></td></tr></table></figure>
 
-<p>会在当前用户下创建一个Env的文件夹，将虚拟环境安装到这个目录下</p>
-<h3 id="切换到某个虚拟环境"><a href="#切换到某个虚拟环境" class="headerlink" title="切换到某个虚拟环境"></a>切换到某个虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">workon my_env</span><br></pre></td></tr></table></figure>
-
-<h3 id="退出当前虚拟环境"><a href="#退出当前虚拟环境" class="headerlink" title="退出当前虚拟环境"></a>退出当前虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除虚拟环境"><a href="#删除虚拟环境" class="headerlink" title="删除虚拟环境"></a>删除虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmvirtualenv my_env</span><br></pre></td></tr></table></figure>
-
-<h3 id="列出所有虚拟环境"><a href="#列出所有虚拟环境" class="headerlink" title="列出所有虚拟环境"></a>列出所有虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsvirtualenv</span><br></pre></td></tr></table></figure>
-
-<h3 id="进入当前虚拟环境所在的目录"><a href="#进入当前虚拟环境所在的目录" class="headerlink" title="进入当前虚拟环境所在的目录"></a>进入当前虚拟环境所在的目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cdvirtualenv</span><br></pre></td></tr></table></figure>
-
-<h3 id="修改mkvirtualenv的默认路径"><a href="#修改mkvirtualenv的默认路径" class="headerlink" title="修改mkvirtualenv的默认路径"></a>修改<code>mkvirtualenv</code>的默认路径</h3><p>在<code>环境变量-&gt;系统变量</code>中，新建一个变量，变量名为<code>WORKON_HOME</code>，变量值为目标路径，我用了<code>E:\Projects\Envs</code></p>
-<h3 id="创建时指定Python版本"><a href="#创建时指定Python版本" class="headerlink" title="创建时指定Python版本"></a>创建时指定Python版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv  --python==C:\Python36\python.exe hy_env</span><br></pre></td></tr></table></figure>]]></content>
+<p><code>urlparse</code>和<code>urlsplit</code>基本上是一模一样的。唯一不一样的地方是，<code>urlparse</code>里面多了一个<code>params</code>属性，而<code>urlsplit</code>没有这个<code>params</code>属性。比如有一个url为：<code>url = &#39;http://www.baidu.com/s;hello?wd=python&amp;username=abc#1&#39;</code>，那么<code>urlparse</code>可以获取到<code>hello</code>，而<code>urlsplit</code>不可以获取到。<code>url</code>中的<code>params</code>也用得比较少。</p>
+<h2 id="request-Request类"><a href="#request-Request类" class="headerlink" title="request.Request类"></a>request.Request类</h2><p>如果想要在请求的时候增加一些请求头，那么就必须使用<code>request.Request</code>类来实现。比如要增加一个<code>User-Agent</code>，示例代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> request</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line"><span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line">req = request.Request(<span class="string">&quot;http://www.baidu.com/&quot;</span>,headers=headers)</span><br><span class="line">resp = request.urlopen(req)</span><br><span class="line"><span class="built_in">print</span>(resp.read())</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>学习笔记</category>
-        <category>django</category>
+        <category>爬虫</category>
       </categories>
       <tags>
-        <tag>django</tag>
+        <tag>urllib</tag>
       </tags>
   </entry>
   <entry>
@@ -1267,6 +1221,52 @@ int LocateElem(SqList L, ElemType e)&#123;
       </categories>
       <tags>
         <tag>Selenium</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>django笔记 - 虚拟环境</title>
+    <url>/2019/01/09/%E3%80%8AMySQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E3%80%8B%E7%AC%94%E8%AE%B0/django%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="虚拟环境"><a href="#虚拟环境" class="headerlink" title="虚拟环境"></a>虚拟环境</h1><p>以下命令均在win10的cmd中执行</p>
+<h2 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pip install virtualenv  <span class="comment">#virtual environment</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="创建虚拟环境"><a href="#创建虚拟环境" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv abc-env   <span class="comment">#在当前目录位置，创建名为abc-env的虚拟环境</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="进入虚拟环境（Windows）"><a href="#进入虚拟环境（Windows）" class="headerlink" title="进入虚拟环境（Windows）"></a>进入虚拟环境（Windows）</h3><p>进入<code>Scripts</code>文件夹，如<code>\abc-env\Scripts</code>，然后执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">activate</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出虚拟环境"><a href="#退出虚拟环境" class="headerlink" title="退出虚拟环境"></a>退出虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建时指定Python解释器"><a href="#创建时指定Python解释器" class="headerlink" title="创建时指定Python解释器"></a>创建时指定<code>Python</code>解释器</h3><p>一般不用，如果装了多个，<code>-p</code>参数指定具体的<code>Python</code>解释器</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">virtualenv -p C:\Python36\python.exe [virtualenv name]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="virtualenvwrapper"><a href="#virtualenvwrapper" class="headerlink" title="virtualenvwrapper"></a>virtualenvwrapper</h2><p>//wrapper 包装材料，包装纸</p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><p>可以直接安装这个，会自动安装virtualenv</p>
+<ol>
+<li>Windows：<code>pip install virtualenvwrapper-win</code></li>
+<li>Linux： <code>pip install virtualenvwrapper</code></li>
+</ol>
+<h3 id="创建虚拟环境-1"><a href="#创建虚拟环境-1" class="headerlink" title="创建虚拟环境"></a>创建虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv my_env   <span class="comment">#创建名为`my_env`的虚拟环境</span></span><br></pre></td></tr></table></figure>
+
+<p>会在当前用户下创建一个Env的文件夹，将虚拟环境安装到这个目录下</p>
+<h3 id="切换到某个虚拟环境"><a href="#切换到某个虚拟环境" class="headerlink" title="切换到某个虚拟环境"></a>切换到某个虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">workon my_env</span><br></pre></td></tr></table></figure>
+
+<h3 id="退出当前虚拟环境"><a href="#退出当前虚拟环境" class="headerlink" title="退出当前虚拟环境"></a>退出当前虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">deactivate</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除虚拟环境"><a href="#删除虚拟环境" class="headerlink" title="删除虚拟环境"></a>删除虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rmvirtualenv my_env</span><br></pre></td></tr></table></figure>
+
+<h3 id="列出所有虚拟环境"><a href="#列出所有虚拟环境" class="headerlink" title="列出所有虚拟环境"></a>列出所有虚拟环境</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsvirtualenv</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入当前虚拟环境所在的目录"><a href="#进入当前虚拟环境所在的目录" class="headerlink" title="进入当前虚拟环境所在的目录"></a>进入当前虚拟环境所在的目录</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cdvirtualenv</span><br></pre></td></tr></table></figure>
+
+<h3 id="修改mkvirtualenv的默认路径"><a href="#修改mkvirtualenv的默认路径" class="headerlink" title="修改mkvirtualenv的默认路径"></a>修改<code>mkvirtualenv</code>的默认路径</h3><p>在<code>环境变量-&gt;系统变量</code>中，新建一个变量，变量名为<code>WORKON_HOME</code>，变量值为目标路径，我用了<code>E:\Projects\Envs</code></p>
+<h3 id="创建时指定Python版本"><a href="#创建时指定Python版本" class="headerlink" title="创建时指定Python版本"></a>创建时指定Python版本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkvirtualenv  --python==C:\Python36\python.exe hy_env</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>django</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
       </tags>
   </entry>
   <entry>
