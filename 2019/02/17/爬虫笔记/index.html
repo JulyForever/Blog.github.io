@@ -18,12 +18,13 @@
 
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
   <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
   <script src="/lib/pace/pace.min.js"></script>
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"wuliuqi.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#F6E0C9","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+    var CONFIG = {"hostname":"wuliuqi.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#F6E0C9","save":"auto"},"fancybox":"ture","mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
   <meta name="description" content="安装scrapy框架 安装scrapy：pip install scrapy windows下，还需要安装pypiwin32，防止报错。pip install scrapy。报Visual C++ 14.0 is required错误的话，安装Visual C++ Build Tools，Visual C++ Build Tools 2015下载地址，下载链接在网页的中间位置  创建项目和爬虫 创">
@@ -148,6 +149,11 @@
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-photos">
+
+    <a href="/photos/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -454,7 +460,7 @@
 <li>如果抛出一个异常，那么调用<code>request</code>的<code>errback</code>方法，如果没有指定这个方法，那么会抛出一个异常。</li>
 </ul>
 <h2 id="随机请求头中间件"><a href="#随机请求头中间件" class="headerlink" title="随机请求头中间件"></a>随机请求头中间件</h2><p>爬虫在频繁访问一个页面的时候，这个请求头如果一直保持一直。那么很容易被服务器发现，从而禁止这个请求头的访问。因此我们要在访问这个页面之前随机的更改请求头，这样才可以避免爬虫被抓。随机更改请求头，可以在下载器中间件中实现。在请求发送给服务器之前，随机的选择一个请求头。示例代码如下：</p>
-<p><img src="https://developers.whatismybrowser.com/" alt="User_Agent网站"></p>
+<p><img data-src="https://developers.whatismybrowser.com/" alt="User_Agent网站"></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserAgentDownloadMiddleware</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    USER_AGENT = [</span><br><span class="line">        <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:54.0) Gecko/20100101 Firefox/54.0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:61.0) Gecko/20100101 Firefox/61.0&#x27;</span>,</span><br><span class="line">    ]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">process_request</span>(<span class="params">self, request, spider</span>):</span></span><br><span class="line">        user_agent = random.choice(self.USER_AGENT)</span><br><span class="line">        request.headers[<span class="string">&#x27;user-agent&#x27;</span>] = user_agent</span><br></pre></td></tr></table></figure>
 
 <h2 id="ip代理池中间件"><a href="#ip代理池中间件" class="headerlink" title="ip代理池中间件"></a>ip代理池中间件</h2><h3 id="购买代理"><a href="#购买代理" class="headerlink" title="购买代理"></a>购买代理</h3><p>芝麻地理，太阳代理等</p>
@@ -877,6 +883,9 @@ src="//music.163.com/outchain/player?type=2&id=559735259&auto=1&height=66"></ifr
   
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/pjax/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/lozad@1/dist/lozad.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
 
@@ -978,6 +987,8 @@ window.addEventListener('pjax:success', () => {
   
 
   
+
+
 
     </div>
 </body>
