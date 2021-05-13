@@ -1001,141 +1001,6 @@
   
   
 
-		  
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://wuliuqi.xyz/2019/02/17/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B001/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/memory.jpg">
-      <meta itemprop="name" content="July">
-      <meta itemprop="description" content="落花似人有情这个季节">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="July's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/02/17/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B001/" class="post-title-link" itemprop="url">爬虫笔记01 - 数据解析</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2019-02-17 18:19:38 / 修改时间：19:08:49" itemprop="dateCreated datePublished" datetime="2019-02-17T18:19:38+08:00">2019-02-17</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/%E7%88%AC%E8%99%AB/" itemprop="url" rel="index"><span itemprop="name">爬虫</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>969</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Xpath"><a href="#Xpath" class="headerlink" title="Xpath"></a>Xpath</h1><h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><p>使用//获取整个页面中的元素，然后写标签名，然后在写谓词进行提取。比如：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//div[@class=&#x27;abc&#x27;]</span><br></pre></td></tr></table></figure>
-
-<h3 id="选取节点"><a href="#选取节点" class="headerlink" title="选取节点"></a>选取节点</h3><table>
-<thead>
-<tr>
-<th align="center">表达式</th>
-<th align="center">描述</th>
-<th align="center">示例</th>
-<th align="center">结果</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">nodename</td>
-<td align="center">选取此节点的所有子节点</td>
-<td align="center">bookstroe</td>
-<td align="center">选取bookstore下的所有子节点</td>
-</tr>
-<tr>
-<td align="center">/</td>
-<td align="center">如果是在最前面，代表从根节点选取。<br>否则选择某节点下的某个节点</td>
-<td align="center">/bookstore</td>
-<td align="center">选取根元素下所有的bookstore节点</td>
-</tr>
-<tr>
-<td align="center">//</td>
-<td align="center">从全局节点中选择节点，随便在哪个位置</td>
-<td align="center">//book</td>
-<td align="center">从全局节点中找到所有的book节点</td>
-</tr>
-<tr>
-<td align="center">@</td>
-<td align="center">选取某个节点的属性</td>
-<td align="center">//book[@price]</td>
-<td align="center">选择所有拥有price属性的book节点</td>
-</tr>
-<tr>
-<td align="center">.</td>
-<td align="center">当前节点</td>
-<td align="center">./a</td>
-<td align="center">选取当前节点下的a标签</td>
-</tr>
-</tbody></table>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/02/17/%E7%88%AC%E8%99%AB%E7%AC%94%E8%AE%B001/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1207,7 +1072,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1264,7 +1129,7 @@ src="//music.163.com/outchain/player?type=2&id=559735259&auto=1&height=66"></ifr
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:12</span>
+    <span title="站点阅读时长">2:13</span>
 </div>
 
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

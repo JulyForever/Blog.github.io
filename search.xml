@@ -3937,34 +3937,6 @@ int LocateElem(SqList L, ElemType e)&#123;
       </tags>
   </entry>
   <entry>
-    <title>2021-05</title>
-    <url>/2021/05/09/2021-05/</url>
-    <content><![CDATA[<p>梳理近期事情</p>
-<h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><ol>
-<li>换了小米11Pro，刷了官改包的MIUI12.5，各种bug还没修</li>
-<li>博客重新用hexo搭了，加入背景、音乐、看板娘、访问加速、相册，多个相册未实现，目前是瀑布流的逗比截图（用github搭了图床）</li>
-<li>在地铁站附近找到了新房子，一番折腾，距离远了通勤时间基本不变，对比价格还算合适</li>
-</ol>
-<h1 id="进行中"><a href="#进行中" class="headerlink" title="进行中"></a>进行中</h1><ol>
-<li><a href="https://www.bilibili.com/video/BV1AE411r77A">手机摄影教程</a> 还有不到10集看完，地铁上看的还没做笔记</li>
-</ol>
-<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ol>
-<li><a href="https://www.bilibili.com/video/BV12b411K7Zu">Mysql教程</a> 看了前面几集，有时间刷一遍</li>
-<li>找软件测试的教程学习，学完跑路</li>
-</ol>
-<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
-<li>找房子途中再次感受到了北京并不适合我这样低收入群体，大量时间浪费在通勤上，或者加钱。趁早离开的好</li>
-<li>还没接种疫苗，有空得去一趟</li>
-</ul>
-]]></content>
-      <categories>
-        <category>月度总结</category>
-      </categories>
-      <tags>
-        <tag>月度总结</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>手机摄影教程@贾树森（大树）</title>
     <url>/2021/05/09/%E6%89%8B%E6%9C%BA%E6%91%84%E5%BD%B1%E6%95%99%E7%A8%8B-%E8%B4%BE%E6%A0%91%E6%A3%AE%EF%BC%88%E5%A4%A7%E6%A0%91%EF%BC%89/</url>
     <content><![CDATA[<h1 id="第4课-摄影之眼是怎样炼成的？"><a href="#第4课-摄影之眼是怎样炼成的？" class="headerlink" title="第4课 摄影之眼是怎样炼成的？"></a>第4课 摄影之眼是怎样炼成的？</h1><ol>
@@ -4121,6 +4093,48 @@ int LocateElem(SqList L, ElemType e)&#123;
       </categories>
       <tags>
         <tag>摄影</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021-04</title>
+    <url>/2021/05/09/2021-04/</url>
+    <content><![CDATA[<p>梳理近期事情，4月末和5月初</p>
+<h1 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h1><ol>
+<li>换了小米11Pro，刷了官改包的MIUI12.5，各种bug还没修</li>
+<li>博客重新用hexo搭了，加入背景、音乐、看板娘、访问加速、相册，多个相册未实现，目前是瀑布流的逗比截图（用github搭了图床）</li>
+<li>在地铁站附近找到了新房子，一番折腾，距离远了通勤时间基本不变，对比价格还算合适</li>
+</ol>
+<h1 id="进行中"><a href="#进行中" class="headerlink" title="进行中"></a>进行中</h1><ol>
+<li><a href="https://www.bilibili.com/video/BV1AE411r77A">手机摄影教程</a> 还有不到10集看完，地铁上看的还没做笔记</li>
+</ol>
+<h1 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h1><ol>
+<li><a href="https://www.bilibili.com/video/BV12b411K7Zu">Mysql教程</a> 看了前面几集，有时间刷一遍</li>
+<li>找软件测试的教程学习，学完跑路</li>
+</ol>
+<h1 id="Thoughts"><a href="#Thoughts" class="headerlink" title="Thoughts"></a>Thoughts</h1><ul>
+<li>找房子途中再次感受到了北京并不适合我这样低收入群体，大量时间浪费在通勤上，或者加钱。趁早离开的好</li>
+<li>还没接种疫苗，有空得去一趟</li>
+</ul>
+]]></content>
+      <categories>
+        <category>月度总结</category>
+      </categories>
+      <tags>
+        <tag>月度总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021-05中</title>
+    <url>/2021/05/13/2021-05%E4%B8%AD/</url>
+    <content><![CDATA[<ol>
+<li><code>05-13</code> <a href="https://www.bilibili.com/video/BV1AE411r77A">手机摄影教程</a> 看完，简单整理了笔记</li>
+</ol>
+]]></content>
+      <categories>
+        <category>月度总结</category>
+      </categories>
+      <tags>
+        <tag>月度总结</tag>
       </tags>
   </entry>
 </search>
