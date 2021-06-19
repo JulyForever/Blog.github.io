@@ -4249,7 +4249,80 @@ int LocateElem(SqList L, ElemType e)&#123;
 </ul>
 <figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：查询姓名中包含字符a的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;%a%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例2：查询姓名中包含最后一个字符为e的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;%e&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例3：查询姓名中包含第一个字符为e的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;e%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例4：查询姓名中包含第三个字符为x的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;__x%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例5：查询姓名中包含第二个字符为_的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;_\_%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;_$_%&#x27;</span> <span class="keyword">ESCAPE</span> <span class="string">&#x27;$&#x27;</span>; <span class="comment">-- 自定义转义字符为$</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="in查询"><a href="#in查询" class="headerlink" title="in查询"></a>in查询</h2><p>功能：查询某字段的值是否属于指定的列表之内<br><code>a  in(常量值1,常量值2,常量值3,...)</code><br><code>a not in(常量值1,常量值2,常量值3,...)</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：查询部门编号是30/50/90的员工名、部门编号</span></span><br><span class="line"><span class="comment">-- 方式1：</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department_id <span class="keyword">IN</span>(<span class="number">30</span>,<span class="number">50</span>,<span class="number">90</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 方式2：</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department_id <span class="operator">=</span> <span class="number">30</span></span><br><span class="line"><span class="keyword">OR</span> department_id <span class="operator">=</span> <span class="number">50</span></span><br><span class="line"><span class="keyword">OR</span> department_id <span class="operator">=</span> <span class="number">90</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例2：查询工种编号不是SH_CLERK或IT_PROG的员工信息</span></span><br><span class="line"><span class="comment">-- 方式1：</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> job_id <span class="keyword">NOT</span> <span class="keyword">IN</span>(<span class="string">&#x27;SH_CLERK&#x27;</span>,<span class="string">&#x27;IT_PROG&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 方式2：</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> <span class="keyword">NOT</span>(job_id <span class="operator">=</span><span class="string">&#x27;SH_CLERK&#x27;</span></span><br><span class="line"><span class="keyword">OR</span> job_id <span class="operator">=</span> <span class="string">&#x27;IT_PROG&#x27;</span>);</span><br></pre></td></tr></table></figure>
 
+<h2 id="between-and"><a href="#between-and" class="headerlink" title="between and"></a>between and</h2><p>功能：判断某个字段的值是否介于xx之间<br><code>between and/not between and</code></p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：查询部门编号是30-90之间的部门编号、员工姓名</span></span><br><span class="line"><span class="comment">-- 方式1：</span></span><br><span class="line"><span class="keyword">SELECT</span> department_id,last_name</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department_id <span class="keyword">BETWEEN</span> <span class="number">30</span> <span class="keyword">AND</span> <span class="number">90</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 方式2：</span></span><br><span class="line"><span class="keyword">SELECT</span> department_id,last_name</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department_id<span class="operator">&gt;=</span><span class="number">30</span> <span class="keyword">AND</span> department_id<span class="operator">&lt;=</span><span class="number">90</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例2：查询年薪不是100000-200000之间的员工姓名、工资、年薪</span></span><br><span class="line"><span class="comment">-- 方式1：</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,salary,salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>)) 年薪</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>))<span class="operator">&lt;</span><span class="number">100000</span> <span class="keyword">OR</span> salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>))<span class="operator">&gt;</span><span class="number">200000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 方式2：</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,salary,salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>)) 年薪</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>)) <span class="keyword">NOT</span> <span class="keyword">BETWEEN</span> <span class="number">100000</span> <span class="keyword">AND</span> <span class="number">200000</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="is-null-is-not-null"><a href="#is-null-is-not-null" class="headerlink" title="is null/is not null"></a>is null/is not null</h2><ul>
+<li><code>=</code>只能判断普通的内容</li>
+<li><code>IS</code>只能判断NULL值</li>
+<li><code>&lt;=&gt;</code>安全等于，既能判断普通内容，又能判断NULL值</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：查询没有奖金的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例2：查询有奖金的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 错误写法，报错</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="keyword">IS</span> <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 安全等于</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="operator">&lt;=&gt;</span> <span class="number">10000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 安全等于</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="operator">&lt;=&gt;</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="条件查询案例"><a href="#条件查询案例" class="headerlink" title="条件查询案例"></a>条件查询案例</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 1. 查询工资大于 12000 的员工姓名和工资</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,salary</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary<span class="operator">&gt;</span><span class="number">12000</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 2. 查询员工号为 176 的员工的姓名和部门号和年薪</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,department_id,salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>)) 年薪</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> employee_id  <span class="operator">=</span> <span class="number">176</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 3. 选择工资不在 5000 到 12000 的员工的姓名和工资</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,salary</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="keyword">NOT</span> <span class="keyword">BETWEEN</span> <span class="number">5000</span> <span class="keyword">AND</span> <span class="number">12000</span>;</span><br><span class="line"><span class="comment">-- 方式2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 4. 选择在 20 或 50 号部门工作的员工姓名和部门号</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department_id <span class="keyword">IN</span> (<span class="number">20</span>,<span class="number">50</span>);</span><br><span class="line"><span class="comment">-- 方式2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 5. 选择公司中没有管理者的员工姓名及 job_id</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,job_id</span><br><span class="line"><span class="keyword">FROM</span> employees </span><br><span class="line"><span class="keyword">WHERE</span> manager_id <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 6. 选择公司中有奖金的员工姓名，工资和奖金率</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,salary,commission_pct</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 7. 选择员工姓名的第三个字母是 a 的员工姓名</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;__a%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 8. 选择姓名中有字母 a 和 e 的员工姓名</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> last_name <span class="keyword">LIKE</span> <span class="string">&#x27;%a%&#x27;</span>  <span class="keyword">AND</span>  last_name <span class="keyword">LIKE</span> <span class="string">&#x27;%e%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 9. 显示出表 employees 表中 first_name 以 &#x27;e&#x27;结尾的员工信息</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span></span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> first_name <span class="keyword">LIKE</span> <span class="string">&#x27;%e&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 10. 显示出表 employees 部门编号在 80-100 之间 的姓名、职位</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,job_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> department_id <span class="keyword">BETWEEN</span> <span class="number">80</span> <span class="keyword">AND</span> <span class="number">100</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 11. 显示出表 employees 的 manager_id 是 100,101,110 的员工姓名、职位</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,job_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> manager_id <span class="keyword">IN</span> (<span class="number">100</span>,<span class="number">101</span>,<span class="number">110</span>);</span><br></pre></td></tr></table></figure>
+
+<h1 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h1><h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表名</span><br><span class="line">【<span class="keyword">where</span> 筛选条件】</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> 排序列表</span><br></pre></td></tr></table></figure>
+
+<h2 id="执行顺序："><a href="#执行顺序：" class="headerlink" title="执行顺序："></a>执行顺序：</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">① <span class="keyword">from</span> 子句</span><br><span class="line">② <span class="keyword">where</span> 子句</span><br><span class="line">③ <span class="keyword">select</span> 子句</span><br><span class="line">④ <span class="keyword">order</span> <span class="keyword">by</span> 子句</span><br></pre></td></tr></table></figure>
+
+<h2 id="举例："><a href="#举例：" class="headerlink" title="举例："></a>举例：</h2><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> last_name,salary</span><br><span class="line"><span class="keyword">from</span> employees</span><br><span class="line"><span class="keyword">where</span> salary<span class="operator">&gt;</span><span class="number">20000</span></span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> salary ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> employees;</span><br></pre></td></tr></table></figure>
+
+<h2 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h2><ol>
+<li>排序列表可以是单个字段、多个字段、表达式、函数、列数、以及以上的组合</li>
+<li>升序 ，通过 asc   ，默认行为<br>降序 ，通过 desc</li>
+</ol>
+<h2 id="案例说明"><a href="#案例说明" class="headerlink" title="案例说明"></a>案例说明</h2><h3 id="按单个字段排序"><a href="#按单个字段排序" class="headerlink" title="按单个字段排序"></a>按单个字段排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：将员工编号&gt;120的员工信息进行工资的升序</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> employees </span><br><span class="line"><span class="keyword">WHERE</span> employee_id<span class="operator">&gt;</span><span class="number">120</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> salary ;</span><br><span class="line"></span><br><span class="line"><span class="comment">-- 案例1：将员工编号&gt;120的员工信息进行工资的降序</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> </span><br><span class="line"><span class="keyword">FROM</span> employees </span><br><span class="line"><span class="keyword">WHERE</span> employee_id<span class="operator">&gt;</span><span class="number">120</span> </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="按表达式排序"><a href="#按表达式排序" class="headerlink" title="按表达式排序"></a>按表达式排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：对有奖金的员工，按年薪降序</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span>,salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>))  年薪</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>)) <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="按别名排序"><a href="#按别名排序" class="headerlink" title="按别名排序"></a>按别名排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：对有奖金的员工，按年薪降序</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span>,salary<span class="operator">*</span><span class="number">12</span><span class="operator">*</span>(<span class="number">1</span><span class="operator">+</span>IFNULL(commission_pct,<span class="number">0</span>))  年薪</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> commission_pct <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> 年薪 <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="按函数的结果排序"><a href="#按函数的结果排序" class="headerlink" title="按函数的结果排序"></a>按函数的结果排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：按姓名的字数长度进行升序</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> LENGTH(last_name);</span><br></pre></td></tr></table></figure>
+
+<h3 id="按多个字段排序"><a href="#按多个字段排序" class="headerlink" title="按多个字段排序"></a>按多个字段排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例1：查询员工的姓名、工资、部门编号，先按工资升序，再按部门编号降序</span></span><br><span class="line"><span class="keyword">SELECT</span> last_name,salary,department_id</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> salary <span class="keyword">ASC</span>,department_id <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="补充选学：按列数排序"><a href="#补充选学：按列数排序" class="headerlink" title="补充选学：按列数排序"></a>补充选学：按列数排序</h3><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> <span class="number">2</span> <span class="keyword">DESC</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> employees </span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span> first_name;</span><br></pre></td></tr></table></figure>
+
+<h1 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a>常见函数</h1><ul>
+<li>字符函数</li>
+<li>数学函数</li>
+<li>日期函数</li>
+<li>流程控制函数</li>
+</ul>
+<p>函数：类似于java中学过的“方法”，为了解决某个问题，将编写的一系列的命令集合封装在一起，对外仅仅暴露方法名，供外部调用</p>
+<ol>
+<li>自定义方法(函数)</li>
+<li>调用方法(函数)<ul>
+<li>叫什么  ：函数名</li>
+<li>干什么  ：函数功能</li>
+</ul>
+</li>
+</ol>
+<h2 id="字符函数"><a href="#字符函数" class="headerlink" title="字符函数"></a>字符函数</h2><ol>
+<li><p>CONCAT 拼接字符</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> CONCAT(<span class="string">&#x27;hello,&#x27;</span>,first_name,last_name)  备注 <span class="keyword">FROM</span> employees;</span><br></pre></td></tr></table></figure></li>
+<li><p>LENGTH 获取字节长度</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> LENGTH(<span class="string">&#x27;hello,郭襄&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>CHAR_LENGTH 获取字符个数</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">CHAR_LENGTH</span>(<span class="string">&#x27;hello,郭襄&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>SUBSTRING 截取子串</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">注意：起始索引从1开始！！！</span></span><br><span class="line"><span class="comment">substr(str,起始索引，截取的字符长度)</span></span><br><span class="line"><span class="comment">substr(str,起始索引)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">SELECT</span> SUBSTR(<span class="string">&#x27;张三丰爱上了郭襄&#x27;</span>,<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">SELECT</span> SUBSTR(<span class="string">&#x27;张三丰爱上了郭襄&#x27;</span>,<span class="number">7</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>INSTR获取字符第一次出现的索引</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> INSTR(<span class="string">&#x27;三打白骨精aaa白骨精bb白骨精&#x27;</span>,<span class="string">&#x27;白骨精&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>TRIM去前后指定的字符，默认是去空格</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="built_in">TRIM</span>(<span class="string">&#x27; 虚  竹    &#x27;</span>)  <span class="keyword">AS</span> a;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">TRIM</span>(<span class="string">&#x27;x&#x27;</span> <span class="keyword">FROM</span> <span class="string">&#x27;xxxxxx虚xxx竹xxxxxxxxxxxxxxxxxx&#x27;</span>)  <span class="keyword">AS</span> a;</span><br></pre></td></tr></table></figure></li>
+<li><p>LPAD/RPAD  左填充/右填充</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> LPAD(<span class="string">&#x27;木婉清&#x27;</span>,<span class="number">10</span>,<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line"><span class="keyword">SELECT</span> RPAD(<span class="string">&#x27;木婉清&#x27;</span>,<span class="number">10</span>,<span class="string">&#x27;a&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>UPPER/LOWER  变大写/变小写</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="comment">-- 案例：查询员工表的姓名，要求格式：姓首字符大写，其他字符小写，名所有字符大写，且姓和名之间用_分割，最后起别名“OUTPUT”</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">UPPER</span>(SUBSTR(first_name,<span class="number">1</span>,<span class="number">1</span>)),first_name <span class="keyword">FROM</span> employees;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">LOWER</span>(SUBSTR(first_name,<span class="number">2</span>)),first_name <span class="keyword">FROM</span> employees;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">UPPER</span>(last_name) <span class="keyword">FROM</span> employees;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> CONCAT(<span class="built_in">UPPER</span>(SUBSTR(first_name,<span class="number">1</span>,<span class="number">1</span>)),<span class="built_in">LOWER</span>(SUBSTR(first_name,<span class="number">2</span>)),<span class="string">&#x27;_&#x27;</span>,<span class="built_in">UPPER</span>(last_name)) &quot;OUTPUT&quot;</span><br><span class="line"><span class="keyword">FROM</span> employees;</span><br></pre></td></tr></table></figure></li>
+<li><p>STRCMP 比较两个字符大小</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> STRCMP(<span class="string">&#x27;aec&#x27;</span>,<span class="string">&#x27;aec&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p>LEFT/RIGHT  截取子串</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">LEFT</span>(<span class="string">&#x27;鸠摩智&#x27;</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">RIGHT</span>(<span class="string">&#x27;鸠摩智&#x27;</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure></li>
+</ol>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -4257,6 +4330,105 @@ int LocateElem(SqList L, ElemType e)&#123;
       </categories>
       <tags>
         <tag>MySQL</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2021-06</title>
+    <url>/2021/06/15/2021-06/</url>
+    <content><![CDATA[<p>以后更改为每天记录，月末汇总</p>
+<h1 id="近期："><a href="#近期：" class="headerlink" title="近期："></a>近期：</h1><ol>
+<li><p>购买扫地机器人，型号为：科沃斯（Ecovacs）地宝N8pro。<br>查阅知乎资料（江中曾有月）：<a href="https://zhuanlan.zhihu.com/p/261074963">及时、全面又实用的拖/扫地机器人推荐、测评及扫地机器人产品选购指南（2021.6）</a></p>
+</li>
+<li><p>购买组装主机，配置如下：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>型号</th>
+<th>价格</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CPU</td>
+<td>i3 100105f</td>
+<td>1204</td>
+</tr>
+<tr>
+<td>主板</td>
+<td>微星H410 BOMBER</td>
+<td>0</td>
+</tr>
+<tr>
+<td>硬盘</td>
+<td>铠侠 RC10 512G</td>
+<td>376</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>英睿达（Crucial）16GB(8G×2)套装 DDR4 3600频率</td>
+<td>576</td>
+</tr>
+<tr>
+<td>显卡</td>
+<td>旧650ti</td>
+<td>0</td>
+</tr>
+<tr>
+<td>电源</td>
+<td>酷冷至尊（CoolerMaster）额定450W GX450</td>
+<td>249</td>
+</tr>
+<tr>
+<td>机箱</td>
+<td>爱国者（aigo）YOGO M2白色</td>
+<td>143</td>
+</tr>
+<tr>
+<td>散热</td>
+<td>利民（Thermalright）AS120PLUS 刺灵</td>
+<td>109</td>
+</tr>
+<tr>
+<td>键盘</td>
+<td>IKBC C104</td>
+<td>299</td>
+</tr>
+<tr>
+<td>鼠标</td>
+<td>旧罗技M170无线</td>
+<td>0</td>
+</tr>
+<tr>
+<td>音箱</td>
+<td>漫步者 R26T</td>
+<td>189</td>
+</tr>
+<tr>
+<td>总计</td>
+<td>-</td>
+<td>3145</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>购买床垫雅兰<code>梦寐</code>，大约1700，送四件套（选了胡萝卜），整网弹簧，估计味道能小点。床垫只在知乎和b站找到了科普和部分拆解测评，很多型号也没有评测，不了解实际到底怎么样，价格差异在哪里。随随便便大几千的床垫都没测评，也可能是我没找对地方。网易小米的床垫为独立弹簧，用胶比较多，担心味道大最终没有选。</p>
+</li>
+</ol>
+<h1 id="Everyday"><a href="#Everyday" class="headerlink" title="Everyday"></a>Everyday</h1><ul>
+<li><p>6-16：开始六天班的第一天，618零点活动，快1点才睡，白天困的不行。晚上在小区对面吃的烧烤，味道一般，花费130。准备明天去打疫苗第二针，今天早点睡。</p>
+</li>
+<li><p>6-17：上班。中午疫苗没打上，北京生物的没有货。地铁上看了几集纪录片《手术二百年》。晚上看SMZDM，买日常用品，可能还得熬夜[裂开]</p>
+</li>
+<li><p>6-18：上班。京东生鲜活动，100买了300的。买了纸抽</p>
+</li>
+<li><p>6-19：上班。床架不加木板了，太麻烦</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>月度总结</category>
+      </categories>
+      <tags>
+        <tag>月度总结</tag>
       </tags>
   </entry>
 </search>
