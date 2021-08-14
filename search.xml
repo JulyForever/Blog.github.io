@@ -173,53 +173,154 @@
   </entry>
   <entry>
     <title>Git笔记</title>
-    <url>/2021/01/05/Git%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><ul>
-<li><p>进入要管理的文件夹</p>
-</li>
-<li><p>初始化命令</p>
+    <url>/2021/08/05/Git%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="基础命令"><a href="#基础命令" class="headerlink" title="基础命令"></a>基础命令</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git config –global user.name 用户名</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git config –global user.email 邮箱</td>
+<td>设置用户签名</td>
+</tr>
+<tr>
+<td>git init</td>
+<td>初始化本地库</td>
+</tr>
+<tr>
+<td>git status</td>
+<td>查看本地库状态</td>
+</tr>
+<tr>
+<td>git add 文件名</td>
+<td>添加到暂存区</td>
+</tr>
+<tr>
+<td>git commit -m “日志信息” 文件名</td>
+<td>提交到本地库</td>
+</tr>
+<tr>
+<td>git reflog</td>
+<td>查看历史记录</td>
+</tr>
+<tr>
+<td>git reset –hard 版本号</td>
+<td>版本穿梭</td>
+</tr>
+</tbody></table>
+<ol>
+<li><p>进入要管理的文件夹，初始化命令</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure></li>
 <li><p>管理目录下的文件状态</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br><span class="line">注：新增的文件和修改后的文件都是红色</span><br></pre></td></tr></table></figure></li>
-</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br><span class="line">注：新增的文件和修改后的文件都是红色</span><br></pre></td></tr></table></figure></li>
+</ol>
 <span id="more"></span>
 
-<ul>
+<ol start="3">
 <li><p>提交到暂存区，管理指定文件（红变录）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add 文件名</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure></li>
-<li><p>个人信息配置：用户名、邮箱【一次即可】</p>
+<li><p>再查看状态</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></li>
+<li><p>个人信息配置：用户名、邮箱【一次即可】,<br>这里设置用户签名和将来登录 GitHub（或其他代码托管中心）的账号没有任何关系</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;you@example.com&quot;</span><br><span class="line">git config --global user.name &quot;Your Name&quot;</span><br></pre></td></tr></table></figure></li>
 <li><p>提交到版本库，生成版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -m &#39;描述信息&#39;</span><br></pre></td></tr></table></figure></li>
-<li><p>查看版本记录</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log</span><br></pre></td></tr></table></figure></li>
-<li><p>回滚至之前版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git log</span><br><span class="line">git reset --hard 版本号</span><br></pre></td></tr></table></figure></li>
-<li><p>回滚至后续版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reflog</span><br><span class="line">git reset --hard 版本号</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p><img data-src="git%E5%B7%A5%E4%BD%9C%E5%8C%BA.png" alt="git工作区" title="图片标题"></p>
-<ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git commit -m &#39;日志信息&#39; 文件名</span><br><span class="line">git commit -m &quot;my first commit&quot; hello.txt</span><br></pre></td></tr></table></figure></li>
+<li><p>查看状态（没有文件需要提交）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git status</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><img data-src="git%E5%B7%A5%E4%BD%9C%E5%8C%BA.png" alt="git工作区" title="git工作区"></p>
+<h1 id="历史版本"><a href="#历史版本" class="headerlink" title="历史版本"></a>历史版本</h1><h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reflog  查看版本信息</span><br><span class="line">git log     查看版本详细信息</span><br></pre></td></tr></table></figure>
+
+<h2 id="版本穿梭"><a href="#版本穿梭" class="headerlink" title="版本穿梭"></a>版本穿梭</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git reset --hard 版本号</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="https://cdn.jsdelivr.net/gh/JulyForever/Photos/article/%E7%89%88%E6%9C%AC%E7%A9%BF%E6%A2%AD.png" alt="版本穿梭"></p>
+<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git branch 分支名称</td>
+<td>创建分支</td>
+</tr>
+<tr>
+<td>git branch -v</td>
+<td>查看分支</td>
+</tr>
+<tr>
+<td>git checkout 分支名称</td>
+<td>切换分支</td>
+</tr>
+<tr>
+<td>git merge 分支名称</td>
+<td>把指定的分支合并到当前分支上</td>
+</tr>
+</tbody></table>
+<ol>
 <li><p>查看分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch</span><br><span class="line">git branch -v  &#x2F;&#x2F;查看每一个分支的最后一次提交</span><br></pre></td></tr></table></figure></li>
 <li><p>创建分支</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch 分支名称</span><br></pre></td></tr></table></figure></li>
 <li><p>切换分支</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git checkout 分支名称</span><br></pre></td></tr></table></figure></li>
 <li><p>合并分支（其它的合并到当前的）</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git merge 要合并的分支</span><br><span class="line">注意：切换到当前主分支后，再合并其它新分支。如产生冲突需手动处理</span><br></pre></td></tr></table></figure></li>
-<li><p>删除分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d 分支名称</span><br></pre></td></tr></table></figure></li>
-</ul>
+<li><p>处理冲突<br>冲突产生的表现：后面状态为 MERGING<br>编辑有冲突的文件，删除特殊符号，决定要使用的内容。<br>特殊符号：&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD 当前分支的代码 ======= 合并过来的代码 &gt;&gt;&gt;&gt;&gt;&gt;&gt; hot-fix</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git add hello.txt    &#x2F;&#x2F;添加到暂存区</span><br><span class="line">git commit -m &quot;merge hot-fix&quot;    &#x2F;&#x2F;此时使用 git commit 命令时不能带文件名</span><br></pre></td></tr></table></figure>
+
+<p>发现后面 MERGING 消失，变为正常</p>
+</li>
+</ol>
+<ol start="6">
+<li>删除分支<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git branch -d 分支名称</span><br></pre></td></tr></table></figure></li>
+</ol>
 <p><img data-src="%E5%B7%A5%E4%BD%9C%E6%B5%81.png" alt="工作流" title="工作流"></p>
 <p><img data-src="bug%E5%88%86%E6%94%AF.png" alt="bug"></p>
-<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><h2 id="初次连接"><a href="#初次连接" class="headerlink" title="初次连接"></a>初次连接</h2><ol>
+<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>git remote -v</td>
+<td>查看当前所有远程地址别名</td>
+</tr>
+<tr>
+<td>git remote add 别名 远程地址</td>
+<td>起别名</td>
+</tr>
+<tr>
+<td>git push 别名 分支</td>
+<td>推送本地分支上的内容到远程仓库</td>
+</tr>
+<tr>
+<td>git clone 远程地址</td>
+<td>将远程仓库的内容克隆到本地</td>
+</tr>
+<tr>
+<td>git pull 远程库地址别名 远程分支名</td>
+<td>将远程仓库对于分支最新内容拉下来后与当前本地分支直接合并</td>
+</tr>
+</tbody></table>
+<h2 id="初次连接远程仓库"><a href="#初次连接远程仓库" class="headerlink" title="初次连接远程仓库"></a>初次连接远程仓库</h2><ol start="0">
+<li><p>查看当前所有远程地址别名</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote -v 查看当前所有远程地址别名</span><br></pre></td></tr></table></figure></li>
 <li><p>连接远程仓库起别名</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git remote add origin（别名） 远程仓库地址</span><br></pre></td></tr></table></figure></li>
 <li><p>向远程推送代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push -u origin（别名） 分支</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git push -u origin（别名） 分支   </span><br><span class="line">&#x2F;&#x2F;指定一个默认主机，这样后面就可以不加任何参数使用git push</span><br><span class="line">&#x2F;&#x2F;不带任何参数的git push，默认只推送当前分支</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h2 id="新电脑连接到远程仓库"><a href="#新电脑连接到远程仓库" class="headerlink" title="新电脑连接到远程仓库"></a>新电脑连接到远程仓库</h2><ol>
+<h2 id="新电脑克隆远程仓库到本地"><a href="#新电脑克隆远程仓库到本地" class="headerlink" title="新电脑克隆远程仓库到本地"></a>新电脑克隆远程仓库到本地</h2><ol>
 <li><p>新电脑克隆远程仓库代码</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone 远程仓库地址</span><br><span class="line">注：已实现git remote add origin（别名） 远程仓库地址</span><br></pre></td></tr></table></figure></li>
 <li><p>切换分支</p>
@@ -318,7 +419,8 @@
 </ul>
 ]]></content>
       <categories>
-        <category>Git</category>
+        <category>学习笔记</category>
+        <category>git</category>
       </categories>
       <tags>
         <tag>Git</tag>
@@ -5167,7 +5269,7 @@ int LocateElem(SqList L, ElemType e)&#123;
     <title>2021-08</title>
     <url>/2021/08/02/2021-08/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="b511b602126de73852cd391d2caf5c10993bbb1bbe7c320f345428986332c9b9">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35f5f40d8365cb771cfeb0fede49c3bc588f44bee9f68840bb37842909f10230c3811640631425f340116d708482039fb9ad411c92d61983cc993c37d6745d1c18ef784a5dff3c9a6f5003787e7afd3fc1470189ed1d0e98c434ab1c4012921d42289ee0e6140a7dadf1a2c0a074b5ab4e5eb64be1dd65a6b8e40438066cb5a877d4a30e6a1f27e77e53d3b5c234aa12b2282890ef45b3cb5147f3c2a30932929f445fc08bee2a818740004c7db36a80ff52456129acc8472eeaf8cfc1bdfefa76e9b76035226fe005f773dedd8173a629baf0acf14848997c91dfa3879f058f8dc304947a75038b3c753b60c3ef238fafe94aa12e15d7223ec4ea940b3bc84f879c44c1c94c6d498259fe8daab89ab501ae50922d2f4dbe09074a7812b7de9bb321b72e06d69a1e5d7a0d652c100b50f389a2fb181290ab5afa576d1ba1c2e95d93dca5b97d224671ccb92166b1f71f4d3453d03b0d757305e2ebda2724706dc89e78321fbe3a6ed2056c1a5c23c9cb9491ce36a613f6ed1b87fb0416ad5dd7dfff09e600fe200925316d027207a8c1fff1b08f6aa9ca7b4d0a2bf50b7a6dee1</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="db568fc20baf7540e83ed73d4e8cba448b154f2375846ff4e75a392a6e95929e">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35f5f40d8365cb771cfeb0fede49c3bc588f44bee9f68840bb37842909f10230c3811640631425f340116d708482039fb9ad411c92d61983cc993c37d6745d1c18ef784a5dff3c9a6f5003787e7afd3fc1470189ed1d0e98c434ab1c4012921d42289ee0e6140a7dadf1a2c0a074b5ab4e5eb64be1dd65a6b8e40438066cb5a877d4a30e6a1f27e77e53d3b5c234aa12b2282890ef45b3cb5147f3c2a30932929f445fc08bee2a818740004c7db36a80ff52456129acc8472eeaf8cfc1bdfefa76e9b76035226fe005f773dedd8173a629baf0acf14848997c91dfa3879f058f8dc304947a75038b3c753b60c3ef238fafe94aa12e15d7223ec4ea940b3bc84f879c44c1c94c6d498259fe8daab89ab501ae50922d2f4dbe09074a7812b7de9bb321b72e06d69a1e5d7a0d652c100b50f389a2fb181290ab5afa576d1ba1c2e95d93dca5b97d224671ccb92166b1f71f4d3453d03b0d757305e2ebda2724706dc89e78321fbe3a6ed2056c1a5c23c9cb9491ce36a613f6ed1b87fb0416ad5dd7dfff09e600fe200925316d027207a8c1f7bf4a272b19479fdc412029d733376ad9f2f41288c481cb4e57cc38a883920f3d59b1b1240c34485efd772afc2bf1a69053dc645ed8a02e7cc5320f8d63307f13e61f82ebf6ce654509e3ac7a2f150df53ee831602af79bb8f7985f87c6c5b0843ea5947efcce3121ef634f81aae3cdb56470b882f96edb1b04bd363f56048a91f502f543902df0d7ef21154ba7443fe8b7a5adeca3babcf8aec4266932a75076e2b463c62406ff628d8c8e8cc506a2609e4dea3282443550f8ae7dfeb642a483a7b5d8557e83739b5456d502141e61a5f1b66232142f5b0df0c099605ad1bac969ce6852a4ed1bbf1598daafb4785b16b583753b2823d27732f9b226891f5d0e322ca02ce48236c2367d55bfdfaf8eeb0f4a009fb894e7196c8439b101f0efb171e17fa1c1b92c4575cc1af5323e587ccea52cd80a148464c55a904cc60d5ea011f08e140d4874a52b259bba9ba6d66372c45aa34fe287b6c2703e6acadad8dfcf2b1c77b7379a851ea5f51f9c320ef58e7e470c77a659ebc9cff9db94c18f4054ca576418788cb537ca53b095ba37c4cd83aefcce66ed56d08be125625b5acdca5c3c28282da41a387db0f49c9e34148bcbae207b7e8f0413f6ad72f1b0632028bc0d35d2b7b58350162d8a08cb76252e68f88ac3a15fb81d2ec213a44d025d84d7737c9324cebbe108f0ec06f5627ec73512201ef5cc519e048f8eeb3942c26fb5e28284490d762d11713ad7aec7f3785cb1085ac14111613aadab5102938</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-shrink">
       <input class="hbe hbe-input-field hbe-input-field-shrink" type="password" id="hbePass">
@@ -5374,6 +5476,87 @@ int LocateElem(SqList L, ElemType e)&#123;
 <li><p>坐在前桌的某某，你是我十七岁时爱上的女孩，如今，各自安好，我不打扰，致我那美好的高三岁月</p>
 </li>
 <li><p>我们都生活在阴沟里，但仍然有人仰望星空<br>We are all in the gutter, but some of us are looking at the star</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>读书笔记</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>那时候爱上一个人</title>
+    <url>/2021/08/14/%E9%82%A3%E6%97%B6%E5%80%99%E7%88%B1%E4%B8%8A%E4%B8%80%E4%B8%AA%E4%BA%BA/</url>
+    <content><![CDATA[<ol>
+<li><p>老了，就是对身边的事情逐渐习以为常       ——茨威格</p>
+</li>
+<li><p>那时候爱上一个人不是因为你有车有房，而是那天下午阳光很好，你穿了一件白衬衣</p>
+</li>
+<li><p>我是一个不愿意给别人添麻烦的人</p>
+</li>
+</ol>
+<span id="more"></span>
+
+<ol start="4">
+<li><p>不管你对多少异性失望，你都没有理由对爱情失望。因为爱情本身就是希望，永远是生命的一种希望。爱情是你自己的品质，是你自己的心魄，是你自己的处境，与别人无关     ——史铁生</p>
+</li>
+<li><p>一个人的性格决定他的际遇。如果你喜欢保持你的性格，那么你就无权拒绝你的际遇       ——罗曼·罗兰</p>
+</li>
+<li><p>那一刻，我有些淡淡的心酸</p>
+</li>
+<li><p>世间最难得的事是，恰好在这个时间，你喜欢我，我也喜欢你</p>
+</li>
+<li><p>从来都是因为不爱，我们才敢肆无忌惮</p>
+</li>
+<li><p>爱情就是因为有人把你视若珍宝费劲心机才会这样动人</p>
+</li>
+<li><p>如果少年时代听得进过来人的建议，那少年便不为少年，世间也不再会有那么多重复的烦恼</p>
+</li>
+<li><p>你怕不怕，你一个转身，你最亲的人就跟你擦肩而过，再也不能见了呢？</p>
+</li>
+<li><p>我以为我的眼里会出现别人，但除了她再也没有别人了</p>
+</li>
+<li><p>在其位，谋其职</p>
+</li>
+<li><p>世界是道德的世界，人却非道德之人    ——尼采</p>
+</li>
+<li><p>我赢了全世界又如何？偏偏负了你</p>
+</li>
+<li><p>质量是设计制造出来的，不是检验出来的。如果能关注每一个细节，就可以实现零缺陷的目标</p>
+</li>
+<li><p>凡有的，还要加给他，叫他有余；没有的，连他所有的也要夺过来      ——《圣经·马太福音》</p>
+</li>
+<li><p>天之道，损有余而补不足；人之道则不然，损不足以奉有余        ——《道德经》</p>
+</li>
+<li><p>有些人注定是要一生孤独的</p>
+</li>
+<li><p>看尽世间悲凉，更感人生可贵</p>
+</li>
+<li><p>表虽已枯，其心不灭</p>
+</li>
+<li><p>为政以德，譬如北辰，居其所而众星共之    ——孔子</p>
+</li>
+<li><p>七月繁花夏中央，晴丝千尺挽韶光</p>
+</li>
+<li><p>看清这个世界，然后爱她      ——罗曼·罗兰</p>
+</li>
+<li><p>情之所钟，心之所梦</p>
+</li>
+<li><p>我不是归人，只是过客</p>
+</li>
+<li><p>当你们出门，到世界上去走走，不要忘了，手拉手紧挨在一起</p>
+</li>
+<li><p>陌路伊始，相爱无期</p>
+</li>
+<li><p>道路是曲折的，但前途是光明的</p>
+</li>
+<li><p>安好，勿念，各自精彩</p>
+</li>
+<li><p>The world is small and the city is big.People who lack for luck would not see one another again for the rest of life.<br>世界很小，城市很大，欠缺缘分的人也许终生也不会再见了。</p>
+</li>
+<li><p>这个世界很小，我们就这样遇见。这个世界很大，分开就很难再见</p>
 </li>
 </ol>
 ]]></content>
