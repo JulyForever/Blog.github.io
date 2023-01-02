@@ -8893,8 +8893,7 @@ int LocateElem(SqList L, ElemType e)&#123;
     <title>2022总结</title>
     <url>/2023/01/02/2022%E6%80%BB%E7%BB%93/</url>
     <content><![CDATA[<h1 id="回首过去"><a href="#回首过去" class="headerlink" title="回首过去"></a>回首过去</h1><ol>
-<li><p>工具：</p>
-<pre><code> - 购买腾讯云服务器搭网盘放图片，整理截图上传。博客域名修改确保国内可以访问
+<li>工具：<pre><code> - 购买腾讯云服务器搭网盘放图片，整理截图上传。博客域名修改确保国内可以访问
  - 持续升级MIUI，刷机，装shamiko模块
  - 钱迹自动记账
  - 浏览器换edge，启动页使用itab。公司浏览器更换edge
@@ -8903,6 +8902,10 @@ int LocateElem(SqList L, ElemType e)&#123;
  - 看小米13测评
 </code></pre>
 </li>
+</ol>
+<span id="more"></span>
+
+<ol start="2">
 <li><p>生活：</p>
 <pre><code> - 潘家园配眼镜
  - 接种疫苗
