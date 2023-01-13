@@ -1141,7 +1141,7 @@
   <entry>
     <title>python笔记</title>
     <url>/2019/01/14/python%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h1><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
+    <content><![CDATA[<h1 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h1><h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将字符串abc中的每个成员，以字符&#x27;,&#x27;分隔开再拼接成一个字符串</span></span><br><span class="line"><span class="string">&#x27;,&#x27;</span>.join(<span class="string">&#x27;abc&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>输出结果为<code>&#39;a,b,c&#39;</code></p>
@@ -1151,7 +1151,7 @@
 <p>参考：<a href="https://blog.csdn.net/chixujohnny/article/details/53301995">Python中的 .join()用法</a></p>
 <span id="more"></span>
 
-<h1 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h1><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
+<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
 <ul>
 <li><code>sep</code>：表示为分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等，但是不能为空(‘’)。若字符串中没有分隔符，则把整个字符串作为列表的一个元素</li>
 <li><code>num</code>：表示分割次数。如果存在参数num，则仅分隔成 num+1 个子字符串，并且每一个子字符串可以赋给新的变量</li>
@@ -1173,9 +1173,24 @@
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;My,name,is,zhangkang,and,I,am,a,student&quot;</span></span><br><span class="line">b1=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">1</span>)</span><br><span class="line">b2=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">2</span>)</span><br><span class="line">b8=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">8</span>)</span><br><span class="line">b9=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b1)</span><br><span class="line"><span class="built_in">print</span>(b2)</span><br><span class="line"><span class="built_in">print</span>(b8)</span><br><span class="line"><span class="built_in">print</span>(b9)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name,is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>] <span class="comment">#超过最大分割次数，还是最大分割，不报错</span></span><br></pre></td></tr></table></figure>
 
 <p>参考：<a href="https://blog.csdn.net/csdn15698845876/article/details/74012511">python中split()函数讲解</a></p>
-<h1 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h1><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
+<h2 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h2><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
 <p><code>s.strip(rm)</code>，删除s字符串中开头、结尾处，位于rm删除序列的字符<br><code>s.lstrip(rm)</code>，删除s字符串中开头处，位于rm删除序列的字符<br><code>s.rstrip(rm)</code>，删除s字符串中结尾处，位于rm删除序列的字符</p>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">b = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;12&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;21&#x27;</span>) <span class="comment"># 没有顺序</span></span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;31&#x27;</span>) <span class="comment"># 只要开头和结尾中含有rm中的字符 就删除</span></span><br><span class="line"><span class="string">&#x27;23abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;bc&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;123a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="print-f-‘‘-的用法"><a href="#print-f-‘‘-的用法" class="headerlink" title="print(f ‘‘)的用法"></a>print(f ‘‘)的用法</h1><h2 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h2><p><code>print(f&#39;.....&#39;)</code></p>
+<p>注意：<strong>f后面一定要紧跟字符串，不能隔有空格，否则会报错</strong></p>
+<p>print语句中加入f就可以起到和format函数类似的作用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; 1</span><br><span class="line">b &#x3D; 2</span><br><span class="line">c &#x3D; 3</span><br><span class="line">print(f&#39;a&#x3D;&#123;a&#125;, b&#x3D;&#123;b&#125;, c&#x3D;&#123;c&#125;&#39;)</span><br><span class="line"># 等价于print(&#39;a&#x3D;&#123;&#125;, b&#x3D;&#123;&#125;, c&#x3D;&#123;&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">a&#x3D;1, b&#x3D;2, c&#x3D;3</span><br></pre></td></tr></table></figure>
+
+<p>可以看出printf的语法特别清楚，他<a href="https://so.csdn.net/so/search?q=%E6%AF%94%E8%BE%83%E5%99%A8&spm=1001.2101.3001.7020">比较器</a>format的用法更加清晰，因为format还需要前后将括号对号入座，而<strong>printf中的括号可以直观地直接看的里面的值是什么</strong>。</p>
+<h2 id="nf-控制小数点位数"><a href="#nf-控制小数点位数" class="headerlink" title="{:.nf}控制小数点位数"></a><code>&#123;:.nf&#125;</code>控制小数点位数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.sqrt(2)</span><br><span class="line">b &#x3D; np.sqrt(3)</span><br><span class="line">c &#x3D; np.sqrt(5)</span><br><span class="line">print(f&#39;a&#x3D;&#123;a:.1f&#125;, b&#x3D;&#123;b:.2f&#125;, c&#x3D;&#123;c:.3f&#125;&#39;)</span><br><span class="line"># 等效于print(&#39;a&#x3D;&#123;:.1f&#125;, b&#x3D;&#123;:.2f&#125;, c&#x3D;&#123;:.3f&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">a&#x3D;1.4, b&#x3D;1.73, c&#x3D;2.236</span><br><span class="line"># 分别保留1位，两位，三位小数</span><br></pre></td></tr></table></figure>
+
+<p><code>&#123;:.nf&#125;</code>，n代表着保留几位小数，上面的例子一目了然</p>
+<p>这里可以看到，printf比format的优势更明显了，括号里一目了然</p>
+<h2 id="更多解释"><a href="#更多解释" class="headerlink" title="更多解释"></a>更多解释</h2><p>参考python官方文档：<br><a href="https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals">https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals</a></p>
+<p>**这种字符常量表示方式是在python3.6之后引入的。**更低的版本会报错</p>
+<p>PEP 498（即Python Enhancement Proposals， Python增强提案或Python改进建议书），引入了一种新的字符串字面量:f-字符串，或格式化字符串字面量。格式化字符串字面值以’f’作为前缀，类似于str.format()所接受的格式字符串。它们包含用花括号括起来的替换字段。</p>
+<p>更详细的介绍可以参考PEP 498的页面：<a href="https://www.python.org/dev/peps/pep-0498/">https://www.python.org/dev/peps/pep-0498/</a></p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
@@ -8871,7 +8886,7 @@ int LocateElem(SqList L, ElemType e)&#123;
     <title>2023-01</title>
     <url>/2023/01/01/2023-01/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="324b7e6594f786c00a8e1a9448764e14fe52059f2e4a3f30e11000bd74d1511b">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35f5f40d8365cb771cfeb0fede49c3bc588f44bee9f68840bb37842909f10230c3811640631425f340116d708482039fb9ad411c92d61983cc993c37d6745d1c18ef784a5dff3c9a6f5003787e7afd3fc1470189ed1d0e98c434ab1c4012921d42b24b766836beb1823e3a6ee3eb5e28de2fb70c0296d75909bd0a9b16b7c7e320ac814569542cbb362955d2082a8e15f499097d616e7fe1576af81136e62ff6720abe9b9d90385461f5a11d8363cead6cd7d6717d11feb1a3beeab9b2b1a6e5fc83a4c544e09099f186b42463ed0bbe0874dc76350804ad9ae8630358a61269c19b8c19870f36e0efe41d610491c8cb5</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="70fe7d74ddb336cd09afdf2333c1da8e6e147bacb6e5a32972a19d6ba2bed633">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35cc3ea90795ca55f060c3998744e8b12c1351188e2580bc3aa360c6e86aa5e312104315fb3f46a23ecd337a82b97c486726bac6e50097cf04836d3c501cb1d644d6bc48d40239bf73f0ddfae7c8226adcbdb27fa9e091e4d3fac5f6484ec87ffae129d5dc5cf8ece26e75cd11aec14c1a2c388b74d3ffe1f64288deec6df6d290023a492f9fb6a770efd4a710ec71d69dff22f23293fe5b6cf00300ff86edf1e942d610ec99ac1e5d7579e5317b8fe02a938e9b4454314c44758acdf6bb36ca7bb9787c294f5e046ee495be326e2db6995c70486dddf948fb69ec8cd2622a16baa85b11d128b95a3bbf9fa62876019741d1f0e17f28aec2c3fd77ffd276429835798667a071e70c1c4d3b157f24d05527f02c58413908afc72bd11690fb43b95db144a0f1ba4b0d43b6e21647fe9daf3284a2694b6f5f2ad17b44991c881891bd1467cddcc8416417eba08dd29ad6ea78d089bb3505e3103d13abba5b800be9cbe7e31c8a7c5db1444288e9acc3f1899563201ffca7e7fbb33bf0cb109a19dbab5b2a6e6e3591f3ea8469bc0b94bc42762b50180cd3949188e48fb27c8d6cd4b5a0fb25560858b0a522cf29f6eca173b32a25e991bd75202c5b2e6282499bc3adebefa958dde02f10945d595edefc9691ba55e68771087ffefdf1b73d00621c3937a5761b57737bce8691b20469462e57eaee0e30094f4583ab1b328b9ca1066ba5eb6fee72e0a73e6e503ddd70773b4a7a33ffac6f3f62ffb89399c2ce1b5ddb3985bf4a0d1a6013421751a97ec3af419886b4f57ab78c8ec2ddb497b24b2f3ae8e1794d4fd50bdc15f696e1bcc525029952d7cff11b96867ebb3476a2fd017a141878078ce51d5cf827f5f05ea9e586befbd1914eecc4b1574e3fde6cb99f748971bad5d6d7e044ae3491ca821df444fae35752d5cf2fa2483dae987a42739754d35886617536e296a49a7a93a4ef22bcddb92d3fbf07461dca602f373cd78aafc96c46340aee230d23170ba6a79f47477ed21383310e9e5e1ca0213395b975107d4bdeab3e46a6457cd8bef66d9c994108bdd4cab2f81cf959a87f62187459ec8f9262b1f526b0ba3486ed976fb457620ce348afcccacf0cff9c26f0d0d0f506d60ad07b9eeb18495a5aa30f6ca9ff5ab6aeda85bac15c9c2462af499b5b56e1b21da7601cd3d3e4995ce5bea35cd16f09167f341312a067309da8b2dc6edb1431814a10d8dcafc4ddc9c89d76d8332f8970d0bb71e056a979d9261bd05470f2afe35f0dac36ae23f83b29e20009ea656758a0960fc10080855f2f1cfdb81b71c98300870edc2890edf10638a7b2da2a0b02a4487e05e5c9d15e945881d4d6a582b59f065836472f7874004c1fde1d9f74a4afc2844bd0be493348d7a88474e05ea216b0e176aaedeb2bbdf46f882309ce0bd3c003d897aeb352aa2ba2afa5eafd05227f9f80f6aa1da1c40c761bfed6e3ecdd9fe8e6749b6d91368e2e1c2a259c577568fe4a15cc6a1d86bce153df7959be5e9b266af664b8e097fad6d958b10554c6373ca58319f8050af414feb</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-shrink">
       <input class="hbe hbe-input-field hbe-input-field-shrink" type="password" id="hbePass">
@@ -9004,7 +9019,8 @@ int LocateElem(SqList L, ElemType e)&#123;
  - 《转生成为魔剑了》，
  - 《名侦探柯南：万圣节的新娘》
  - 《想要成为影之实力者》
- - 《一念永恒》，《无限恐怖》
+ - 《一念永恒》
+ - 《无限世界》
  - 《一人之下》
  - 《妖怪公寓的幽雅日常》
  - 《元龙》
@@ -9040,6 +9056,202 @@ int LocateElem(SqList L, ElemType e)&#123;
       </categories>
       <tags>
         <tag>年度总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python sorted方法原理</title>
+    <url>/2023/01/08/python%20sorted%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/342921306">python sorted方法原理，重点在key参数背后的lambda函数</a></p>
+<h1 id="首先概括的说明sorted这个内置函数的用法："><a href="#首先概括的说明sorted这个内置函数的用法：" class="headerlink" title="首先概括的说明sorted这个内置函数的用法："></a>首先概括的说明sorted这个内置函数的用法：</h1><p>sorted函数返回一个已经排好序的元素列表，如果我们想以特定的方式进行排序，或者想对一个复杂的元素列表(例如嵌套列表或元组列表)进行排序，我们可以使用key参数。<br>key参数是一个可调用的匿名函数，在排序时，列表中的每一项都会调用key函数，sorted函数基于key函数返回的结果完成列表中项的排序。<br>lambda 关键字的使用，创建了一个可调用的匿名函数。在使用sorted函数的情况下，lambda 匿名函数只能有一个参数，并且返回一个可以比较大小的值。</p>
+<span id="more"></span>
+
+<h1 id="为什么key参数必须是可调用的，以及为什么使用-lambda-作为匿名可调用函数来完成这个任务呢？"><a href="#为什么key参数必须是可调用的，以及为什么使用-lambda-作为匿名可调用函数来完成这个任务呢？" class="headerlink" title="为什么key参数必须是可调用的，以及为什么使用 lambda 作为匿名可调用函数来完成这个任务呢？"></a>为什么key参数必须是可调用的，以及为什么使用 lambda 作为匿名可调用函数来完成这个任务呢？</h1><p>有以下两点：</p>
+<p>（1）lambda关键字给我们提供了一个不用名字就能使用的函数。这个特性使得它非常适合用作函数的参数。lambda 函数的书写方式为，单词 lambda 后跟参数名列表，然后是单个代码块。参数列表和代码块由冒号分隔。这类似于 python 中的其他结构，比如 while、 for、 if 等等，它们都是具有代码块的语句。</p>
+<p>lambda语法如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lambda  参数列表  : 代码块</span><br><span class="line">lambda parameter1,parameter2 : parameter1+parameter2</span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [1]: f00 &#x3D; lambda x: x&#x2F;2</span><br><span class="line"></span><br><span class="line">In [2]: f00(10)</span><br><span class="line">Out[2]: 5.0</span><br><span class="line"></span><br><span class="line">In [3]: (lambda x: x&#x2F;2)(10)</span><br><span class="line">Out[3]: 5.0</span><br><span class="line"></span><br><span class="line">In [4]: (lambda x, y: x &#x2F; y)(10, 2)</span><br><span class="line">Out[4]: 5.0</span><br><span class="line"></span><br><span class="line">In [5]: (lambda: &#39;amazing lambda&#39;)() # func with no args!</span><br><span class="line">Out[5]: &#39;amazing lambda&#39;</span><br></pre></td></tr></table></figure>
+
+<p>（2） sorted函数的内部实现是会遍历列表中的每一个元素(例如， e in list)，并把当前元素传递给 key 参数提供的函数，使用函数的返回结果创建一个排好序的列表。</p>
+<p>sorted函数使用模式如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mylist &#x3D; [3,6,3,2,4,8,23]</span><br><span class="line">sorted(mylist, key&#x3D;WhatToSortBy)</span><br></pre></td></tr></table></figure>
+
+<p>没使用key参数的例子:</p>
+<blockquote>
+<p>[2, 3, 3, 4, 6, 8, 23] # 所有的数字都是从小到大的顺序。</p>
+</blockquote>
+<p>使用key参数的例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mylist &#x3D; [3,6,3,2,4,8,23]</span><br><span class="line">sorted(mylist, key&#x3D;lambda x: x%2&#x3D;&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[3, 3, 23, 6, 2, 4, 8] # 看到这个结果时有什么感觉？</p>
+</blockquote>
+<p>您可能想知道两件事情——首先，为什么奇数会出现在偶数之前。第二，为什么偶数的顺序是错误的？通过分析这个结果，我们将更深入地了解sorted()‘ key’参数是如何工作的，特别是与匿名 lambda 函数的关系。<br>首先，你会注意到，虽然奇数在偶数之前，但偶数本身并没有排序。为什么会这样？<br>因为sorted函数只被调用一次，如果我们指定了key参数，那么我们就按照key函数指向的值进行排序。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sorted(mylist, key&#x3D;lambda x: x%2&#x3D;&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[3,6,3,2,4,8,23] 变成 [0,1,0,1,1,1,0]，以下为lambda函数转换后的值及原值的映射关系。<br>0 -&gt; 3, 1 -&gt; 6, 0 -&gt; 3, 1 -&gt; 2, 1 -&gt; 4, 1 -&gt; 8, 0-&gt;23</p>
+</blockquote>
+<p>现在我们有了一些进展。当你对变换后的列表进行排序时，你得到了什么？</p>
+<blockquote>
+<p>[0,0,0,1,1,1,1]<br>0 -&gt; 3, 0 -&gt; 3, 0-&gt;23, 1 -&gt; 6, 1 -&gt; 2, 1 -&gt; 4, 1 -&gt; 8<br>[3, 3, 23, 6, 2, 4, 8]</p>
+</blockquote>
+<p>好了，现在我们知道为什么奇数会先于偶数了。但接下来的问题是: 为什么在我的最终列表中，6仍然排在2之前？由于排序只发生一次，而且我们不会调用任何排序函数将原始偶数值从低到高排序，因此这些值相对于其他值保持其原始顺序。</p>
+<p><strong>例子：</strong></p>
+<p><strong>mylist = [(3, 5, 8), (6, 2, 8), ( 2, 9, 4), (6, 8, 5)]</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sorted(mylist, key&#x3D;lambda x: x[1])</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p><strong>输出结果：</strong></p>
+<blockquote>
+<p><strong>[(6, 2, 8), (3, 5, 8), (6, 8, 5), (2, 9, 4)]</strong></p>
+</blockquote>
+<p>有任何疑问请留言。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 字典用法详解</title>
+    <url>/2023/01/09/Python%20%E5%AD%97%E5%85%B8%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/355443925">Python 字典用法详解（超全）</a></p>
+<p><strong>字典(Dictionary)是Python提供的一种常用的数据结构，由键（key）和值（value）成对组成，键和值中间以冒号：隔开，项之间用逗号隔开，整个字典由大括号{}括起来</strong>。</p>
+<p>格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dic &#x3D; &#123;key1 : value1, key2 : value2 &#125;</span><br></pre></td></tr></table></figure>
+
+<p>字典也被称作关联数组或哈希表。下面是几种常见的字典创建方式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 方法1</span><br><span class="line">dic1 &#x3D; &#123; &#39;Author&#39; : &#39;Python当打之年&#39; , &#39;age&#39; : 99 , &#39;sex&#39; : &#39;男&#39; &#125;</span><br><span class="line"></span><br><span class="line"># 方法2</span><br><span class="line">lst &#x3D; [(&#39;Author&#39;, &#39;Python当打之年&#39;), (&#39;age&#39;, 99), (&#39;sex&#39;, &#39;男&#39;)]</span><br><span class="line">dic2 &#x3D; dict(lst)</span><br><span class="line"></span><br><span class="line"># 方法3</span><br><span class="line">dic3 &#x3D; dict( Author &#x3D; &#39;Python当打之年&#39;, age &#x3D; 99, sex &#x3D; &#39;男&#39;)</span><br><span class="line"></span><br><span class="line"># 方法4</span><br><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, 99, &#39;男&#39;]</span><br><span class="line">dic4 &#x3D; dict(zip(list1, list2))</span><br><span class="line"></span><br><span class="line"># 方法5 创建空字典</span><br><span class="line">dic &#x3D; &#123;&#125;</span><br><span class="line">print(dic)            #&#123;&#125;</span><br><span class="line">print(type(dic))       # &lt;class &#39;dict&#39;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>字典创建的方式还有很多种，这里不再赘述。</p>
+<span id="more"></span>
+
+<p><strong>接下来是重点</strong></p>
+<p><strong>接下来是重点</strong></p>
+<p><strong>接下来是重点</strong></p>
+<p>字典由 dict 类代表，可以使用**dir(dict)**来查看该类包含哪些方法，输入命令，可以看到如下输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">methods &#x3D; dir(dict)</span><br><span class="line">print(&#39;methods &#x3D; &#39;,methods)</span><br><span class="line"></span><br><span class="line">methods &#x3D; [&#39;__class__&#39;, &#39;__contains__&#39;, &#39;__delattr__&#39;, &#39;__delitem__&#39;, &#39;__dir__&#39;, &#39;__doc__&#39;, &#39;__eq__&#39;, &#39;__format__&#39;, &#39;__ge__&#39;, &#39;__getattribute__&#39;, &#39;__getitem__&#39;, &#39;__gt__&#39;, &#39;__hash__&#39;, &#39;__init__&#39;, &#39;__init_subclass__&#39;, &#39;__iter__&#39;, &#39;__le__&#39;, &#39;__len__&#39;, &#39;__lt__&#39;, &#39;__ne__&#39;, &#39;__new__&#39;, &#39;__reduce__&#39;, &#39;__reduce_ex__&#39;, &#39;__repr__&#39;, &#39;__reversed__&#39;, &#39;__setattr__&#39;, &#39;__setitem__&#39;, &#39;__sizeof__&#39;, &#39;__str__&#39;, &#39;__subclasshook__&#39;, &#39;clear&#39;, &#39;copy&#39;, &#39;fromkeys&#39;, &#39;get&#39;, &#39;items&#39;, &#39;keys&#39;, &#39;pop&#39;, &#39;popitem&#39;, &#39;setdefault&#39;, &#39;update&#39;, &#39;values&#39;]</span><br></pre></td></tr></table></figure>
+
+<p>字典的方法和属性有很多种，这里我们<strong>重点介绍以下11种方法</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[&#39;clear&#39;, &#39;copy&#39;, &#39;fromkeys&#39;, &#39;get&#39;, &#39;items&#39;, &#39;keys&#39;, &#39;pop&#39;, &#39;popitem&#39;, &#39;setdefault&#39;, &#39;update&#39;, &#39;values&#39;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>1、dict.clear()</strong></p>
+<p>clear() 用于清空字典中所有元素（键-值对），对一个字典执行 clear() 方法之后，该字典就会变成一个空字典。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, 99, &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: 99, &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line"></span><br><span class="line">dic1.clear()</span><br><span class="line"># dic1 &#x3D; &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2、dict.copy()</strong></p>
+<p>copy() 用于返回一个字典的浅拷贝。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, 99, &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line"></span><br><span class="line">dic2 &#x3D; dic1 # 浅拷贝: 引用对象</span><br><span class="line">dic3 &#x3D; dic1.copy() # 浅拷贝：深拷贝父对象（一级目录），子对象（二级目录）不拷贝，还是引用</span><br><span class="line">dic1[&#39;age&#39;] &#x3D; 18</span><br><span class="line"></span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: 18, &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line"># dic2 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: 18, &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line"># dic3 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: 99, &#39;sex&#39;: &#39;男&#39;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 dic2 是 dic1 的引用，所以输出结果是一致的，dic3 父对象进行了深拷贝，不会随dic1 修改而修改，子对象是浅拷贝所以随 dic1 的修改而修改，注意父子关系。</p>
+<p><strong>拓展深拷贝：copy.deepcopy()</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import copy</span><br><span class="line"></span><br><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line"></span><br><span class="line">dic2 &#x3D; dic1</span><br><span class="line">dic3 &#x3D; dic1.copy()</span><br><span class="line">dic4 &#x3D; copy.deepcopy(dic1)</span><br><span class="line">dic1[&#39;age&#39;].remove(18)</span><br><span class="line">dic1[&#39;age&#39;] &#x3D; 20</span><br><span class="line"></span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: 20, &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line"># dic2 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: 20, &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line"># dic3 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: [99], &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line"># dic4 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: [18, 99], &#39;sex&#39;: &#39;男&#39;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>dic2 是 dic1 的引用，所以输出结果是一致的；dic3 父对象进行了深拷贝，不会随dic1 修改而修改，子对象是浅拷贝所以随 dic1 的修改而修改；dic4 进行了深拷贝，递归拷贝所有数据，相当于完全在另外内存中新建原字典，所以修改dic1不会影响dic4的数据</p>
+<p><strong>3、dict.fromkeys()</strong></p>
+<p>fromkeys() 使用给定的多个键创建一个新字典，值默认都是 None，也可以传入一个参数作为默认的值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">dic1 &#x3D; dict.fromkeys(list1)</span><br><span class="line">dic2 &#x3D; dict.fromkeys(list1, &#39;Python当打之年&#39;)</span><br><span class="line"></span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: None, &#39;age&#39;: None, &#39;sex&#39;: None&#125;</span><br><span class="line"># dic2 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: &#39;Python当打之年&#39;, &#39;sex&#39;: &#39;Python当打之年&#39;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>4、dict.get()</strong></p>
+<p>get() 用于返回指定键的值，也就是根据键来获取值，在键不存在的情况下，返回 None，也可以指定返回值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line"></span><br><span class="line">Author &#x3D; dic1.get(&#39;Author&#39;)</span><br><span class="line"># Author &#x3D; Python当打之年</span><br><span class="line">phone &#x3D; dic1.get(&#39;phone&#39;)</span><br><span class="line"># phone &#x3D; None</span><br><span class="line">phone &#x3D; dic1.get(&#39;phone&#39;,&#39;12345678&#39;)</span><br><span class="line"># phone &#x3D; 12345678</span><br></pre></td></tr></table></figure>
+
+<p><strong>5、dict.items()</strong></p>
+<p>items() 获取字典中的所有键-值对，一般情况下可以将结果转化为列表再进行后续处理。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line">items &#x3D; dic1.items()</span><br><span class="line">print(&#39;items &#x3D; &#39;, items)</span><br><span class="line">print(type(items))</span><br><span class="line">print(&#39;items &#x3D; &#39;, list(items))</span><br><span class="line"></span><br><span class="line"># items &#x3D; dict_items([(&#39;Author&#39;, &#39;Python当打之年&#39;), (&#39;age&#39;, [18, 99]), (&#39;sex&#39;, &#39;男&#39;)])</span><br><span class="line"># &lt;class &#39;dict_items&#39;&gt;</span><br><span class="line"># items &#x3D; [(&#39;Author&#39;, &#39;Python当打之年&#39;), (&#39;age&#39;, [18, 99]), (&#39;sex&#39;, &#39;男&#39;)]</span><br></pre></td></tr></table></figure>
+
+<p><strong>6、dict.keys()</strong></p>
+<p>keys() 返回一个字典所有的键。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line">keys &#x3D; dic1.keys()</span><br><span class="line">print(&#39;keys &#x3D; &#39;, keys)</span><br><span class="line">print(type(keys))</span><br><span class="line">print(&#39;keys &#x3D; &#39;, list(keys))</span><br><span class="line"></span><br><span class="line"># keys &#x3D; dict_keys([&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;])</span><br><span class="line"># &lt;class &#39;dict_keys&#39;&gt;</span><br><span class="line"># keys &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>7、dict.pop()</strong></p>
+<p>pop() 返回指定键对应的值，并在原字典中删除这个键-值对。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line">sex &#x3D; dic1.pop(&#39;sex&#39;)</span><br><span class="line">print(&#39;sex &#x3D; &#39;, sex)</span><br><span class="line">print(&#39;dic1 &#x3D; &#39;,dic1)</span><br><span class="line"></span><br><span class="line"># sex &#x3D; 男</span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: [18, 99]&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>8、dict.popitem()</strong></p>
+<p>popitem() 删除字典中的最后一对键和值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line">dic1.popitem()</span><br><span class="line">print(&#39;dic1 &#x3D; &#39;,dic1)</span><br><span class="line"></span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: [18, 99]&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>9、dict.setdefault()</strong></p>
+<p>setdefault() 和 get() 类似, 但如果键不存在于字典中，将会添加键并将值设为default。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line">dic1.setdefault(&#39;Author&#39;, &#39;当打之年&#39;)</span><br><span class="line">print(&#39;dic1 &#x3D; &#39;,dic1)</span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: [18, 99], &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line">dic1.setdefault(&#39;name&#39;, &#39;当打之年&#39;)</span><br><span class="line">print(&#39;dic1 &#x3D; &#39;,dic1)</span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: [18, 99], &#39;sex&#39;: &#39;男&#39;, &#39;name&#39;: &#39;当打之年&#39;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>10、dict.update(dict1)</strong></p>
+<p>update() 字典更新，将字典dict1的键-值对更新到dict里，如果被更新的字典中己包含对应的键-值对，那么原键-值对会被覆盖，如果被更新的字典中不包含对应的键-值对，则添加该键-值对。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line">print(&#39;dic1 &#x3D; &#39;,dic1)</span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;Python当打之年&#39;, &#39;age&#39;: [18, 99], &#39;sex&#39;: &#39;男&#39;&#125;</span><br><span class="line"></span><br><span class="line">list3 &#x3D; [&#39;Author&#39;, &#39;phone&#39; ]</span><br><span class="line">list4 &#x3D; [&#39;当打之年&#39;, 12345678]</span><br><span class="line">dic2 &#x3D; dict(zip(list3, list4))</span><br><span class="line">print(&#39;dic2 &#x3D; &#39;,dic2)</span><br><span class="line"># dic2 &#x3D; &#123;&#39;Author&#39;: &#39;当打之年&#39;, &#39;phone&#39;: 12345678&#125;</span><br><span class="line"></span><br><span class="line">dic1.update(dic2)</span><br><span class="line">print(&#39;dic1 &#x3D; &#39;,dic1)</span><br><span class="line"># dic1 &#x3D; &#123;&#39;Author&#39;: &#39;当打之年&#39;, &#39;age&#39;: [18, 99], &#39;sex&#39;: &#39;男&#39;, &#39;phone&#39;: 12345678&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>11、dict.values()</strong></p>
+<p>values() 返回一个字典所有的值。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">list1 &#x3D; [&#39;Author&#39;, &#39;age&#39;, &#39;sex&#39;]</span><br><span class="line">list2 &#x3D; [&#39;Python当打之年&#39;, [18,99], &#39;男&#39;]</span><br><span class="line">dic1 &#x3D; dict(zip(list1, list2))</span><br><span class="line">values &#x3D; dic1.values()</span><br><span class="line">print(&#39;values &#x3D; &#39;, values)</span><br><span class="line">print(type(values))</span><br><span class="line">print(&#39;values &#x3D; &#39;, list(values))</span><br><span class="line"></span><br><span class="line"># values &#x3D; dict_values([&#39;Python当打之年&#39;, [18, 99], &#39;男&#39;])</span><br><span class="line"># &lt;class &#39;dict_values&#39;&gt;</span><br><span class="line"># values &#x3D; [&#39;Python当打之年&#39;, [18, 99], &#39;男&#39;]</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python 字典defaultdict讲解</title>
+    <url>/2023/01/13/Python%20%E5%AD%97%E5%85%B8defaultdict%E8%AE%B2%E8%A7%A3/</url>
+    <content><![CDATA[<p>原文地址：<a href="https://cloud.tencent.com/developer/article/1968062">【Python进阶】可能是全网最详细的defaultdict讲解</a></p>
+<h1 id="1-什么是defaultdict"><a href="#1-什么是defaultdict" class="headerlink" title="1 什么是defaultdict"></a>1 什么是defaultdict</h1><p>从名字上可以看出<code>defaultdict</code>也是一个<code>dict</code>，即<code>键值对</code>。在讲什么是<code>defaultdict</code>之前，我们先看看<code>dict</code>的常规用法。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 也可以写成dict &#x3D; &#123;&#125;</span><br><span class="line">dic &#x3D; dict()</span><br><span class="line">dic[&#39;a&#39;] &#x3D; 1</span><br><span class="line">dic[&#39;b&#39;] &#x3D; 2</span><br><span class="line">print(dic[&#39;a&#39;])</span><br><span class="line">print(dic[&#39;b&#39;])</span><br><span class="line">print(dic[&#39;c&#39;])</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;test.py&quot;, line 7, in &lt;module&gt;</span><br><span class="line">    print(dic[&#39;c&#39;])</span><br><span class="line">KeyError: &#39;c&#39;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>可以看到，如果<code>dict</code>中没有对应的<code>key</code>则会抛出<code>KeyError</code>异常。针对这种情况，一般做法是调用<code>dict</code>的<code>get</code>方法，给一个默认值：</p>
+<p>今天我们要学习的<code>defaultdict</code>便是解决这种带有默认值的<code>dict</code>，上面示例可以用<code>defaultdict</code>来解决：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line">dic &#x3D; defaultdict(int)</span><br><span class="line">dic[&#39;a&#39;] &#x3D; 1</span><br><span class="line">dic[&#39;b&#39;] &#x3D; 2</span><br><span class="line">print(dic[&#39;a&#39;])</span><br><span class="line">print(dic[&#39;b&#39;])</span><br><span class="line">print(dic[&#39;c&#39;])</span><br></pre></td></tr></table></figure>
+
+<p>输出如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">0</span><br></pre></td></tr></table></figure>
+
+<h1 id="2-常规用法"><a href="#2-常规用法" class="headerlink" title="2 常规用法"></a>2 常规用法</h1><p><code>defaultdict</code>接受一个类型对象或函数对象，在取值时，如果不存在对应的<code>key</code>则返回对应的函数返回值或默认构造函数的实例对象：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"></span><br><span class="line">dic_1 &#x3D; defaultdict(int)</span><br><span class="line">dic_2 &#x3D; defaultdict(tuple)</span><br><span class="line">dic_3 &#x3D; defaultdict(list)</span><br><span class="line">dic_4 &#x3D; defaultdict(str)</span><br><span class="line">dic_5 &#x3D; defaultdict(set)</span><br><span class="line"> </span><br><span class="line">print(dic_1[&#39;a&#39;])</span><br><span class="line">print(dic_2[&#39;a&#39;])</span><br><span class="line">print(dic_3[&#39;a&#39;])</span><br><span class="line">print(dic_4[&#39;a&#39;])</span><br><span class="line">print(dic_5[&#39;a&#39;])</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0</span><br><span class="line">()</span><br><span class="line">[]</span><br><span class="line"></span><br><span class="line">set()</span><br></pre></td></tr></table></figure>
+
+<h1 id="3-自定义默认类型"><a href="#3-自定义默认类型" class="headerlink" title="3 自定义默认类型"></a>3 自定义默认类型</h1><p>上面小节我们用了<code>python</code>内置类型，接下来我们使用自定义类型：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line">  </span><br><span class="line">class Cls:</span><br><span class="line">    def __init__(self, val&#x3D;&#39;hello&#39;):</span><br><span class="line">        self.val &#x3D; val</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.val</span><br><span class="line"></span><br><span class="line">def fun(val&#x3D;121):</span><br><span class="line">    return val</span><br><span class="line"></span><br><span class="line">dic_1 &#x3D; defaultdict(Cls)</span><br><span class="line">dic_2 &#x3D; defaultdict(fun)</span><br><span class="line">print(dic_1[&#39;a&#39;])</span><br><span class="line">print(dic_2[&#39;a&#39;])</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hello</span><br><span class="line">121</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，如果传入的是类对象，那么默认值会调用类的构造函数并返回对应实例；如果是函数，则直接调用函数，并将函数返回值作为默认值。</p>
+<h1 id="4-重复调用生成默认值吗？"><a href="#4-重复调用生成默认值吗？" class="headerlink" title="4 重复调用生成默认值吗？"></a>4 重复调用生成默认值吗？</h1><p>当我们多次取不存在的<strong>相同</strong><code>key</code>对应的默认值时，会多次调用函数或构造函数吗？我们看一个示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"> </span><br><span class="line">def fun(val&#x3D;121):</span><br><span class="line">    print(&#39;创建了默认值&#39;)</span><br><span class="line">    return val</span><br><span class="line"> </span><br><span class="line">dic &#x3D; defaultdict(fun) </span><br><span class="line">for i in range(1000):</span><br><span class="line">    dic[&#39;a&#39;]</span><br><span class="line"></span><br><span class="line">print(&#39;------&#39;)</span><br><span class="line">dic[&#39;b&#39;]</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">创建了默认值</span><br><span class="line">------</span><br><span class="line">创建了默认值</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可以看到，同一个<code>key</code>只会调用了一次取默认值函数。</p>
+</blockquote>
+<h1 id="5-返回的默认值是同一个对象吗？"><a href="#5-返回的默认值是同一个对象吗？" class="headerlink" title="5 返回的默认值是同一个对象吗？"></a>5 返回的默认值是同一个对象吗？</h1><p>当<code>key</code>相同时返回的默认值是同一个对象吗？当<code>key</code>不同时返回的默认值是同一个对象吗？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">from collections import defaultdict</span><br><span class="line"> </span><br><span class="line">class Cls:</span><br><span class="line">    def __init__(self, val&#x3D;&#39;hello&#39;):</span><br><span class="line">        self.val &#x3D; val</span><br><span class="line"></span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.val</span><br><span class="line"></span><br><span class="line">dic &#x3D; defaultdict(Cls) </span><br><span class="line"></span><br><span class="line">print(dic[&#39;a&#39;]&#x3D;&#x3D; dic[&#39;a&#39;])</span><br><span class="line">print(dic[&#39;a&#39;]&#x3D;&#x3D; dic[&#39;b&#39;])</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">True</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
+
+<p>从第<code>4</code>小节我们说过：<strong>同一个<code>key</code>只会调用了一次取默认值函数。</strong> 因此也能理解第一个返回结果是<code>True</code>。同理，不同的<code>key</code>会调用分开调用去默认值，因此第二个返回<code>False</code></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>

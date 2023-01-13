@@ -27,15 +27,15 @@
     var CONFIG = {"hostname":"wuliuqi.xyz","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#F6E0C9","save":"auto"},"fancybox":"ture","mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="join()join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。str.join(item)，join函数是一个字符串操作函数。str表示字符串（字符），item表示一个成员，注意括号里必须只能有一个成员，比如&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)这种写法是行不通的。 12#将字符串abc中的每个成员，以字符&amp;#x27;,&amp;#x27;">
+  <meta name="description" content="字符串函数join()join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。str.join(item)，join函数是一个字符串操作函数。str表示字符串（字符），item表示一个成员，注意括号里必须只能有一个成员，比如&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)这种写法是行不通的。 12#将字符串abc中的每个成员，以字符&amp;#x27;,&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python笔记">
 <meta property="og:url" content="http://wuliuqi.xyz/2019/01/14/python%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="July&#39;s Blog">
-<meta property="og:description" content="join()join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。str.join(item)，join函数是一个字符串操作函数。str表示字符串（字符），item表示一个成员，注意括号里必须只能有一个成员，比如&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)这种写法是行不通的。 12#将字符串abc中的每个成员，以字符&amp;#x27;,&amp;#x27;">
+<meta property="og:description" content="字符串函数join()join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。str.join(item)，join函数是一个字符串操作函数。str表示字符串（字符），item表示一个成员，注意括号里必须只能有一个成员，比如&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)这种写法是行不通的。 12#将字符串abc中的每个成员，以字符&amp;#x27;,&amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2019-01-14T02:35:47.000Z">
-<meta property="article:modified_time" content="2019-02-17T09:16:09.000Z">
+<meta property="article:modified_time" content="2023-01-13T08:40:57.249Z">
 <meta property="article:author" content="July">
 <meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
@@ -239,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-02-17 17:16:09" itemprop="dateModified" datetime="2019-02-17T17:16:09+08:00">2019-02-17</time>
+                <time title="修改时间：2023-01-13 16:40:57" itemprop="dateModified" datetime="2023-01-13T16:40:57+08:00">2023-01-13</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,14 +261,14 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.7k</span>
+              <span>3.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>4 分钟</span>
             </span>
 
         </div>
@@ -280,7 +280,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h1><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
+        <h1 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h1><h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将字符串abc中的每个成员，以字符&#x27;,&#x27;分隔开再拼接成一个字符串</span></span><br><span class="line"><span class="string">&#x27;,&#x27;</span>.join(<span class="string">&#x27;abc&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 <p>输出结果为<code>&#39;a,b,c&#39;</code></p>
@@ -290,7 +290,7 @@
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/chixujohnny/article/details/53301995">Python中的 .join()用法</a></p>
 <span id="more"></span>
 
-<h1 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h1><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
+<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
 <ul>
 <li><code>sep</code>：表示为分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等，但是不能为空(‘’)。若字符串中没有分隔符，则把整个字符串作为列表的一个元素</li>
 <li><code>num</code>：表示分割次数。如果存在参数num，则仅分隔成 num+1 个子字符串，并且每一个子字符串可以赋给新的变量</li>
@@ -312,9 +312,24 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="string">&quot;My,name,is,zhangkang,and,I,am,a,student&quot;</span></span><br><span class="line">b1=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">1</span>)</span><br><span class="line">b2=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">2</span>)</span><br><span class="line">b8=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">8</span>)</span><br><span class="line">b9=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b1)</span><br><span class="line"><span class="built_in">print</span>(b2)</span><br><span class="line"><span class="built_in">print</span>(b8)</span><br><span class="line"><span class="built_in">print</span>(b9)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name,is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>] <span class="comment">#超过最大分割次数，还是最大分割，不报错</span></span><br></pre></td></tr></table></figure>
 
 <p>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/csdn15698845876/article/details/74012511">python中split()函数讲解</a></p>
-<h1 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h1><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
+<h2 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h2><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
 <p><code>s.strip(rm)</code>，删除s字符串中开头、结尾处，位于rm删除序列的字符<br><code>s.lstrip(rm)</code>，删除s字符串中开头处，位于rm删除序列的字符<br><code>s.rstrip(rm)</code>，删除s字符串中结尾处，位于rm删除序列的字符</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">b = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;12&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;21&#x27;</span>) <span class="comment"># 没有顺序</span></span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;31&#x27;</span>) <span class="comment"># 只要开头和结尾中含有rm中的字符 就删除</span></span><br><span class="line"><span class="string">&#x27;23abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;bc&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;123a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="print-f-‘‘-的用法"><a href="#print-f-‘‘-的用法" class="headerlink" title="print(f ‘‘)的用法"></a>print(f ‘‘)的用法</h1><h2 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h2><p><code>print(f&#39;.....&#39;)</code></p>
+<p>注意：<strong>f后面一定要紧跟字符串，不能隔有空格，否则会报错</strong></p>
+<p>print语句中加入f就可以起到和format函数类似的作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">a &#x3D; 1</span><br><span class="line">b &#x3D; 2</span><br><span class="line">c &#x3D; 3</span><br><span class="line">print(f&#39;a&#x3D;&#123;a&#125;, b&#x3D;&#123;b&#125;, c&#x3D;&#123;c&#125;&#39;)</span><br><span class="line"># 等价于print(&#39;a&#x3D;&#123;&#125;, b&#x3D;&#123;&#125;, c&#x3D;&#123;&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">a&#x3D;1, b&#x3D;2, c&#x3D;3</span><br></pre></td></tr></table></figure>
+
+<p>可以看出printf的语法特别清楚，他<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%AF%94%E8%BE%83%E5%99%A8&spm=1001.2101.3001.7020">比较器</a>format的用法更加清晰，因为format还需要前后将括号对号入座，而<strong>printf中的括号可以直观地直接看的里面的值是什么</strong>。</p>
+<h2 id="nf-控制小数点位数"><a href="#nf-控制小数点位数" class="headerlink" title="{:.nf}控制小数点位数"></a><code>&#123;:.nf&#125;</code>控制小数点位数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.sqrt(2)</span><br><span class="line">b &#x3D; np.sqrt(3)</span><br><span class="line">c &#x3D; np.sqrt(5)</span><br><span class="line">print(f&#39;a&#x3D;&#123;a:.1f&#125;, b&#x3D;&#123;b:.2f&#125;, c&#x3D;&#123;c:.3f&#125;&#39;)</span><br><span class="line"># 等效于print(&#39;a&#x3D;&#123;:.1f&#125;, b&#x3D;&#123;:.2f&#125;, c&#x3D;&#123;:.3f&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">a&#x3D;1.4, b&#x3D;1.73, c&#x3D;2.236</span><br><span class="line"># 分别保留1位，两位，三位小数</span><br></pre></td></tr></table></figure>
+
+<p><code>&#123;:.nf&#125;</code>，n代表着保留几位小数，上面的例子一目了然</p>
+<p>这里可以看到，printf比format的优势更明显了，括号里一目了然</p>
+<h2 id="更多解释"><a href="#更多解释" class="headerlink" title="更多解释"></a>更多解释</h2><p>参考python官方文档：<br><a target="_blank" rel="noopener" href="https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals">https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals</a></p>
+<p>**这种字符常量表示方式是在python3.6之后引入的。**更低的版本会报错</p>
+<p>PEP 498（即Python Enhancement Proposals， Python增强提案或Python改进建议书），引入了一种新的字符串字面量:f-字符串，或格式化字符串字面量。格式化字符串字面值以’f’作为前缀，类似于str.format()所接受的格式字符串。它们包含用花括号括起来的替换字段。</p>
+<p>更详细的介绍可以参考PEP 498的页面：<a target="_blank" rel="noopener" href="https://www.python.org/dev/peps/pep-0498/">https://www.python.org/dev/peps/pep-0498/</a></p>
 
     </div>
 
@@ -430,7 +445,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#join"><span class="nav-number">1.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#split"><span class="nav-number">2.</span> <span class="nav-text">split()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#strip"><span class="nav-number">3.</span> <span class="nav-text">strip()</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">字符串函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#join"><span class="nav-number">1.1.</span> <span class="nav-text">join()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#split"><span class="nav-number">1.2.</span> <span class="nav-text">split()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#strip"><span class="nav-number">1.3.</span> <span class="nav-text">strip()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#print-f-%E2%80%98%E2%80%98-%E7%9A%84%E7%94%A8%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">print(f ‘‘)的用法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.1.</span> <span class="nav-text">用法示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nf-%E6%8E%A7%E5%88%B6%E5%B0%8F%E6%95%B0%E7%82%B9%E4%BD%8D%E6%95%B0"><span class="nav-number">2.2.</span> <span class="nav-text">&amp;#123;:.nf&amp;#125;控制小数点位数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9B%B4%E5%A4%9A%E8%A7%A3%E9%87%8A"><span class="nav-number">2.3.</span> <span class="nav-text">更多解释</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -446,7 +461,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">62</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -498,12 +513,12 @@ src="//music.163.com/outchain/player?type=2&id=559735259&auto=1&height=66"></ifr
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">313k</span>
+    <span title="站点总字数">327k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">4:45</span>
+    <span title="站点阅读时长">4:58</span>
 </div>
 
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
