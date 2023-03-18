@@ -1139,68 +1139,6 @@
       </tags>
   </entry>
   <entry>
-    <title>python笔记</title>
-    <url>/2019/01/14/python%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h1><h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将字符串abc中的每个成员，以字符&#x27;,&#x27;分隔开再拼接成一个字符串</span></span><br><span class="line"><span class="string">&#x27;,&#x27;</span>.join(<span class="string">&#x27;abc&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>输出结果为<code>&#39;a,b,c&#39;</code></p>
-<p>join里放列表、元组、字典也是可以的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;;&#x27;</span>.join([a,b,c])</span><br><span class="line">&gt;&gt;  <span class="string">&#x27;a;b;c&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://blog.csdn.net/chixujohnny/article/details/53301995">Python中的 .join()用法</a></p>
-<span id="more"></span>
-
-<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
-<ul>
-<li><code>sep</code>：表示为分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等，但是不能为空(‘’)。若字符串中没有分隔符，则把整个字符串作为列表的一个元素</li>
-<li><code>num</code>：表示分割次数。如果存在参数num，则仅分隔成 num+1 个子字符串，并且每一个子字符串可以赋给新的变量</li>
-<li><code>[n]</code>：表示选取第n个分片</li>
-</ul>
-<ol>
-<li>无参数的情况</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;my name is zhangkang&quot;</span></span><br><span class="line">b=<span class="string">&quot;my\nname\nis\nzhangkang&quot;</span></span><br><span class="line">c=<span class="string">&quot;my\tname\tis\tzhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">a=a.split()</span><br><span class="line">b=b.split()</span><br><span class="line">c=c.split()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>有参数的情况</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d=<span class="string">&quot;my,name,is,zhangkang&quot;</span></span><br><span class="line">e=<span class="string">&quot;my;name;is;zhangkang&quot;</span></span><br><span class="line">f=<span class="string">&quot;my-name-is-zhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">d=d.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">e=e.split(<span class="string">&quot;;&quot;</span>)</span><br><span class="line">f=f.split(<span class="string">&quot;-&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(d)</span><br><span class="line"><span class="built_in">print</span>(e)</span><br><span class="line"><span class="built_in">print</span>(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li>有两个参数的情况</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;My,name,is,zhangkang,and,I,am,a,student&quot;</span></span><br><span class="line">b1=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">1</span>)</span><br><span class="line">b2=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">2</span>)</span><br><span class="line">b8=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">8</span>)</span><br><span class="line">b9=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b1)</span><br><span class="line"><span class="built_in">print</span>(b2)</span><br><span class="line"><span class="built_in">print</span>(b8)</span><br><span class="line"><span class="built_in">print</span>(b9)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name,is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>] <span class="comment">#超过最大分割次数，还是最大分割，不报错</span></span><br></pre></td></tr></table></figure>
-
-<p>参考：<a href="https://blog.csdn.net/csdn15698845876/article/details/74012511">python中split()函数讲解</a></p>
-<h2 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h2><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
-<p><code>s.strip(rm)</code>，删除s字符串中开头、结尾处，位于rm删除序列的字符<br><code>s.lstrip(rm)</code>，删除s字符串中开头处，位于rm删除序列的字符<br><code>s.rstrip(rm)</code>，删除s字符串中结尾处，位于rm删除序列的字符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">b = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;12&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;21&#x27;</span>) <span class="comment"># 没有顺序</span></span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;31&#x27;</span>) <span class="comment"># 只要开头和结尾中含有rm中的字符 就删除</span></span><br><span class="line"><span class="string">&#x27;23abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;bc&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;123a&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="print-f-‘‘-的用法"><a href="#print-f-‘‘-的用法" class="headerlink" title="print(f ‘‘)的用法"></a>print(f ‘‘)的用法</h1><h2 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h2><p><code>print(f&#39;.....&#39;)</code></p>
-<p>注意：<strong>f后面一定要紧跟字符串，不能隔有空格，否则会报错</strong></p>
-<p>print语句中加入f就可以起到和format函数类似的作用。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; 1</span><br><span class="line">b &#x3D; 2</span><br><span class="line">c &#x3D; 3</span><br><span class="line">print(f&#39;a&#x3D;&#123;a&#125;, b&#x3D;&#123;b&#125;, c&#x3D;&#123;c&#125;&#39;)</span><br><span class="line"># 等价于print(&#39;a&#x3D;&#123;&#125;, b&#x3D;&#123;&#125;, c&#x3D;&#123;&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">a&#x3D;1, b&#x3D;2, c&#x3D;3</span><br></pre></td></tr></table></figure>
-
-<p>可以看出printf的语法特别清楚，他<a href="https://so.csdn.net/so/search?q=%E6%AF%94%E8%BE%83%E5%99%A8&spm=1001.2101.3001.7020">比较器</a>format的用法更加清晰，因为format还需要前后将括号对号入座，而<strong>printf中的括号可以直观地直接看的里面的值是什么</strong>。</p>
-<h2 id="nf-控制小数点位数"><a href="#nf-控制小数点位数" class="headerlink" title="{:.nf}控制小数点位数"></a><code>&#123;:.nf&#125;</code>控制小数点位数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.sqrt(2)</span><br><span class="line">b &#x3D; np.sqrt(3)</span><br><span class="line">c &#x3D; np.sqrt(5)</span><br><span class="line">print(f&#39;a&#x3D;&#123;a:.1f&#125;, b&#x3D;&#123;b:.2f&#125;, c&#x3D;&#123;c:.3f&#125;&#39;)</span><br><span class="line"># 等效于print(&#39;a&#x3D;&#123;:.1f&#125;, b&#x3D;&#123;:.2f&#125;, c&#x3D;&#123;:.3f&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">a&#x3D;1.4, b&#x3D;1.73, c&#x3D;2.236</span><br><span class="line"># 分别保留1位，两位，三位小数</span><br></pre></td></tr></table></figure>
-
-<p><code>&#123;:.nf&#125;</code>，n代表着保留几位小数，上面的例子一目了然</p>
-<p>这里可以看到，printf比format的优势更明显了，括号里一目了然</p>
-<h2 id="更多解释"><a href="#更多解释" class="headerlink" title="更多解释"></a>更多解释</h2><p>参考python官方文档：<br><a href="https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals">https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals</a></p>
-<p>**这种字符常量表示方式是在python3.6之后引入的。**更低的版本会报错</p>
-<p>PEP 498（即Python Enhancement Proposals， Python增强提案或Python改进建议书），引入了一种新的字符串字面量:f-字符串，或格式化字符串字面量。格式化字符串字面值以’f’作为前缀，类似于str.format()所接受的格式字符串。它们包含用花括号括起来的替换字段。</p>
-<p>更详细的介绍可以参考PEP 498的页面：<a href="https://www.python.org/dev/peps/pep-0498/">https://www.python.org/dev/peps/pep-0498/</a></p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>七天带你玩转MySQL之SQL语句</title>
     <url>/2019/02/09/%E4%B8%83%E5%A4%A9%E5%B8%A6%E4%BD%A0%E7%8E%A9%E8%BD%ACMySQL%E4%B9%8BSQL%E8%AF%AD%E5%8F%A5/</url>
     <content><![CDATA[<h1 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h1><figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> ... <span class="keyword">from</span> ....</span><br><span class="line"><span class="keyword">where</span> ...</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> ...</span><br><span class="line"><span class="keyword">having</span> ...</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> ...</span><br><span class="line">limit ...;</span><br></pre></td></tr></table></figure>
@@ -8886,7 +8824,7 @@ int LocateElem(SqList L, ElemType e)&#123;
     <title>2023-01</title>
     <url>/2023/01/01/2023-01/</url>
     <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="70fe7d74ddb336cd09afdf2333c1da8e6e147bacb6e5a32972a19d6ba2bed633">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35cc3ea90795ca55f060c3998744e8b12c1351188e2580bc3aa360c6e86aa5e312104315fb3f46a23ecd337a82b97c486726bac6e50097cf04836d3c501cb1d644d6bc48d40239bf73f0ddfae7c8226adcbdb27fa9e091e4d3fac5f6484ec87ffae129d5dc5cf8ece26e75cd11aec14c1a2c388b74d3ffe1f64288deec6df6d290023a492f9fb6a770efd4a710ec71d69dff22f23293fe5b6cf00300ff86edf1e942d610ec99ac1e5d7579e5317b8fe02a938e9b4454314c44758acdf6bb36ca7bb9787c294f5e046ee495be326e2db6995c70486dddf948fb69ec8cd2622a16baa85b11d128b95a3bbf9fa62876019741d1f0e17f28aec2c3fd77ffd276429835798667a071e70c1c4d3b157f24d05527f02c58413908afc72bd11690fb43b95db144a0f1ba4b0d43b6e21647fe9daf3284a2694b6f5f2ad17b44991c881891bd1467cddcc8416417eba08dd29ad6ea78d089bb3505e3103d13abba5b800be9cbe7e31c8a7c5db1444288e9acc3f1899563201ffca7e7fbb33bf0cb109a19dbab5b2a6e6e3591f3ea8469bc0b94bc42762b50180cd3949188e48fb27c8d6cd4b5a0fb25560858b0a522cf29f6eca173b32a25e991bd75202c5b2e6282499bc3adebefa958dde02f10945d595edefc9691ba55e68771087ffefdf1b73d00621c3937a5761b57737bce8691b20469462e57eaee0e30094f4583ab1b328b9ca1066ba5eb6fee72e0a73e6e503ddd70773b4a7a33ffac6f3f62ffb89399c2ce1b5ddb3985bf4a0d1a6013421751a97ec3af419886b4f57ab78c8ec2ddb497b24b2f3ae8e1794d4fd50bdc15f696e1bcc525029952d7cff11b96867ebb3476a2fd017a141878078ce51d5cf827f5f05ea9e586befbd1914eecc4b1574e3fde6cb99f748971bad5d6d7e044ae3491ca821df444fae35752d5cf2fa2483dae987a42739754d35886617536e296a49a7a93a4ef22bcddb92d3fbf07461dca602f373cd78aafc96c46340aee230d23170ba6a79f47477ed21383310e9e5e1ca0213395b975107d4bdeab3e46a6457cd8bef66d9c994108bdd4cab2f81cf959a87f62187459ec8f9262b1f526b0ba3486ed976fb457620ce348afcccacf0cff9c26f0d0d0f506d60ad07b9eeb18495a5aa30f6ca9ff5ab6aeda85bac15c9c2462af499b5b56e1b21da7601cd3d3e4995ce5bea35cd16f09167f341312a067309da8b2dc6edb1431814a10d8dcafc4ddc9c89d76d8332f8970d0bb71e056a979d9261bd05470f2afe35f0dac36ae23f83b29e20009ea656758a0960fc10080855f2f1cfdb81b71c98300870edc2890edf10638a7b2da2a0b02a4487e05e5c9d15e945881d4d6a582b59f065836472f7874004c1fde1d9f74a4afc2844bd0be493348d7a88474e05ea216b0e176aaedeb2bbdf46f882309ce0bd3c003d897aeb352aa2ba2afa5eafd05227f9f80f6aa1da1c40c761bfed6e3ecdd9fe8e6749b6d91368e2e1c2a259c577568fe4a15cc6a1d86bce153df7959be5e9b266af664b8e097fad6d958b10554c6373ca58319f8050af414feb</script>
+  <script id="hbeData" type="hbeData" data-hmacdigest="b15380f9a66e34b691db6dc47adbac52c64837045baef961909f121e462db880">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35cc3ea90795ca55f060c3998744e8b12c1351188e2580bc3aa360c6e86aa5e312104315fb3f46a23ecd337a82b97c486726bac6e50097cf04836d3c501cb1d644d6bc48d40239bf73f0ddfae7c8226adcbdb27fa9e091e4d3fac5f6484ec87ffae129d5dc5cf8ece26e75cd11aec14c1a2c388b74d3ffe1f64288deec6df6d292f90202d3f4e7f483a9560a72fd6029d7b372eb014f00ccb57382f5ad00e4a1fc7487689ff416062a0c7806c62617aa673e3835fb00e5a9b007ae55412508987cccbc87aaacc39a61c3c57dc725d9864e3103263b705609f690bd2e2bb2eddbbcd1c87a24f039ca762abe2a0c7f232361ad63de522db30801187ec0e5962d0f9abbae1e01b8fea50531203dfd9601651090704271d19a3fc09497c8158ffecaef0300439283e89614dbfca770886489ec30196fd97f69696d77b597e2d37e9909ae31ea40619708fe4821a5fa92ec0613ff14df1a47b7c0899ceb4a70e0c96dce9997be13493491642d7dfc21edefdcb322c9dc427c621c9f0be35b31cc91dfd48902bf076826c0aa54d1b560e6fdd48842000b275312c6ff0ad84f6a14e08d25517e879d863096aacd26bf02f7ac43e61fd44239408e8d4f61456c421896d414927fdb75a876e2d562485685e9f93aa640b18d6bac2fcac6168ada80fe643639aa85ceaaf893b447ba2e19b18cb2530ceb4d8566c630460603265c2188e96cfb1fb9a0ea492b142110ed316c7d5ed577ff4fa98d5cd3f626bac410b1a9ea554090de8763c897a6d8f1e17abe5761ecae1164996752c9181a1849da6ca6f2388e154abc059e8f2d01e1666f7c2a2bac2b6f2ee55ad2aea3b476aea2f07c81dd6592ca1a63abf9acd3b3885c17618e099ee01c36f14f976eae33e82f2f7a1b943d1f3c9df5b54179411f088a832985cdd049dcdaa4de6080b93050040cda0698d6512ef0805e3897fb861af35e0a7ef35ea143cf67aa6ef50dd201ea231b9a1f2f001adb64e91d6b2e0441c6a3fe3048fa33929b08472b57f97c4a6b9b1e378d82968fc107f15ebee3e473a2604c2ea4976868b89158958b38e63fb2f6da8accdc254a7192def0cc93ce66adddd0ebc58e51c29450ec4974910bf9590daedce3f5d44f51c075c8f5e15ff5d029c3fa258a5833f96303ade24f1dcc9a2a1594762b0d3a7143d8283e2089876b83b88eab9b3e87e8c9193145be30743048c28cfed2ee7124b3a7a1844c3a6ef06cabdb83a2d6e561e70bc4dcb951630ccf0357d83245bb900c79091c6c933bc8aba8d932de0ed49eb28b5396b33fa8a1b072d715f1ac55e095b94fa58620c2629159476ae2397f52792bbea5b7fee99354c2caa72dc74af5df92c860efeaf43f3335455f92d3276476b2f7401de0a63ddb4af6aaf98ece2bf67b405fb70f12d669bf1f061b681d397fca0c2cca3269219190f2363110011df0ca4227adef1dfbb836d49187b8b66a7f18bd235ef4f6a7850459a8a0b1274b11c229cfb8dd82d1a5c162ec71418f5398d2f737ba058236a535b47953cae4553cc02017907ed1a8f0ba1a7a16f6d3e2fbd571c426566e8b0d1b7d6ef4afbcb54d2e87808c3bcfb1a8c3bb98fc5fc3bd8310355a6ffaae0259df82e8e63dbb29cac0fdd0c0686fa7b64a08c0928ee691058f0b767de30b325780b162879ebe25763f33b89cc312289209174cad99d93c3086060ec4e4c5deb58936c4e9a1a2132632a7c90df8d1ca4f6e779a3ce4dab56a07aa1515b8b6d3d5280e973ae1ce0d258abca32c89fff1e7508cac835b85e5697afefda509e607ee610f60607a7ddc90a64db6a86d532a9b7f9515d85b6bcb42a06a10cbbf8db8a9c1ee29b1bcfdbc0fdb1b65f1cafff08f707c60894d03250ba97b7fb6cb92e4fd75cf3742253d75ecf6a23969e898019c68140e72b53c811426f7b9647bd4c5abbd0332b20d09c3d13e664bb67113b15bf98ba9b3a4a51c4a807a93d73240c06557a4f47b2f7a9adeb305d4c1f6a505464287b66e9a7c22b15ca274711745629c32104b9c31f0a99714f25a0dd9e1d99120eb6e841c7ce999e8f72cd83955e9d82cafbbb06c1fb98190b4af03ec28510a4b37fa35298b6169494ba665f5de32e24126fcbd78605759eac8aec0cf7aea672b28c0940d28cea19003fa8102a3a0fee2763150fd8d108407ce075c8073ee28e27fb7d9948e07c692dd6d8e709d0930fe08e583079f00e0cafdbd0b3a045e7e03a1708f391998d6e48940881cb48a88e4d07c411431229982b5e9da4ff7194f6d277e962e9cd96c52fc2587a052a54328eca9a68d5ed3baeacd624efc143257c37e53df263cedd65a747fc326a19778cc9afb37239025d8e0ab90b81dd89ddc610685d5be0b9dba875f700ed3291ffc889c3b9dea1076f0e2790507fe8de10371eb75b93619e13af5d5f2270a8f677a686ca353e26885a97e0be458857aeb64f5894681c3a757af8fb2e75314d00737fd2031013ef13bd5f0de5cff4e9857a76c0d76b8b67741593d7576cc81e17cbe0d471e3b8f38783c6856c9b377c4e980b2487e395965727158fe12f61a2a017ce5a09ba5ac296079361551320c42504955854cf5295e1f1604ef3b18f615ebb82a468dd8105a2c8c749cfd0220965a1ee9834ec128b428be317f643e717edd67a40474e60014cbe8b686840c34ab08a05230be8fcae97c83367736d06fce4ab715d741628c98c12f53d71ea0cd7e38f4275578350e1319a33f7cbf917b221d5a6ac381d179f536e90d536c3b39c53abd257020c158ed6f006813f2dec23467decc393039a43293a00544138a97265e38663076e252ae1a516a1f4e9e9e13003d93316c81a8d4f2ee47b107b7ce7c40ebbd223840fe7af105932368ca4ec1bce26149e4ea833d1a195ce8dc6c81bc497734b0cc1571b10d01a2ad1c715a1525671945a28e6c4064a62d5aafa9429dc9afc0cfb385b05bf87866f26a21ee49a307eb49d602e418f6a368fa2f6a6c0206e9a8dc5d1c4ca6cd503b03c345419881b80d239d511c781d83efd82aa79c6c3f8698884c9e7c454efacf8b9ce3c0b24be77b1247e1932cd76d5cd4ec0387ae36f2f3ac799b68f7aae9af4e0a7a5b08bb6901a5dc2686f83e9b0c4b07d5d4a96bd8184c55abbb77742a2b166c82899014ecf97b760c3bb1ef832e23832a099e3d64b4fac1c824073c7ca0686f6200adf5813446a71f9910b9a9b5a8be06e13c379d658c02a7040378c660b3cae52070d76bedfdac959bf15c3bff7a22273500347cae6f7e0edfd33c14ad244cc1722159326085f7a4a5775071701d9802c0c7840f2e3c9c33f52cef3499ae0e7e3a8a391b9a2bb2fc3f9762e8983f5d8af4a3621d92158b7cc17b1689e078cf8b6c3ef4ca5a806adac4abf13f2bc946b88c5ccac0e330f38ad7700b7ed8b0855bbb0be4b09e75a8a964042aab5657bb0cf58febc013865275f9e52e73924c5eeafbb1520de3aae275a7ef101591ae70aa78c7aa91c48255f2b75cf1e7bcc59df5e1185590c2a8410bc46e9758bae6d3859c0fb4c0368a7e2f8e96af5b9127d3ef39695eb6517b2c59ecfed83d7141e96746c134db425cd82e91bbbe82319633bc3a9a1645a07d1a7746a1b8b938f1ab9e3e03d0fd2e37091a007a68e2dff3cd0edfc53faf71ca15e7b67af461b66a41fb9bedff5fd64681019134be0ef1c0e1113e19f97454471e1f6955855076bb33afd8228d2fd61750a7267abc1f14903917de735d63b37b114f1877250f632a0dedd45269d8c85cfb2429757ca0ba11319d6f23d93aa7f4998fbbeea5ffb990abb20dd7a929b89963ad3de1a0a81a682bb5fac4ec7a857b999d7ddcaef64649731ce13d3412387dca45499435de9f5dd52adfa228961a3e9879e7c5afa96efa2b53f10d7bbc6cd7e205f930d831df30188c251ba17154386301b3b85b70ae15b72d69855bbedf407baf189c7c5aff87cb9f2491da5bbe1166f55f61c2dee161d12bb2a514151c3e8d77eb684ff10bbb63726a824dd3dd82cfc11c280235eafea0a681349c87491dec5c799c02fe15195048b301d6edc491633f1bb6489ca775fc801a6fbf2c8ddc5996113805ff7fad78499045b9053313ee63632fa17b6914a74d8f2e23a85992c1c22ecc9a4fee26ff007c6191acda5e09bfc9fa008f81f7e10a21531820ec4d50f9065a5d5c0871e97ea0ccf1fe96dc91f1f50185b5ba37bc36b2cdb78769fa5c7fa38791252a23af91d6a86578d69eb97ffa3a94c9490370733837a7023bd955c661aa99777da8b9c26b3a6e8d9c40294cfae762df0e28affe58b918331faeae5066182b96f9742c26b7e8e7afb6c83fa3811b59830adb9ce0501a5b0303df2f32471872e520972a805df706d9e2e72e52af1e26320709ac25cc404ebab46063c0217c6a931eb3c871f6a1c7fe26e26ac7e84966dbbb973cc6522324d85ad04ac616dd71e688dce8ff6dde2c03ff1060789ee7530599ebca21241ac1241ee8705f77ba5025566097f269930c0fabf6c595cab7bb943f2701f6320c3fb5d2bb1ca</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-shrink">
       <input class="hbe hbe-input-field hbe-input-field-shrink" type="password" id="hbePass">
@@ -9059,64 +8997,6 @@ int LocateElem(SqList L, ElemType e)&#123;
       </tags>
   </entry>
   <entry>
-    <title>python sorted方法原理</title>
-    <url>/2023/01/08/python%20sorted%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/342921306">python sorted方法原理，重点在key参数背后的lambda函数</a></p>
-<h1 id="首先概括的说明sorted这个内置函数的用法："><a href="#首先概括的说明sorted这个内置函数的用法：" class="headerlink" title="首先概括的说明sorted这个内置函数的用法："></a>首先概括的说明sorted这个内置函数的用法：</h1><p>sorted函数返回一个已经排好序的元素列表，如果我们想以特定的方式进行排序，或者想对一个复杂的元素列表(例如嵌套列表或元组列表)进行排序，我们可以使用key参数。<br>key参数是一个可调用的匿名函数，在排序时，列表中的每一项都会调用key函数，sorted函数基于key函数返回的结果完成列表中项的排序。<br>lambda 关键字的使用，创建了一个可调用的匿名函数。在使用sorted函数的情况下，lambda 匿名函数只能有一个参数，并且返回一个可以比较大小的值。</p>
-<span id="more"></span>
-
-<h1 id="为什么key参数必须是可调用的，以及为什么使用-lambda-作为匿名可调用函数来完成这个任务呢？"><a href="#为什么key参数必须是可调用的，以及为什么使用-lambda-作为匿名可调用函数来完成这个任务呢？" class="headerlink" title="为什么key参数必须是可调用的，以及为什么使用 lambda 作为匿名可调用函数来完成这个任务呢？"></a>为什么key参数必须是可调用的，以及为什么使用 lambda 作为匿名可调用函数来完成这个任务呢？</h1><p>有以下两点：</p>
-<p>（1）lambda关键字给我们提供了一个不用名字就能使用的函数。这个特性使得它非常适合用作函数的参数。lambda 函数的书写方式为，单词 lambda 后跟参数名列表，然后是单个代码块。参数列表和代码块由冒号分隔。这类似于 python 中的其他结构，比如 while、 for、 if 等等，它们都是具有代码块的语句。</p>
-<p>lambda语法如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lambda  参数列表  : 代码块</span><br><span class="line">lambda parameter1,parameter2 : parameter1+parameter2</span><br></pre></td></tr></table></figure>
-
-<p>例如:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [1]: f00 &#x3D; lambda x: x&#x2F;2</span><br><span class="line"></span><br><span class="line">In [2]: f00(10)</span><br><span class="line">Out[2]: 5.0</span><br><span class="line"></span><br><span class="line">In [3]: (lambda x: x&#x2F;2)(10)</span><br><span class="line">Out[3]: 5.0</span><br><span class="line"></span><br><span class="line">In [4]: (lambda x, y: x &#x2F; y)(10, 2)</span><br><span class="line">Out[4]: 5.0</span><br><span class="line"></span><br><span class="line">In [5]: (lambda: &#39;amazing lambda&#39;)() # func with no args!</span><br><span class="line">Out[5]: &#39;amazing lambda&#39;</span><br></pre></td></tr></table></figure>
-
-<p>（2） sorted函数的内部实现是会遍历列表中的每一个元素(例如， e in list)，并把当前元素传递给 key 参数提供的函数，使用函数的返回结果创建一个排好序的列表。</p>
-<p>sorted函数使用模式如下:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mylist &#x3D; [3,6,3,2,4,8,23]</span><br><span class="line">sorted(mylist, key&#x3D;WhatToSortBy)</span><br></pre></td></tr></table></figure>
-
-<p>没使用key参数的例子:</p>
-<blockquote>
-<p>[2, 3, 3, 4, 6, 8, 23] # 所有的数字都是从小到大的顺序。</p>
-</blockquote>
-<p>使用key参数的例子:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mylist &#x3D; [3,6,3,2,4,8,23]</span><br><span class="line">sorted(mylist, key&#x3D;lambda x: x%2&#x3D;&#x3D;0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>[3, 3, 23, 6, 2, 4, 8] # 看到这个结果时有什么感觉？</p>
-</blockquote>
-<p>您可能想知道两件事情——首先，为什么奇数会出现在偶数之前。第二，为什么偶数的顺序是错误的？通过分析这个结果，我们将更深入地了解sorted()‘ key’参数是如何工作的，特别是与匿名 lambda 函数的关系。<br>首先，你会注意到，虽然奇数在偶数之前，但偶数本身并没有排序。为什么会这样？<br>因为sorted函数只被调用一次，如果我们指定了key参数，那么我们就按照key函数指向的值进行排序。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sorted(mylist, key&#x3D;lambda x: x%2&#x3D;&#x3D;0)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>[3,6,3,2,4,8,23] 变成 [0,1,0,1,1,1,0]，以下为lambda函数转换后的值及原值的映射关系。<br>0 -&gt; 3, 1 -&gt; 6, 0 -&gt; 3, 1 -&gt; 2, 1 -&gt; 4, 1 -&gt; 8, 0-&gt;23</p>
-</blockquote>
-<p>现在我们有了一些进展。当你对变换后的列表进行排序时，你得到了什么？</p>
-<blockquote>
-<p>[0,0,0,1,1,1,1]<br>0 -&gt; 3, 0 -&gt; 3, 0-&gt;23, 1 -&gt; 6, 1 -&gt; 2, 1 -&gt; 4, 1 -&gt; 8<br>[3, 3, 23, 6, 2, 4, 8]</p>
-</blockquote>
-<p>好了，现在我们知道为什么奇数会先于偶数了。但接下来的问题是: 为什么在我的最终列表中，6仍然排在2之前？由于排序只发生一次，而且我们不会调用任何排序函数将原始偶数值从低到高排序，因此这些值相对于其他值保持其原始顺序。</p>
-<p><strong>例子：</strong></p>
-<p><strong>mylist = [(3, 5, 8), (6, 2, 8), ( 2, 9, 4), (6, 8, 5)]</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sorted(mylist, key&#x3D;lambda x: x[1])</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-
-<p><strong>输出结果：</strong></p>
-<blockquote>
-<p><strong>[(6, 2, 8), (3, 5, 8), (6, 8, 5), (2, 9, 4)]</strong></p>
-</blockquote>
-<p>有任何疑问请留言。</p>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Python 字典用法详解</title>
     <url>/2023/01/09/Python%20%E5%AD%97%E5%85%B8%E7%94%A8%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/355443925">Python 字典用法详解（超全）</a></p>
@@ -9245,6 +9125,364 @@ int LocateElem(SqList L, ElemType e)&#123;
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">True</span><br><span class="line">False</span><br></pre></td></tr></table></figure>
 
 <p>从第<code>4</code>小节我们说过：<strong>同一个<code>key</code>只会调用了一次取默认值函数。</strong> 因此也能理解第一个返回结果是<code>True</code>。同理，不同的<code>key</code>会调用分开调用去默认值，因此第二个返回<code>False</code></p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python sorted方法原理</title>
+    <url>/2023/01/08/Python%20sorted%E6%96%B9%E6%B3%95%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<p>原文地址：<a href="https://zhuanlan.zhihu.com/p/342921306">python sorted方法原理，重点在key参数背后的lambda函数</a></p>
+<h1 id="首先概括的说明sorted这个内置函数的用法："><a href="#首先概括的说明sorted这个内置函数的用法：" class="headerlink" title="首先概括的说明sorted这个内置函数的用法："></a>首先概括的说明sorted这个内置函数的用法：</h1><p>sorted函数返回一个已经排好序的元素列表，如果我们想以特定的方式进行排序，或者想对一个复杂的元素列表(例如嵌套列表或元组列表)进行排序，我们可以使用key参数。<br>key参数是一个可调用的匿名函数，在排序时，列表中的每一项都会调用key函数，sorted函数基于key函数返回的结果完成列表中项的排序。<br>lambda 关键字的使用，创建了一个可调用的匿名函数。在使用sorted函数的情况下，lambda 匿名函数只能有一个参数，并且返回一个可以比较大小的值。</p>
+<span id="more"></span>
+
+<h1 id="为什么key参数必须是可调用的，以及为什么使用-lambda-作为匿名可调用函数来完成这个任务呢？"><a href="#为什么key参数必须是可调用的，以及为什么使用-lambda-作为匿名可调用函数来完成这个任务呢？" class="headerlink" title="为什么key参数必须是可调用的，以及为什么使用 lambda 作为匿名可调用函数来完成这个任务呢？"></a>为什么key参数必须是可调用的，以及为什么使用 lambda 作为匿名可调用函数来完成这个任务呢？</h1><p>有以下两点：</p>
+<p>（1）lambda关键字给我们提供了一个不用名字就能使用的函数。这个特性使得它非常适合用作函数的参数。lambda 函数的书写方式为，单词 lambda 后跟参数名列表，然后是单个代码块。参数列表和代码块由冒号分隔。这类似于 python 中的其他结构，比如 while、 for、 if 等等，它们都是具有代码块的语句。</p>
+<p>lambda语法如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">lambda  参数列表  : 代码块</span><br><span class="line">lambda parameter1,parameter2 : parameter1+parameter2</span><br></pre></td></tr></table></figure>
+
+<p>例如:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">In [1]: f00 &#x3D; lambda x: x&#x2F;2</span><br><span class="line"></span><br><span class="line">In [2]: f00(10)</span><br><span class="line">Out[2]: 5.0</span><br><span class="line"></span><br><span class="line">In [3]: (lambda x: x&#x2F;2)(10)</span><br><span class="line">Out[3]: 5.0</span><br><span class="line"></span><br><span class="line">In [4]: (lambda x, y: x &#x2F; y)(10, 2)</span><br><span class="line">Out[4]: 5.0</span><br><span class="line"></span><br><span class="line">In [5]: (lambda: &#39;amazing lambda&#39;)() # func with no args!</span><br><span class="line">Out[5]: &#39;amazing lambda&#39;</span><br></pre></td></tr></table></figure>
+
+<p>（2） sorted函数的内部实现是会遍历列表中的每一个元素(例如， e in list)，并把当前元素传递给 key 参数提供的函数，使用函数的返回结果创建一个排好序的列表。</p>
+<p>sorted函数使用模式如下:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mylist &#x3D; [3,6,3,2,4,8,23]</span><br><span class="line">sorted(mylist, key&#x3D;WhatToSortBy)</span><br></pre></td></tr></table></figure>
+
+<p>没使用key参数的例子:</p>
+<blockquote>
+<p>[2, 3, 3, 4, 6, 8, 23] # 所有的数字都是从小到大的顺序。</p>
+</blockquote>
+<p>使用key参数的例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mylist &#x3D; [3,6,3,2,4,8,23]</span><br><span class="line">sorted(mylist, key&#x3D;lambda x: x%2&#x3D;&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[3, 3, 23, 6, 2, 4, 8] # 看到这个结果时有什么感觉？</p>
+</blockquote>
+<p>您可能想知道两件事情——首先，为什么奇数会出现在偶数之前。第二，为什么偶数的顺序是错误的？通过分析这个结果，我们将更深入地了解sorted()‘ key’参数是如何工作的，特别是与匿名 lambda 函数的关系。<br>首先，你会注意到，虽然奇数在偶数之前，但偶数本身并没有排序。为什么会这样？<br>因为sorted函数只被调用一次，如果我们指定了key参数，那么我们就按照key函数指向的值进行排序。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sorted(mylist, key&#x3D;lambda x: x%2&#x3D;&#x3D;0)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[3,6,3,2,4,8,23] 变成 [0,1,0,1,1,1,0]，以下为lambda函数转换后的值及原值的映射关系。<br>0 -&gt; 3, 1 -&gt; 6, 0 -&gt; 3, 1 -&gt; 2, 1 -&gt; 4, 1 -&gt; 8, 0-&gt;23</p>
+</blockquote>
+<p>现在我们有了一些进展。当你对变换后的列表进行排序时，你得到了什么？</p>
+<blockquote>
+<p>[0,0,0,1,1,1,1]<br>0 -&gt; 3, 0 -&gt; 3, 0-&gt;23, 1 -&gt; 6, 1 -&gt; 2, 1 -&gt; 4, 1 -&gt; 8<br>[3, 3, 23, 6, 2, 4, 8]</p>
+</blockquote>
+<p>好了，现在我们知道为什么奇数会先于偶数了。但接下来的问题是: 为什么在我的最终列表中，6仍然排在2之前？由于排序只发生一次，而且我们不会调用任何排序函数将原始偶数值从低到高排序，因此这些值相对于其他值保持其原始顺序。</p>
+<p><strong>例子：</strong></p>
+<p><strong>mylist = [(3, 5, 8), (6, 2, 8), ( 2, 9, 4), (6, 8, 5)]</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sorted(mylist, key&#x3D;lambda x: x[1])</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<p><strong>输出结果：</strong></p>
+<blockquote>
+<p><strong>[(6, 2, 8), (3, 5, 8), (6, 8, 5), (2, 9, 4)]</strong></p>
+</blockquote>
+<p>有任何疑问请留言。</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python之可变参数</title>
+    <url>/2023/01/15/Python%E4%B9%8B%E5%8F%AF%E5%8F%98%E5%8F%82%E6%95%B0/</url>
+    <content><![CDATA[<p>原文地址：<a href="https://blog.csdn.net/cadi2011/article/details/84871401">Python之可变参数，*参数，**参数，以及传入*参数，**参数解包，*args，**kwargs的理解</a></p>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>*参数与**参数是Python参数中的重点知识，他们都被称为可变参数（任意参数），我们经常会在代码中看到*args、**kwargs</p>
+<p>作为函数定义时：</p>
+<p>1、*参数收集所有未匹配的位置参数组成一个tuple对象，局部变量args指向此tuple对象</p>
+<p>2、**参数收集所有未匹配的关键字参数组成一个dict对象，局部变量kwargs指向此dict对象</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">temp</span>(<span class="params">*args,**kwargs</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<p>作为函数调用时：</p>
+<p>1、*参数用于解包tuple对象的每个元素，作为一个一个的位置参数传入到函数中</p>
+<p>2、**参数用于解包dict对象的每个元素，作为一个一个的关键字参数传入到函数中</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_tuple = (<span class="string">&quot;wang&quot;</span>,<span class="string">&quot;yuan&quot;</span>,<span class="string">&quot;wai&quot;</span>)</span><br><span class="line">temp(*my_tuple)</span><br><span class="line"><span class="comment">#---等同于---#</span></span><br><span class="line">temp(<span class="string">&quot;wangyuan&quot;</span>,<span class="string">&quot;yuan&quot;</span>,<span class="string">&quot;wai&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_dict = &#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;wangyuanwai&quot;</span>,<span class="string">&quot;age&quot;</span>:<span class="number">32</span>&#125;</span><br><span class="line"></span><br><span class="line">temp(**my_dict)</span><br><span class="line"><span class="comment">#----等同于----#</span></span><br><span class="line">temp(name=<span class="string">&quot;wangyuanwai&quot;</span>,age=<span class="number">32</span>)</span><br></pre></td></tr></table></figure>
+
+<p>这些基本概念暂时不理解很正常，完全理解需要一个过程……接下来的几个例子会说明这些概念，希望可以对每一位学习Python的同学带来帮助！！  
+ </p>
+<h3 id="包含两个位置参数的函数print-str"><a href="#包含两个位置参数的函数print-str" class="headerlink" title="包含两个位置参数的函数print_str"></a>包含两个位置参数的函数print_str</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_str</span>(<span class="params">first, second</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(first)</span><br><span class="line">    <span class="built_in">print</span>(second)</span><br></pre></td></tr></table></figure>
+
+<p>只传1个参数调用print_str() 函数，会发生什么呢？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">print_str(&quot;hello&quot;)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">TypeError: print_str() takes exactly <span class="number">2</span> arguments (<span class="number">1</span> given)</span><br></pre></td></tr></table></figure>
+
+<p>TypeError：解释器在控制台告知print_str（）函数需要2个参数，而你只为print_str（）函数传入了1个参数！</p>
+<p>思考：怎么修改print_str（）函数为即可接受一个参数、也可接受两个参数、甚者接受数量不定的更多参数呢？</p>
+<h3 id="修改print-str（）函数可接受一个参数、也可接受数量不定的参数"><a href="#修改print-str（）函数可接受一个参数、也可接受数量不定的参数" class="headerlink" title="修改print_str（）函数可接受一个参数、也可接受数量不定的参数"></a>修改print_str（）函数可接受一个参数、也可接受数量不定的参数</h3><p>将print_str（）函数的最后一个参数修改为可变参数*second</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_str</span>(<span class="params">first, *second</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(first)</span><br><span class="line">    <span class="built_in">print</span>(second)</span><br></pre></td></tr></table></figure>
+
+<p>此时我们再传一个参数调用print_str（）函数，看看这次发生什么？</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">print_str(<span class="string">&quot;hello&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hello</span><br><span class="line">()</span><br></pre></td></tr></table></figure>
+
+<p>这次不再报错，传入的第一个字符串参数”hello”打印出来了，没有传入参数的*second则打印的是一个tuple对象的字符串表示形式，即一个括号”()”  。 注意:（）表示含有0个元素的tuple对象！</p>
+<p>思考：为什么second变量变成一个tuple对象了？我们继续向下学习！</p>
+<h3 id="再做一个实验，为print-str（）函数传入四个参数…会发生什么？"><a href="#再做一个实验，为print-str（）函数传入四个参数…会发生什么？" class="headerlink" title="再做一个实验，为print_str（）函数传入四个参数…会发生什么？"></a>再做一个实验，为print_str（）函数传入四个参数…会发生什么？</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">print_str(<span class="string">&quot;hello&quot;</span>,<span class="string">&quot;美女&quot;</span>,<span class="string">&quot;小猫&quot;</span>,<span class="string">&quot;青蛙&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hello</span><br><span class="line">(&#39;美女&#39;, &#39;小猫&#39;, &#39;青蛙&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>第一个参数“hello”，正常打印在第一行……</p>
+<p>第二个参数”美女”，第三个参数“小猫”，第四个参数“青蛙”在函数的内部被组装进1个新的tuple对象中，而这个新的tuple对象会赋值给变量second，此时局部变量second指向了一个tuple对象</p>
+<p>说明：函数调用时传入的参数，会按照从左到右的顺序依次在函数中使用，最左侧的参数先由位置参数first使用（匹配），剩下的所有未匹配的参数会被自动收集到1个新的tuple对象中，而局部变量second会指向这个新的tuple对象</p>
+<p><code>注意：*参数只收集未匹配的位置参数</code></p>
+<h3 id="调用print-str（）函数时，直接传入一个-参数会发生什么？"><a href="#调用print-str（）函数时，直接传入一个-参数会发生什么？" class="headerlink" title="调用print_str（）函数时，直接传入一个 *参数会发生什么？"></a>调用print_str（）函数时，直接传入一个 *参数会发生什么？</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">numbers_strings = (<span class="string">&quot;1&quot;</span>,<span class="string">&quot;2&quot;</span>,<span class="string">&quot;3&quot;</span>,<span class="string">&quot;4&quot;</span>,<span class="string">&quot;5&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_str</span>(<span class="params">first, *second</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(first)</span><br><span class="line">    <span class="built_in">print</span>(second)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print_str(*numbers_strings) </span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">(&#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;)</span><br></pre></td></tr></table></figure>
+
+<p>说明：*numbers_strings出现在函数调用时，称为解包（一个“*”字符后面紧挨着1个tuple对象），numbers_strings自身是一个tuple对象，所以也称为元组的解包，tuple中的元素解包成一个一个的位置参数传入到函数中，所以才有下面两个语句的相等性！</p>
+<p>print_str(*numbers_strings) </p>
+<p>等同于</p>
+<p>print_str(“1”,”2”,”3”,”4”,”5”)  </p>
+<h3 id="未定义可变参数的函数被调用时，传入-参数会发生什么呢？"><a href="#未定义可变参数的函数被调用时，传入-参数会发生什么呢？" class="headerlink" title="未定义可变参数的函数被调用时，传入*参数会发生什么呢？"></a>未定义可变参数的函数被调用时，传入*参数会发生什么呢？</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">numbers_strings = (<span class="string">&quot;1&quot;</span>,<span class="string">&quot;2&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_str</span>(<span class="params">first, second</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(first)    </span><br><span class="line">    <span class="built_in">print</span>(second)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    print_str(*numbers_strings)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+
+<p>print_str(*numbers_string)</p>
+<p>等同于</p>
+<p>print_str(“1”,”2”)</p>
+<p>元组解包的过程中会将每一个元素依次放入到位置参数，这说明元组的解包功能的如下特点：</p>
+<p>1、可以在可变参数中使用</p>
+<p>2、也可以在未定义可变参数的函数上使用</p>
+<p>元组解包功能是完全独立的一个功能</p>
+<p>再次说明：*参数，出现在函数的不同的位置上时，具备不同的功能</p>
+<p>1、当*参数出现在函数定义时，表示可变参数</p>
+<p>2、当*参数出现在函数调用时，则表示解包功能</p>
+<p>注意：解包tuple的时候，tuple的元素数量要与函数的位置参数总数一致</p>
+<p>………………华丽丽分割线，接下来我们再学学**kwargs………………</p>
+<h3 id="函数定义中，参数名称前有两个"><a href="#函数定义中，参数名称前有两个" class="headerlink" title="函数定义中，参数名称前有两个**"></a>函数定义中，参数名称前有两个**</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printStr</span>(<span class="params">**anything</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(anything)</span><br></pre></td></tr></table></figure>
+
+<p>传入两个关键字参数调用printStr函数，看看发生什么？</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">printStr(first = <span class="number">5</span>, second = <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">&#123;<span class="string">&#x27;second&#x27;</span>: <span class="number">100</span>, <span class="string">&#x27;first&#x27;</span>: <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>打印结果为dict对象的字符串形式，为什么anything成为dict了？</p>
+<p><code>说明：函数调用时，传入的关键字参数有匹配的位置参数时，则位置参数优先使用（匹配）这些关键字参数，剩余所有未使用（未匹配）的关键字参数会在函数内组装进一个dict对象中，组装后dict对象会赋值给变量名anything，此时局部变量anything指向一个dict对象</code></p>
+<p><code>注意：**参数只收集未匹配的关键字参数</code></p>
+<h3 id="函数调用时使用字典解包功能（dict对象前加-）"><a href="#函数调用时使用字典解包功能（dict对象前加-）" class="headerlink" title="函数调用时使用字典解包功能（dict对象前加**）"></a>函数调用时使用字典解包功能（dict对象前加**）</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printStr</span>(<span class="params">first, **<span class="built_in">dict</span></span>):</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">str</span>(first) + <span class="string">&quot;\n&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="built_in">dict</span>)</span><br><span class="line">    printDic = &#123;<span class="string">&quot;name&quot;</span>: <span class="string">&quot;tyson&quot;</span>, <span class="string">&quot;age&quot;</span>:<span class="string">&quot;99&quot;</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">printStr(<span class="number">100</span>, **printDic)</span><br><span class="line"><span class="comment">#等同于</span></span><br><span class="line">printStr(<span class="number">100</span>, name = <span class="string">&quot;tyson&quot;</span>, age = <span class="string">&quot;99&quot;</span>) </span><br></pre></td></tr></table></figure>
+
+<p>说明：函数调用时，在一个dict对象的前面，添加**，表示字典的解包，它会把dict对象中的每个键值对元素，依次转换为一个一个的关键字参数传入到函数中</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>Python语法中，当*参数和**参数同时出现在函数定义的参数列表中时，说明参数列表可接受任意数量的参数，它们都统称为可变参数</p>
+<p><strong>函数定义时</strong></p>
+<p>1、*args表示可接受任意个（包含0个）位置参数，当函数调用时，所有未使用（未匹配）的位置参数会在函数内自动组装进一个tuple对象中，此tuple对象会赋值给局部变量args</p>
+<p>2、**kwargs表示可接受任意个（包含0个）关键字参数，当函数调用时，所有未使用（未匹配）的关键字参数会在函数内组装进一个dict对象中，此dict对象会赋值给局部变量kwargs</p>
+<p>注意：函数定义时，二者同时存在，一定需要将*args放在**kwargs之前</p>
+<p>注意：函数定义时，二者同时存在，一定需要将*args放在**kwargs之前</p>
+<p>注意：函数定义时，二者同时存在，一定需要将*args放在**kwargs之前</p>
+<p>（重要的事情说三遍）</p>
+<p><strong>函数调用时</strong></p>
+<p>1、*args表示解包元组对象中的每个元素作为位置参数传入到被调用函数中</p>
+<p>2、**kwargs表示解包字典对象中的每个元素作为关键字参数传入到被调用函数中</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1、可变参数，可以传数量不定的多个参数，包括0个参数</p>
+<p>2、可变参数，必须定义在普通参数（也称位置参数、必选参数、选中参数等名称）以及默认值参数的后面，这是因为可变参数会收集所有【未匹配】的参数，如果将可变参数定义在前面，那么普通参数与默认值参数就无法匹配到传入的参数，因为全都收集到可变参数中了</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printStr</span>(<span class="params">普通参数，默认值参数name=<span class="string">&quot;王员外&quot;</span>,*参数，**参数</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>3、*参数必须定义在**参数的前面</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">printStr</span>(<span class="params">普通参数，*参数，**参数</span>):</span></span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<p>4、调用包含*args参数的函数时，不要直接传入一个tuple对象，如果传入的是一个tuple对象，那么这个tuple对象只会成为未匹配的，函数内组装的tuple对象中一个元素而已。我们可以将tuple对象的元素使用元组解包语法传入，解包语法：*tuple</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">temp = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_first</span>(<span class="params">*args</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(args)</span><br><span class="line"></span><br><span class="line">my_first(temp)  <span class="comment">#temp只算一个参数，除非你有这个需求</span></span><br><span class="line">my_first(*temp) <span class="comment">#OK</span></span><br></pre></td></tr></table></figure>
+
+<p>5、调用包含**kwargs参数的函数时，不要直接传入一个字典对象，一个字典对象只算一个参数，此时会报错，因为一个dict对象不符合关键字参数的语法规范，字典对象可以使用字典解包语法，解包语法： **dict</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_book = &#123;<span class="string">&quot;first&quot;</span>:<span class="string">&quot;小当家&quot;</span>, <span class="string">&quot;seoncd&quot;</span>: <span class="string">&quot;我是baby&quot;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_blood</span>(<span class="params">**kwargs</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(kwargs)</span><br><span class="line"></span><br><span class="line">my_blood(my_book)   <span class="comment">#作为一个字典对象传入</span></span><br><span class="line">my_blood(**my_book) <span class="comment">#一个一个的关键字参数传入</span></span><br></pre></td></tr></table></figure>
+
+<p>6、*参数的变量名，一般使用变量名args，只是建议，你想叫啥名都行，它只是局部变量名</p>
+<p>7、**参数的变量名，一般使用变量名kwargs，只是建议，你想叫啥名都行，它也是个局部变量名</p>
+<h3 id="一个包含位置参数、默认值参数，可变参数的函数（供参考）"><a href="#一个包含位置参数、默认值参数，可变参数的函数（供参考）" class="headerlink" title="一个包含位置参数、默认值参数，可变参数的函数（供参考）"></a>一个包含位置参数、默认值参数，可变参数的函数（供参考）</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_first_blood</span>(<span class="params">first_name,last_name,age=<span class="number">0</span>,*args,**kwargs</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(first_name)</span><br><span class="line">    <span class="built_in">print</span>(last_name)</span><br><span class="line">    <span class="built_in">print</span>(age)</span><br><span class="line">    <span class="keyword">for</span> ele <span class="keyword">in</span> args:</span><br><span class="line">        <span class="built_in">print</span>(ele)</span><br><span class="line">    <span class="keyword">for</span> key,value <span class="keyword">in</span> kwargs.items():</span><br><span class="line">        <span class="built_in">print</span>(key)</span><br><span class="line">        <span class="built_in">print</span>(value) </span><br></pre></td></tr></table></figure>
+
+<p>调用方式：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">my_first_blood(<span class="string">&quot;王&quot;</span>,<span class="string">&quot;员外&quot;</span>)</span><br><span class="line"> </span><br><span class="line">my_first_blood(<span class="string">&quot;王&quot;</span>,<span class="string">&quot;员外&quot;</span>, <span class="number">32</span>)</span><br><span class="line"> </span><br><span class="line">my_first_blood(<span class="string">&quot;王&quot;</span>,<span class="string">&quot;员外&quot;</span>, <span class="number">32</span>, <span class="string">&quot;北京&quot;</span>, <span class="string">&quot;海淀&quot;</span>, style=<span class="string">&quot;开心&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="一个仅传入关键字参数，导致报错的函数"><a href="#一个仅传入关键字参数，导致报错的函数" class="headerlink" title="一个仅传入关键字参数，导致报错的函数"></a>一个仅传入关键字参数，导致报错的函数</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">temp</span>(<span class="params">say, **kwargs</span>):</span></span><br><span class="line">    <span class="built_in">print</span>(say)</span><br><span class="line">    <span class="built_in">print</span>(kwargs)</span><br><span class="line"> </span><br><span class="line">temp(fk=<span class="number">100</span>, hello=<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+
+<p>由于位置参数say，与传入的关键字参数fk和hello均不能匹配，所以此调用会导致报错。关键字参数必须得与位置参数的名称相匹配时，才能被位置参数使用</p>
+<h3 id="解包功能不只是tuple、还有list、str、range"><a href="#解包功能不只是tuple、还有list、str、range" class="headerlink" title="解包功能不只是tuple、还有list、str、range"></a>解包功能不只是tuple、还有list、str、range</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line">first = (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"> </span><br><span class="line">second = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"> </span><br><span class="line">third = <span class="string">&quot;123&quot;</span></span><br><span class="line"> </span><br><span class="line">fourth = <span class="built_in">range</span>(<span class="number">4</span>)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(*first)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(*second)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(*third)</span><br><span class="line"> </span><br><span class="line"><span class="built_in">print</span>(*fourth)</span><br></pre></td></tr></table></figure>
+
+<p>只要是序列类型，可迭代对象，都可以使用解包功能哦</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023-02</title>
+    <url>/2023/02/04/2023-02/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="7e440070564529feb04602dcc8af8db536746e678f298504888521fa4224b5e7">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35cc3ea90795ca55f060c3998744e8b12c1351188e2580bc3aa360c6e86aa5e312104315fb3f46a23ecd337a82b97c486726bac6e50097cf04836d3c501cb1d64b790cde7730594c2a2649501c19ee639229a4946d1a85a34dc5de3684f7bf917519c8a333abddaf2a882483a7f3fddde98f28dfc62e4b96e4796c5ffdee07995a3c3ade23206821245e302982137daf39a67b059d98dee3f3f05c04fe15039c611a5df6fd0e3ed180e765bff1e8d76230da94aa0dc2affeb3f5899b7d3971f75af30bb22932cbb38a4cc71e0714c67ed792f1200ed272ec47fc1c369550297c5c74b12904ddd5dc3f7e3c61712329b0770dd3308eeafec72c8f8033ffaa797b6be5a4f8653292dee91c34c80dd50d69ed0e03b8f97cbfe5995d19e61156eb3e44d26d6263dd2c68955c374f4fe3aad702d81b6a591560d6de5a64527f79df07a6773062ad34dd16b995ce1b5bb191b18a671ea6b37b261f28d1d269cf82b79829db33ed2a99f87f951a8e8ddecb9a4dcf1f590ea25b2a6023a277265fabd140b0dc9c7a61a5e95133ff245c3b397196f6b091bcf266b2b8bf24f6348f5f0feb76473b5a215f951ca53abec39edb8e8d33c0509e09779c765059ca043d5b24cc39f86b97e7cb8c022ccc60ae2d67292e221ffb92df3650ea86680fe1dfc91c0a2efceaf62cfc9c36ad7bc364d0eae8a48562a0e3eb464fe24ca35608551e1b5f8f1dcdd862f3dc3537056331550779f4a25cd2fc473ab4fb5797b804ff52ee1d91066a512e62e4a24c6dbfda2c3f8d37819004c03ec50a578b46c59894bd62e8358060f31c5901258c7d7984f35c9973a708e75c98f35d72c504211767e32a47b591f8bd4b5709b51fd51056f6fb011f9c606340c544c2a0f313b2e31b7cdd6952a75947def67994a5c2344229985876e5a9a30df9cf03bf7137978acdb46e532523d5a3964eb7f30c2fe5fb0f22efb3d6a98337e0c26e1487f28d1de706c64ccfd46a631a5bc746dddc65686b72a8e841ec14dbeaaf346c088d956879fcca35d61f47139e8e562b9ae98c96d235a902438b7816b7826b379b525c85bff412eaec1967c2b7f81cdead374e0e408bc8cca409bf6e9fcae6a213c1df6322a73d1c53c5c5ba0423df5540b7f694f75a742394a03cf50ea81413fb35ff3d18516a3c965d95a0b07902a39616ee0e4497d440bf3c838abd4b2f96946ac3c97d9e38b22512d2de73d37e1b2ad2a40d44c44bac2b530f227faf1e75e11067ff9bfea95c7682f891a08c98a5f25cece972b26a6a9d6c0061a072cfd24303388e9500414b1cd3a8f3d20e597cfe2411c144cf8aab5385aae1080b426de9dbab52a88408f14ca83c86b800132e91e59c9c8837e8ab680a23ff3150da3c5fc4c14ae2252cb53c746f44673cb8b2112d7034d21b0a304babf94bc19348c2592cc2237351915123922cfcf2468fd9f74991a60cafb89b239998eabb88d746280ed2bd9a0d11be6ea41b03920a0ff5c070304f221d6c55cce92c433207348ecc52b0833fbcff922cbe6bcf818473b6dd821e28d9eac239f85b3722d28f0c5b6ee234d78585122da164e84d1a136191b17f71c50f2c93c2df5992580021f309dd9798f107fde73b3d18f73a6daf9fc790b1735384301b1d4081820c68a5e11768f824fff914998c191175d7f74a34bb11d2728d673063ad3dbbb28f4d9fe36011e8912eb165f206f5fc6f990323682d7497edced1a1d7662e709995ed942031bf04b262de9727ef9c37c4f597335b1ddd309091ca332047d9017ed48441c16a8b10a427120edea28e9048c8fda4f6b8c0f8fc18d5d20a4eed2a57a61de95918bead2b9c423a8145bcfe56234d949ed578b2e2fecb80931bce3816c84f422691899d5e5f7b4efd24a9cbb62f830022e83256442fee725f6aa6de91c98e5741917007fe5f2e3ebd0e8a3f0fe071a5ad4750310b95303bff73a90e54e941ebc57754c9076c10f6091d69783c4b48d684ffa71300411b48afba9d1aee04534fe07551824af77aa11933ee1e3808ede4ade00ace2f1b688692b822950bf1c0f7e28993a8e15c1028bd559ebf206279c2dbbe9e8fff9fa06dc08aa77fe699e1b24731ff917ee964b02329a86abab4438b805d4264c30b8506025851b5c0867328c61fd1edc4c82adda4bf6aebc4be602f1d0ea951b5e99dfb82109a75261d43cfc88aeda9d226235279148c64fa4112a92d7876b119c6cc959ac618f2c6149c2b86a00e881e7529abf979a4945f3293dbb0fffa70c17e7ba804f0ec66b348806909fc6cd132cadc1206ff83f183b0c48f9e51c4a3266649fd689f575e5c32be3ed37520fcaee3fb06e8bcd1a1b17ff0c20572608c44ee6f912332d3c95e8b163e0d9fa88dfcdb25f0a7527d875744d268327ada115d76957179721929d3f3d5e0e328c2169abc41a9b1d6b80e630cd7f58b65ea0f213bfe870e6e24167dee0ede56c508e28988e80104fe4190da8c3da8e4f4ca9687ca3c6c5d9d8102f1328b06b9120ee54de08211851e933506e8c37e2500bdd3b6b56584eb4ee4b59dffe745b5766a731cbc94f0fbe3041fff0c76457bbe7f78ab1ca39b704bb739885c6f86dbef2c05c39dd7cb1042ccf5724af1110b41e88b3792398c2d26fbbc1aac929bc1ef05e14a715b544b511a4d120f2c6fbd018d8bbb4a30392de36ae049f270a5532c4382e5212cca8f3fb945d8cb6b81569b6cdd30e69039beed0d8c1db1b4a05acfd09e9fe27f2a372d233533584843d614e11810a913714f66a1135ae87d3d49f8dbc4cc2b1e86a100720e75d80f720456e921b460c5419384844aa40f497e79592ab2ca0e850fba5524be01165243bc941c39b6aa50f6bc2bbda338ea65ac316a4b0c0a92755b6a538410ba47eadd91f29dc58cc9a6fec67d1023f9842fc5831dd6c62f5c318db7ca6113d2db7cbed4d3eca536d76be3695ee38cb1cb44863a534422a2be3b354aa12dc446212c0d229c8c4943a44d3c251e1e89f12ad9502a0756639c5bc42c4ccd968136a41e1957d94448544663eac848ba76294aa157b49ac0c0dc5066d2f3bd4679d23e876745e3834038af592fe5ed6d9cc1a0ab82cc52569f597caa73d45a243b4a23786c6dcfc235cd33177ea88b5f155cdbf3353a7d8f1def620f96229d50fe31eb692145335e287040b205ad2d3b4aec3a55a2146dcef6d0ac67317089fa172d1e2fd6ac365afe0d3e2a17afff675026b5b320de9e4be6282f1e30cfad5a72f28054eba9a02b1062dc64a0cada90dd038adb1ce995d6b131d029a1f08f66de051b50a618da7a3a55ea51edd638dad2f84298bb101ab873b773f6c595caebe7794eb2fa05ea04cd8786681d04c4c09ee1548b0b355a16861bc9268f1a982f37a8f2cc2acb43e824a123b477294a31656f185f595385305310b63afb9efbb523677ef13b6c99d06ab9d42ab1f3a7894ad9173f92353458f56c030eca8d8c8fd2d7755bbf327ec8075e1d9eee4345d3bb12cfb50dd5a8359e863106fad775d281245a79c86235b4240b5787a1bd4132529c150bcf10ad6bcb85dd13d69de631232dd63cb2311817eb83a1d6f6c68be1820b045ad6f3997f88e5f39616ae14356c879d2e7743ba99248806c82d2d392276fd974b46762fdeb08db5cfa104a6aaab316bba459d3c9e3d089d0549b2e98a7060285223924fcbda5a630ad903db21b5f83941519a9f88885dd8ab627337795d0e4bbd2dd6743360793b28a85c3206b82f6d9dfa6d62ec923dd6cbb77b70ddd1e29563c1d4245df8ef85269518955dd164b7772b4aeeaed77359ec34267d9f4b22d12817ccc03caf33cc742f87c190fbc325f0cc494c4b17fc0678a0d18f8</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-shrink">
+      <input class="hbe hbe-input-field hbe-input-field-shrink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-shrink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-shrink">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>月度总结</category>
+      </categories>
+      <tags>
+        <tag>月度总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2023-03</title>
+    <url>/2023/03/04/2023-03/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉, 这个密码看着不太对, 请再试试." data-whm="抱歉, 这个文章不能被校验, 不过您还是能看看解密后的内容.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="dce0dafedaaef95206c2c88f818bd3398cae2f228255490b6ffd017f56ab0741">21b5bcc0e4657ce349e1a94ae87ceae177e19bfdd8f117aa27ee9fb5fc3b17b35f5f40d8365cb771cfeb0fede49c3bc588f44bee9f68840bb37842909f10230c3811640631425f340116d708482039fb9ad411c92d61983cc993c37d6745d1c18ef784a5dff3c9a6f5003787e7afd3fc1470189ed1d0e98c434ab1c4012921d45bd14ffa17ef10aacb1c3901c9d323583b9a141a9f619d169aea75d45d6a6953b1b70602095503e9861a9075605a46a918abb18fc95f37563ef131f21a25a6ce51e9a99094fd16d812f4cd9fecd7a60088008d2c89c04903ad1abe0223139c7d188efd41ea51ae5a340c18a86a104fd4bd989cdc249c87ca91958c383100341f903fe3c9ae4850ef5a1bc587e6855141e807a5706fb7519c95c2fa3e895744cffb98185d75e040888524e55291349dab79e409b8cf6b452334946442c430370dbf87b60fada771657f9fd7c9a3647605db372cf35cad2145f543f3bee096cf208f7c4dd26a0ce84e83debc8db6b779ec27e1ec193435e5df8339b0b64a87b8d6ad6a2924e6dd852098f8526e2b4f426e6c72bc165f8e8e58163f91afdf380f4b28831fc3dbc2f54c73ee19b8f0d8d2323997fec02f38298a0b11f867d6fd878f7613ce119b99ced0a2e796d08f93f497230f619b5ea0a8440f3ac1b377c81594a698d5ce2c8b3d0baebb871b24c3b7774a98279fee83f22e98bce03b2e15c990dc2aba5d2ee1796ee3a6693099a17dd361197554d9b05c0a9392f5ac5e92744721e3e95b2f6cd588ea80a36ec35a3d38f754c305868f783265a0667a86c426793d43b6499dded6074f05bde0c7b1b87bd8e76b801acf18f6ba3fdcf7b294a155dad43cc24140bf0764695e09fb73ec1768a5fccf95f8f4593014b14dfd5a6c1a9312ed8e22d13008f2840b0c458714e53b5160935546ada428320504c41efb0fdabff9b27b308aa9dd98cc4cb07d893db881968e8871ff76d1df0d16b9d263ff819301d29e5180a1225040f87919f88d513da72afb905f49dd3f5b157415370fa264910799ebf87b56f82b0f3373a6ca884dca80fc95915f4fc9dcfc1428a0adfe16ebbeff244100ef1579c7c453372a50044eadc22c76e386959a143f45b780bfd66aae63d2aaacd897181d1f7cd28a800deee61119367c2a2aa5a5cf8517bca53f0c2180f480f8ac7d3becf154b7e44037f0ed31215f526ca87d0725ac16f68f2542157fffedb6569a057f8f4ff5728233652b974885ee3951fd3863c3a3cf9135a04384a5ce1950497d9b672555baee77aaa1f02511a45feaf0eec4882d2c005b57d3d7dd5588e11fa996728a24e0d7634ff89ff8bc1fe074971635bf2449810218431cc5c3a0c2bedc4c027393951c406a6cb512316701af14fd3bbe93a4a27b453fa48099037e43ac2bc3439ce5cc3ffa3fac2bc01a822fb620c6ab39a866ad82768c21773a4c9335ccbfda1b27f24e2fb26030f8369672b431a80cbbe43125c8ee951f9ec632a25fd68c392f4d</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-shrink">
+      <input class="hbe hbe-input-field hbe-input-field-shrink" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-shrink" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-shrink">您好, 这里需要密码.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>月度总结</category>
+      </categories>
+      <tags>
+        <tag>月度总结</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python @property装饰器详解</title>
+    <url>/2023/01/16/Python%20@property%E8%A3%85%E9%A5%B0%E5%99%A8%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>原文地址：<a href="http://c.biancheng.net/view/4561.html">Python @property装饰器详解</a></p>
+<p>既要保护类的封装特性，又要让开发者可以使用“对象.属性”的方式操作操作类属性，除了使用 property() 函数，Python还提供了 @property 装饰器。通过 @property 装饰器，可以直接通过方法名来访问方法，不需要在方法名后添加一对“（）”小括号。</p>
+<span id="more"></span>
+
+<p>@property 的语法格式如下：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="meta">@property  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> 方法名(<span class="params">self</span>)  </span></span><br><span class="line"><span class="function">    代码块</span></span><br></pre></td></tr></table></figure>
+
+<p>例如，定义一个矩形类，并定义用 @property 修饰的方法操作类中的 area 私有属性，代码如下：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rect</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self,area</span>):</span></span><br><span class="line">        self.__area = area</span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">area</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.__area</span><br><span class="line">rect = Rect(<span class="number">30</span>)</span><br><span class="line"><span class="comment">#直接通过方法名来访问 area 方法</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;矩形的面积是：&quot;</span>,rect.area)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">矩形的面积为： 30</span><br></pre></td></tr></table></figure>
+
+<p>上面程序中，使用 ＠property 修饰了 area() 方法，这样就使得该方法变成了 area 属性的 getter 方法。需要注意的是，如果类中只包含该方法，那么 area 属性将是一个只读属性。</p>
+<p>也就是说，在使用 Rect 类时，无法对 area 属性重新赋值，即运行如下代码会报错：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">rect.area = <span class="number">90</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;修改后的面积：&quot;</span>,rect.area)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">Traceback (most recent call last):  </span><br><span class="line">  File <span class="string">&quot;C:\\Users\\mengma\\Desktop\\1.py&quot;</span>, line <span class="number">10</span>, <span class="keyword">in</span> &lt;module&gt;  </span><br><span class="line">    rect.area = <span class="number">90</span>  </span><br><span class="line">AttributeError: can<span class="string">&#x27;t set attribute</span></span><br></pre></td></tr></table></figure>
+
+<p>而要想实现修改 area 属性的值，还需要为 area 属性添加 setter 方法，就需要用到 setter 装饰器，它的语法格式如下：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="meta">@方法名.setter  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> 方法名(<span class="params">self, value</span>):</span>  </span><br><span class="line">    代码块</span><br></pre></td></tr></table></figure>
+
+<p>例如，为 Rect 类中的 area 方法添加 setter 方法，代码如下：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="meta">@area.setter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area</span>(<span class="params">self, value</span>):</span></span><br><span class="line">    self.__area = value</span><br></pre></td></tr></table></figure>
+
+<p>再次运行如下代码：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line">rect.area = <span class="number">90</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;修改后的面积：&quot;</span>,rect.area)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">修改后的面积: 90</span><br></pre></td></tr></table></figure>
+
+<p>这样，area 属性就有了 getter 和 setter 方法，该属性就变成了具有读写功能的属性。</p>
+<p>除此之外，还可以使用 deleter 装饰器来删除指定属性，其语法格式为：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="meta">@方法名.deleter  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> 方法名(<span class="params">self</span>):</span>  </span><br><span class="line">    代码块</span><br></pre></td></tr></table></figure>
+
+<p>例如，在 Rect 类中，给 area() 方法添加 deleter 方法，实现代码如下：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="meta">@area.deleter</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">area</span>(<span class="params">self</span>):</span></span><br><span class="line">    self.__area = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>然后运行如下代码：</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">del</span> rect.area</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;删除后的area值为：&quot;</span>,rect.area)</span><br></pre></td></tr></table></figure>
+
+<p>运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">删除后的area值为： 0</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>学习笔记</category>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python常用函数方法</title>
+    <url>/2019/01/14/Python%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h1><h2 id="join"><a href="#join" class="headerlink" title="join()"></a>join()</h2><p>join() 方法用于将序列中的元素以指定的字符连接生成一个新的字符串。<br><code>str.join(item)</code>，join函数是一个字符串操作函数。<br><code>str</code>表示字符串（字符），<code>item</code>表示一个成员，注意括号里必须只能有一个成员，比如<code>&#39;,&#39;.join(&#39;a&#39;,&#39;b&#39;)</code>这种写法是行不通的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#将字符串abc中的每个成员，以字符&#x27;,&#x27;分隔开再拼接成一个字符串</span></span><br><span class="line"><span class="string">&#x27;,&#x27;</span>.join(<span class="string">&#x27;abc&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>输出结果为<code>&#39;a,b,c&#39;</code></p>
+<p>join里放列表、元组、字典也是可以的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">&#x27;;&#x27;</span>.join([a,b,c])</span><br><span class="line">&gt;&gt;  <span class="string">&#x27;a;b;c&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://blog.csdn.net/chixujohnny/article/details/53301995">Python中的 .join()用法</a></p>
+<span id="more"></span>
+
+<h2 id="split"><a href="#split" class="headerlink" title="split()"></a>split()</h2><p><code>str.split(sep=&quot;&quot;,num=string.count(str))[n]</code><br>拆分字符串。通过指定分隔符对字符串进行切片，并返回分割后的字符串列表（list），如果参数 num 有指定值，则仅分隔 num+1 个子字符串。</p>
+<ul>
+<li><code>sep</code>：表示为分隔符，默认为所有的空字符，包括空格、换行(\n)、制表符(\t)等，但是不能为空(‘’)。若字符串中没有分隔符，则把整个字符串作为列表的一个元素</li>
+<li><code>num</code>：表示分割次数。如果存在参数num，则仅分隔成 num+1 个子字符串，并且每一个子字符串可以赋给新的变量</li>
+<li><code>[n]</code>：表示选取第n个分片</li>
+</ul>
+<ol>
+<li>无参数的情况</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;my name is zhangkang&quot;</span></span><br><span class="line">b=<span class="string">&quot;my\nname\nis\nzhangkang&quot;</span></span><br><span class="line">c=<span class="string">&quot;my\tname\tis\tzhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">a=a.split()</span><br><span class="line">b=b.split()</span><br><span class="line">c=c.split()</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(a)</span><br><span class="line"><span class="built_in">print</span>(b)</span><br><span class="line"><span class="built_in">print</span>(c)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>有参数的情况</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">d=<span class="string">&quot;my,name,is,zhangkang&quot;</span></span><br><span class="line">e=<span class="string">&quot;my;name;is;zhangkang&quot;</span></span><br><span class="line">f=<span class="string">&quot;my-name-is-zhangkang&quot;</span></span><br><span class="line"></span><br><span class="line">d=d.split(<span class="string">&quot;,&quot;</span>)</span><br><span class="line">e=e.split(<span class="string">&quot;;&quot;</span>)</span><br><span class="line">f=f.split(<span class="string">&quot;-&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(d)</span><br><span class="line"><span class="built_in">print</span>(e)</span><br><span class="line"><span class="built_in">print</span>(f)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;my&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>]</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>有两个参数的情况</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="string">&quot;My,name,is,zhangkang,and,I,am,a,student&quot;</span></span><br><span class="line">b1=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">1</span>)</span><br><span class="line">b2=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">2</span>)</span><br><span class="line">b8=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">8</span>)</span><br><span class="line">b9=a.split(<span class="string">&quot;,&quot;</span>,<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(b1)</span><br><span class="line"><span class="built_in">print</span>(b2)</span><br><span class="line"><span class="built_in">print</span>(b8)</span><br><span class="line"><span class="built_in">print</span>(b9)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 输出：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name,is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is,zhangkang,and,I,am,a,student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">&#x27;My&#x27;</span>, <span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;is&#x27;</span>, <span class="string">&#x27;zhangkang&#x27;</span>, <span class="string">&#x27;and&#x27;</span>, <span class="string">&#x27;I&#x27;</span>, <span class="string">&#x27;am&#x27;</span>, <span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;student&#x27;</span>] <span class="comment">#超过最大分割次数，还是最大分割，不报错</span></span><br></pre></td></tr></table></figure>
+
+<p>参考：<a href="https://blog.csdn.net/csdn15698845876/article/details/74012511">python中split()函数讲解</a></p>
+<h2 id="strip"><a href="#strip" class="headerlink" title="strip()"></a>strip()</h2><p>声明：<code>s</code>为字符串，<code>rm</code>为要删除的字符序列。<br>当<code>rm</code>为空时，默认删除空白符（包括<code>\n</code>, <code>\r</code>,  <code>\t</code>,  <code>&#39; &#39;</code>)</p>
+<p><code>s.strip(rm)</code>，删除s字符串中开头、结尾处，位于rm删除序列的字符<br><code>s.lstrip(rm)</code>，删除s字符串中开头处，位于rm删除序列的字符<br><code>s.rstrip(rm)</code>，删除s字符串中结尾处，位于rm删除序列的字符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">b = <span class="string">&#x27;123abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;12&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;21&#x27;</span>) <span class="comment"># 没有顺序</span></span><br><span class="line"><span class="string">&#x27;3abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;31&#x27;</span>) <span class="comment"># 只要开头和结尾中含有rm中的字符 就删除</span></span><br><span class="line"><span class="string">&#x27;23abc&#x27;</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>b.strip(<span class="string">&#x27;bc&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;123a&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="print-f-‘‘-的用法"><a href="#print-f-‘‘-的用法" class="headerlink" title="print(f ‘‘)的用法"></a>print(f ‘‘)的用法</h1><h2 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h2><p><code>print(f&#39;.....&#39;)</code></p>
+<p>注意：<strong>f后面一定要紧跟字符串，不能隔有空格，否则会报错</strong></p>
+<p>print语句中加入f就可以起到和format函数类似的作用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">a &#x3D; 1</span><br><span class="line">b &#x3D; 2</span><br><span class="line">c &#x3D; 3</span><br><span class="line">print(f&#39;a&#x3D;&#123;a&#125;, b&#x3D;&#123;b&#125;, c&#x3D;&#123;c&#125;&#39;)</span><br><span class="line"># 等价于print(&#39;a&#x3D;&#123;&#125;, b&#x3D;&#123;&#125;, c&#x3D;&#123;&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">a&#x3D;1, b&#x3D;2, c&#x3D;3</span><br></pre></td></tr></table></figure>
+
+<p>可以看出printf的语法特别清楚，他<a href="https://so.csdn.net/so/search?q=%E6%AF%94%E8%BE%83%E5%99%A8&spm=1001.2101.3001.7020">比较器</a>format的用法更加清晰，因为format还需要前后将括号对号入座，而<strong>printf中的括号可以直观地直接看的里面的值是什么</strong>。</p>
+<h2 id="nf-控制小数点位数"><a href="#nf-控制小数点位数" class="headerlink" title="{:.nf}控制小数点位数"></a><code>&#123;:.nf&#125;</code>控制小数点位数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">a &#x3D; np.sqrt(2)</span><br><span class="line">b &#x3D; np.sqrt(3)</span><br><span class="line">c &#x3D; np.sqrt(5)</span><br><span class="line">print(f&#39;a&#x3D;&#123;a:.1f&#125;, b&#x3D;&#123;b:.2f&#125;, c&#x3D;&#123;c:.3f&#125;&#39;)</span><br><span class="line"># 等效于print(&#39;a&#x3D;&#123;:.1f&#125;, b&#x3D;&#123;:.2f&#125;, c&#x3D;&#123;:.3f&#125;&#39;.format(a, b, c))</span><br><span class="line"></span><br><span class="line">结果</span><br><span class="line">a&#x3D;1.4, b&#x3D;1.73, c&#x3D;2.236</span><br><span class="line"># 分别保留1位，两位，三位小数</span><br></pre></td></tr></table></figure>
+
+<p><code>&#123;:.nf&#125;</code>，n代表着保留几位小数，上面的例子一目了然</p>
+<p>这里可以看到，printf比format的优势更明显了，括号里一目了然</p>
+<h2 id="更多解释"><a href="#更多解释" class="headerlink" title="更多解释"></a>更多解释</h2><p>参考python官方文档：<br><a href="https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals">https://docs.python.org/3.6/whatsnew/3.6.html#pep-498-formatted-string-literals</a></p>
+<p>**这种字符常量表示方式是在python3.6之后引入的。**更低的版本会报错</p>
+<p>PEP 498（即Python Enhancement Proposals， Python增强提案或Python改进建议书），引入了一种新的字符串字面量:f-字符串，或格式化字符串字面量。格式化字符串字面值以’f’作为前缀，类似于str.format()所接受的格式字符串。它们包含用花括号括起来的替换字段。</p>
+<p>更详细的介绍可以参考PEP 498的页面：<a href="https://www.python.org/dev/peps/pep-0498/">https://www.python.org/dev/peps/pep-0498/</a></p>
 ]]></content>
       <categories>
         <category>学习笔记</category>
